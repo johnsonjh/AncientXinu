@@ -1,0 +1,10 @@
+pid   name   state prio  stack range  stack length sem message
+--- -------- ----- ---- ------------- ------------ --- -------
+  0   prnull ready    0 157320-157777   62 / 304    -    -
+  3       ps curr    20 152124-153027  308 / 452    -    -
+  4  UDPecho wait    30 153030-153623  118 / 380    10   -
+  5    rwhod sleep   20 153624-154277   80 / 300    -    -
+  6  rwho-in wait    20 154300-154753  130 / 300    14   -
+  7   netout wait    99 154754-155573   80 / 400     5   -
+  8    netin susp   100 155574-156333   90 / 352    -    -
+  9     main recv    20 156334-157317   96 / 500    -    -

@@ -1,0 +1,22 @@
+.TH LUSERS 1
+.SH NAME
+lusers \- list users holding odt lock reservations
+.SH SYNOPSIS
+.B lusers
+.SH DESCRIPTION
+.I Lusers
+lists the users who hold reservations on tty lines.
+Each line of output contains the machine name and number, the user
+who holds it, and the idle time, rounded to the nearest minute.
+Reservations are made by \f2odt\f1(1), \f2download\f1(1),
+and \f2upload\f1(1).
+.SH FILES
+/tmp/LSI-*  Lock files.
+.SH "SEE ALSO"
+odtunlock(1), odt(1)
+.SH BUGS
+\f2Lusers\f1 lists reservations and idle time based on lock
+file times which may not be quite accurate.
+Machines with more than 10 minutes of idle time are listed even though
+the reservation software considers the reservation to have
+expired.

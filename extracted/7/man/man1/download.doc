@@ -1,0 +1,132 @@
+
+
+
+DOWNLOAD(1)         Xinu Programmer's Manual          DOWNLOAD(1)
+
+
+
+NAME
+     download - load program into LSI-11
+
+SYNOPSIS
+     download [ file ] ...  [ option ] ...
+
+DESCRIPTION
+     _D_o_w_n_l_o_a_d loads an absolute binary program image (PDP-11
+     a.out format) into the memory of an LSI-11 computer over an
+     ethernet or an asynchronous line.  After halting the LSI-11
+     with a break, _d_o_w_n_l_o_a_d either places a bootstrap in memory,
+     and uses it to load the remainder of memory, or jumps to the
+     resident portion of the downloader.
+
+     Loading the object program takes time proportional to the
+     size of the program itself.  In two seconds, download will
+     load about 56K bytes over the ethernet, or 1000 bytes over a
+     serial line.
+
+     _D_o_w_n_l_o_a_d will normally leave the LSI 11 in ODT.  The -_a
+     option requests _d_o_w_n_l_o_a_d to auto-start the micro.  The
+     optional number _N following -_a, forces a delay of approxi-
+     mately _N seconds before execution, allowing the user to
+     reconnect the console port before output begins.
+
+     The serial-loader bootstrap program is loaded 100 words
+     beyond the end of the user's object program.  If there is
+     insufficient memory for the bootstrap and stack, this pro-
+     gram will fail.  The ethernet downloader stores it's LSI-
+     resident portion in real page 7, beyond normal object pro-
+     grams (virtual page 7 is used for memory-mapped I/O).
+
+     _D_o_w_n_l_o_a_d loads the user's program as specified in the com-
+     mand line.  If no program name is given, _a._o_u_t is used.
+
+     Options are:
+
+     -v   Verbose.  Print details of the communications with the
+          LSI-11/2.
+
+     -s   Silent.  Print no information messages (default is to
+          print some messages).
+
+     -a[_N]
+          Autostart.  After loading, start the user's program
+          running in the LSI-11.  Optionally delay _N seconds.
+
+     -lx  Use LSI number _x as the LSI 11 for downloading.  If
+          this option is not specified, download selects the
+          LSI-11 that the user has on reserve, or a free one if
+          none is reserved.  E.g., -l9.
+
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+
+
+
+
+DOWNLOAD(1)         Xinu Programmer's Manual          DOWNLOAD(1)
+
+
+
+     -d _f Use file _f as the downloader program (download will
+          exec it, after parsing arguments).
+
+     -cL  Use LSI in class L (as specified in the _m_a_c_h_i_n_e_s data-
+          base).
+
+     -BX  Use Baudrate _X in communicating with the LSI console.
+
+     -h   Hold the LSI, so multiple machines may be allocated to
+          one user.
+
+     -e   Reload the resident portion of the ethernet downloader
+          (into a page beyond real page 7).
+
+FILES
+     /dev/LSI.i      LSI 11 device connections, as specified in
+     machines database
+     /tmp/xinu/LSI-* Lock files for auto-select
+     {Xinu-directory}/lib/machinesthe database of available
+     machines
+     {Xinu-directory}/lib/sdl.boot.lsiLSI 11 part of serial
+     bootstrap
+     {Xinu-directory}/lib/sdl.lsiserial downloader for LSI 11
+     {Xinu-directory}/lib/edl.lsiethernet downloader for LSI 11
+     {Xinu-directory}/lib/eload.lsiLSI 11 resident portion of
+     ethernet downloader
+     Note: files for other machines have ``lsi'' replaced by the
+     machine type.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version 6b               Printed 1/12/87                        2
+
+
+

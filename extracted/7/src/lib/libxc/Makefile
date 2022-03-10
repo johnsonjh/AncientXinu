@@ -1,0 +1,69 @@
+#
+#  Make the Xinu version of the C run-time support library
+#
+
+DIR	=	/usr/Xinu
+LIB	=	$(DIR)/lib
+AR	=	/bin/ar
+AS	=	$(DIR)/bin/as11
+AFLAGS	=	-u $(DIR)/include/sys.s
+CC	=	$(DIR)/bin/cc11
+CFLAGS	=	-O -c
+RANLIB	=	$(DIR)/bin/ranlib11
+
+.s.o:
+		$(AS) -o $@ $(AFLAGS) $<
+
+.c.o:
+		$(CC) $(CFLAGS) $<
+
+SFILES	=	aldiv.s						\
+		almul.s						\
+		alrem.s						\
+		cerror.s					\
+		csv.s						\
+		ldiv.s						\
+		lmul.s						\
+		lrem.s
+
+CFILES	=	abs.c atoi.c atol.c				\
+		ctype_.c					\
+		doprnt.c doscan.c				\
+		fgets.c fprintf.c fputs.c			\
+		gets.c						\
+		index.c						\
+		printf.c puts.c					\
+		qsort.c						\
+		rand.c rindex.c					\
+		scanf.c sprintf.c				\
+		strcat.c strcmp.c strcpy.c strlen.c		\
+		strncat.c strncmp.c strncpy.c swab.c
+
+OFILES	=	abs.o aldiv.o almul.o alrem.o atoi.o atol.o	\
+		cerror.o csv.o ctype_.o				\
+		doprnt.o doscan.o				\
+		fgets.o fprintf.o fputs.o			\
+		gets.o						\
+		index.o						\
+		ldiv.o lmul.o lrem.o				\
+		printf.o puts.o					\
+		qsort.o						\
+		rand.o rindex.o					\
+		scanf.o sprintf.o				\
+		strcat.o strcmp.o strcpy.o strlen.o		\
+		strncat.o strncmp.o strncpy.o swab.o
+
+
+all:		libxc.a
+
+install:	all
+		cp libxc.a $(LIB)/libxc.a
+		$(RANLIB) $(LIB)/libxc.a
+
+clean:
+		rm -rf *.o core a.out libxc.a
+
+libxc.a:	$(OFILES)
+		rm -rf libxc.a
+		$(AR) cr libxc.a $(OFILES)
+		$(RANLIB) libxc.a

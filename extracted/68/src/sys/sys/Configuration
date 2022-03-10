@@ -1,0 +1,55 @@
+/* Configuration - (device configuration specifications) */
+
+/* device "type" declarations plus disk file (df) */
+
+tty:
+	on SLU		-i ttyinit	-o ioerr	-c ioerr
+			-r ttyread	-w ttywrite	-s ioerr
+			-n ttycntl	-g ttygetc	-p ttyputc
+			-iint sluint	-oint sluint
+dlc:
+	on SLU		-i dlcinit	-o ioerr	-c ioerr
+			-r dlcread	-w dlcwrite	-s ioerr
+			-n dlccntl	-g ioerr	-p dlcputc
+			-iint dlciin	-oint dlcoin
+dsk:
+	on WIN		-i dsinit	-o dsopen	-c ioerr
+			-r dsread	-w dswrite	-s dsseek
+			-n dscntl	-g ioerr	-p ioerr
+			-iint dsinter	-oint dsinter
+df:
+	on DSK		-i lfinit	-o ioerr	-c lfclose
+			-r lfread	-w lfwrite	-s lfseek
+			-n ioerr	-g lfgetc	-p lfputc
+			-iint ioerr	-oint ioerr
+
+%
+
+/* Device definitions starting with SLU devices */
+
+CONSOLE	is tty on SLU csr=030000000 ivec=035 ovec=035 
+OTHER	is tty on SLU csr=030000000 ivec=035 ovec=035 
+		/*	  030000000 = 0x600000, 035 = Vector 29 */
+
+/* Ring network block-mode input and block-mode output devices */
+
+/* Disk device */
+
+DISK0 is dsk on WIN csr=07600000 ivec=034 ovec=034
+		/* 	07600000 = 0x1f0000, 034 = Vector 28	*/
+
+/* Slots for files (not really devices) */
+
+FILE0	is df on DSK	csr=0 ivec=0 ovec=0
+FILE1	is df on DSK	csr=0 ivec=0 ovec=0
+FILE2	is df on DSK	csr=0 ivec=0 ovec=0
+FILE3	is df on DSK	csr=0 ivec=0 ovec=0
+%
+
+/* Configuration and Size Constants */
+
+#define MEMMARK				/* use memory marking		*/
+#define	NPROC	10			/* number of user processes	*/
+#define	NSEM	50			/* total number of semaphores	*/
+#define	RTCLOCK
+#define	VERSION	"3.0 (8/6/83)"		/* label printed at startup	*/

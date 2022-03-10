@@ -1,0 +1,14 @@
+/v1/burns/Xinu68/bin/mcc -c -I../h  -DDEBUG1 -Dmc68000	dsinter.c
+"dsinter.c", line 77: d_iblks undefined
+"dsinter.c", line 77: member of structure or union required
+"dsinter.c", line 78: d_fblst undefined
+"dsinter.c", line 78: member of structure or union required
+"dsinter.c", line 79: d_filst undefined
+"dsinter.c", line 79: member of structure or union required
+"dsinter.c", line 80: d_id undefined
+"dsinter.c", line 80: member of structure or union required
+"dsinter.c", line 81: d_nfiles undefined
+"dsinter.c", line 81: member of structure or union required
+*** Error code 1
+
+Stop.

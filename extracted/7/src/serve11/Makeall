@@ -1,0 +1,13 @@
+: ' makeall  --  make the standalone server for Xinu'
+
+PATH=/bin:/usr/bin
+echo
+echo '*** Making serve11, the standalone server'
+for i in con sys
+do	cd $i
+	echo
+        echo "*** Making programs in {Xinu-directory}/src/serve11/$i"
+	make
+        make install
+        cd ..
+done

@@ -1,0 +1,6 @@
+#! /bin/sh
+PATH=/bin:/usr/bin
+DIR=/usr/Xinu
+OUTFILE=$1
+shift
+$DIR/bin/nm11 -n a.out | egrep ' T | D | B ' > $OUTFILE &

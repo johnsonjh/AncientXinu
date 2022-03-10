@@ -1,0 +1,325 @@
+.RP
+.TL
+A Network Moinitor
+.AU
+Chi-jiu Lin*  D. E. Comer
+.FS
+* A visiting scholar of the Department of Computer Sciences
+.FE
+.AI
+Department of Computer Sciences
+Purdue University
+West Lafayette, IN 47907
+U. S. A.
+.nr VS 24pts
+.AB
+This article provides an introduction to a network monitor. It is primarily used to monitor activities on the Ethernet of the Department of Computer Sciences, Purdue University.
+Emphasis is placed on its implementation and usage. Some of its limitations and modifications are discussed.
+.AE
+.NH
+Introduction
+.PP
+In a network, like many systems, the issue of reliability is not only an important one but also a hard nut to crack. A reliable network requires techniques for monitoring data transmission errors and detecting erroneous states in the
+system. A program, called monitor, provides an effective tool for keeping track
+of packet transfers and debugging network operations on the Ethernet of the 
+Department of Computer Sciences, Purdue University.
+.PP
+The monitor runs on a LSI11 microcomputer under the support of Xinu operating
+system. Xinu is a small, elegant, Level-structured operating system that has 
+embedded network software inside to support the DARPA internet protocols. The
+Ethernet interface is a Digital Equipment Corporation DEQNA (Digital Equipment
+Q-bus Network Adaptor).
+.PP
+The design decision to build this monitor mainly depends on the following two
+aspects.
+.PP
+First, it should basically be able to meet the needs for monitoring data 
+transmission on the Ethernet. It includes as follows:
+.IP[1]
+It should be able to display all kinds of packets such as EP packets, IP 
+packets, ARP packets, RARP packets, UDP packets, ICMP packets, TCP packets.
+.IP[2]
+It should be able to display the expected packets either by machine/port name
+or by address/port number.
+.IP[3]
+It should be able to display the data of a packet according to user's demand
+for length.
+.PP
+Second, it should be easy to expand its capabilities without more and bigger
+modifications of its structure. It implies that it should has a better 
+extensibility.
+.PP
+Aiming at the above goal, the monitor divides into three parts: packet receiver
+, shell, and command set. Section 2 describes the implementation of the packet
+receiver. Section 3 focuses on the design of the shell. Section 4 places an 
+emphasis on the implementation of the command set. Section 5 discusses the 
+usage of commands.
+.PP
+In order to further improve the monitor in the future, the remainder of the 
+article examines some current limitations and possible modifications in the
+future.
+.NH
+Packet Receiver
+.PP
+When the monitor begins to run on the LSI11 microcomputer, it performs three 
+chores. First, it initializes a table, called an address table, by which we can 
+display a packet either by name or by address/number. Second, it initializes
+the DEQNA Ethernet interface to set it to receive mode and leave it on line.
+Third, invoking by the command a user enters, the monitor receives a arriving
+packet and holds it in a buffer.
+.PP
+In the address table, there are various bindings, for example, the table contains machine
+name-to-internet address binding, internet-to-physical address binding, port name-to-port number binding,
+and protocol name-to-protocol number binding. Even though the contents of this table
+has already been filled in beforehand, it is necessary to dynamically 
+initialize it again so that it is still true to the present enviroment in which
+the monitor runs in case some of the bindings have been changed. For example, 
+if a DEQNA Ethernet interface fails and must be replaced, one need not worry 
+about the change of its physical address because the monitor will change the 
+machine name-to-internet address binding and internet-to-physical address binding of its own accord.
+.PP
+In the initialization of the address table, the monitor broadcasts a ARP 
+request according to every internet address in the address table, waiting for
+a ARP reply to obtain every physical address. This process continues until
+every machine name-to-internet address binding and internet-to-physical address binding in the address
+table has been updated.
+.PP
+To initialize the DEQNA interface, the monitor must reset the interface, and 
+have the interface enter set-up mode. The set-up mode defines the DEQNA 
+target addresses for the purpose that it can perform address filtering later
+on. More detailed, after receiving a packet, decoding manchester-encoded data from
+the transceiver, and stripping off the 64-bit preamble, the received packet's
+destination address field is compared to the set of these target addresses.
+The target addresses either are the node's physical address, the broadcast
+address, and 12 multicast addresses, or all addresses (Promiscuous Mode).
+To allow all packets to be received, the monitor must set the DEQNA interface
+to the promiscuous mode. After that, it also needs to reset the interface 
+again, disables the interrupt of the DEQNA interface to protect from the 
+interfering of the network input daemon, and leaves the DEQNA interface ready
+to receive packets from the network.
+.PP
+Before the monitor initiates packet receptions from the network, it must build 
+a command list in memory, and then pass the address of the command list. So
+the command list, called a buffer descriptor list, must be initialized by the
+monitor at first. That is, in the initialization, the monitor must write 
+the address and length of the buffer, which is used for holding arriving 
+packets, into the buffer descriptor. It must also write "not using" status into 
+the buffer descriptor to indicate that this buffer descriptor has not yet been 
+used, and write initial value into the two status words of the buffer descriptor
+and so on. When it passes the DEQNA interface the address of the buffer 
+descriptor the packet reception occurs in three stages. First, the DEQNA  
+interface performs a address filtering. Second, if there is an address match and
+no errors occur, the packet continues to be stored in the Receive FIFO RAM of 
+the DEQNA interface. Third, it writes "using" status into the buffer descriptor
+, reads the buffer address and length from the buffer descriptor and empties
+the received frames into the buffer from the Receive FIFO RAM, at last writes
+the receive status into the buffer descriptor. When the monitor interrogates
+the status of the first status word of the buffer descriptor and finds that 
+the initial value has been changed, it implies that the packet has been stored 
+in the buffer, and the packet reception has finished.
+.NH
+The Shell of the Monitor
+.PP
+Considering the extensibility of the monitor, a shell similar to but simpler
+than the Xinu shell is built. This shell is the interface between users and the
+monitor because it can accept input from a key board, then implement command 
+interpretation, and output the execution result of a command to a  
+character-oriented screen. The organization of the shell is relatively simple.
+The interface is line-oriented. It means that each line represents a complete
+unit of input to be recognized by the interface. At the same time, it expects 
+users to provide imperatives to be carried out by the system instead of being
+interrogative. To allow for the possibility of many concurrent activities, the
+shell allows commands to execute as separate processes.
+.NH 2
+Command Syntax and Shell Semantics
+.PP
+Like Xinu shell, the syntax description is divided into two parts: a lexical
+specification that describes how the shell collects characters into tokens and
+a context specification that describes the ways how the tokens can be ordered
+to form valid command lines.
+.PP
+At the lexical level, the shell parses input characters into tokens. It only
+recognizes four possible token types, shown as figure 1, and records each 
+token type and the characters that comprise the token.
+.TS
+lcl.
+           Token Name	Input Symbol	Description
+           OR	|	OR symbol
+           ENDLINE	\en	end of line
+           ENDSTRING	\e0	end of string
+           OTHER	other	sequence of non-blanks
+.TE
+.DS
+	Figure 1   The definition of tokens
+.DE
+.PP
+Note that at least one blank must separate adjacent occurences of type OTHER
+tokens.
+.PP
+Figure 2 lists the definition of command line syntax. In figure 2, the bracket
+[] denotes an optional occurence, + denotes that one or more token occurences
+follow. Thus, a command line is a OTHER followed by a sequence of words.
+.TS
+lcl
+lcl
+lcl.
+        command	->	OTHER + [word] end
+        word	->	OTHER || OR OTHER
+        end	->	ENDLINE || ENDSTRING
+.TE
+
+.DS
+Figure 2   the definition of the command line syntax.
+.DE
+.PP
+Like the  Xinu shell , the command interpreter breaks the
+input into words and takes the first word on each line to be a command name.
+Words following the command name are passed to the command process as arguments
+when it is invoked.
+.NH 2
+Implementation of the Shell  
+.PP
+The implementation of the shell is quite simple. During each iteration, the
+shell begins a cycle of issuing a prompt to expect users to enter commands, 
+reading a single command line, and breaking it into tokens, then checking the 
+sequence of tokens to be sure the line is syntactically  correct. It is called lexical analysis. 
+.PP
+After lexical analysis, first the shell scans and handles OR symbol. If the 
+next token following it is a command name, a flag is set to indicate that the  
+next part of the command contains at least another command. Otherwise the shell
+just set the OR mark to tell the command process that the relation between arguments is
+OR relation. Second, the shell searches command list for the named command.    
+Once a command name match has been found, the shell creates a process to excute
+the command, and passes arguments of the command to the command process, then 
+leaves its process identification (i.e. pid) at the command process table that
+the command process knows which process it should inform when it completes.    
+Third, the shell starts the command process executing, and awaits the completion of the command process. When the shell receives a termination message, it     
+creates another process to execute the next part of the command if the flag has
+been set. Otherwise it returns and starts the next iteration.
+.PP
+In addition, we build a mechanism that allows the user inform the shell by typing CONTROL-B that once the current command process completes, the shell should
+continue its main loop immediately, instead of continuing to receive another packet. 
+.PP
+Before creating a process to execute  a command, the shell must register    
+with the terminal device driver. The driver keeps only one process id, so when
+a process registers to receive interrupt message, the previously registerd process loses control. Whenever the user types CONTROL-B, it will cause the terminal
+device to send an interrupt message to the shell that is waiting a message     
+arriving and urge it return as soon as possible.
+.NH
+Command Set
+.PP
+To simplify building commands and make adding new commands easy, each command
+does only one thing . So we choose the orthogonal approach to build the command
+set of the monitor. It implies that the set of commands available to users 
+consists of a few of small relatively simple commands that each performs a 
+well-defined task and it is necessary for users to invoke several to perform a complex computation.
+.PP
+Recall that the shell of the monitor dosen't interpret or check command arguments, but merely delivers each argument as a string to the command procss. Undoubtedly, it is indispensable for each command process by itself to pass and check 
+each argument. In this command set, all commands, except command "help", have the same argument format. As a result, it is very convenient for each command process to further parse arguments, so we provide each command process with a same procedure,  called "argparse", to do that. When each command       
+process calls the procedure "argparse", if the parsed argument is a name, it   
+will be converted into a address or a number with the help of the address table.
+Subsequently it will be once again converted into the same form as the address
+or number of the received packet. Whenever the received packet meets the need
+of all arguments of the command, the command process display the packet. Otherwise it will exit and the shell continues another  search for the packet expected
+until it finds the packet expected or 500 packets have been searched.
+.NH
+The Usage of the Commands
+.PP
+To run the monitor on a LSI 11 microcomputer, you need to use the download command to load its memory image into the microcomputer from the host computer, for
+example from host gwen (a VAX 785), then use command odt to connect your terminal
+to the microcomputer so that you can display the arriving packets. Care should
+be taken. Command download and odt are not the commands of the shell. After    
+the shell issues the prompt " ## ", you can enter the command you want.
+.PP
+It is beneficial for users to choose good commad names. To make them easy to 
+use and easy to remember, the names of all commands, except "help", are the same
+as their protocol types. For instance, the command "udp" will display the udp
+protocol packets. The commands take six kinds of arguments:
+.TS
+lcl
+lcl
+lcl
+lcl
+lcl
+lcl.
+sname	:	 source machine name or source port name.
+saddress	:	 source machine address or source port number.
+dname	:	 destination machine name or destination port name.
+daddress	:	 destination machine address or destination port number.
+length	:	 data length.
+OR	:	 | symbol.
+
+.TE
+.TS
+l.
+The format of a simple command is as follows:
+     command [Ssname] [OR] [ssaddress] [OR] [Ddname] [OR] [ddaddress] [OR] [llength]
+The format of a complex command that is complex of at least two 
+simple commands and OR is as follows:
+     command1 OR command2 ...... OR commandn
+.TE
+.TS
+lss
+lcl.
+The commands the shell recognizes are:
+help	-	display help information for the user.
+ep	-	display Ethernet EP packets.
+ip	-	display IP protocol packets.
+arp	-	display ARP protocol packets.
+rarp	-	displsy RARP protocol packets. 
+udp	-	display UDP protocol packets.
+icmp	-	display ICMP protocol packets.
+tcp	-	display TCP protocol packets.
+.TE
+.NH
+Some Limitations and Modifications
+.PP
+Analysing the limitations of the current monitor and  exploring the        
+posibility of making some modifications in the future will be helpful to       
+improve the organization of network monitors. This section will discuss these 
+two aspects.
+.IP[1]
+When downloading, the current load sequence includes the Xinu operating system.
+It occupies a lot of memory spaces. Little memory space remains available
+for users and it is impossible to add new functions to the monitor before  
+solving this problem. Thus, the best way to solve this problem is that the load
+sequence only includes the standalone startup routine in preparation for       
+downloading without the Xinu operating system. It saves memory, making it possible   
+to extend the command set and makes the monitor smaller and elegant.
+.IP[2]
+At present, the set-up mode of the DEQNA is set to the promiscuous mode.   
+Namely, the DEQNA receives all packets, independent of whether they are
+necesarry. If we can modify the DEQNA so that it can receive only the
+packets we need and filter unwanted packets under the control of the monitor, it
+will improve the receive rate and avoid doing unnecessary work and packet     
+overflow.
+.IP[3]
+Presently, we provide only one buffer to store the received packet. In high
+traffic situation, if packets arrive faster than the display rate, then some   
+packets will be lost. Providing more buffers enable us to improve 
+this situation, but it demands that the computer system have sufficient memory. 
+.IP[4]
+The existing monitor just functions as a "monitor". It can only keeps track
+of data transmission,  it cannot detect and locate the errors         
+automatically. The main limitation is its limited command set. 
+To add more functionality, such as error filtering, sending test packets, and
+so on, it is essential to expand the command set.
+.NH
+Conclusion
+.PP
+This paper introduces the design and implementation of a network monitor.
+Even though it can meet the needs right now, it has some limitations and need  
+to be improved later on. Once these limitations are  broken through, the       
+monitor will become more powerful and elegant.     
+.SH
+References
+.DS
+[1] D. E. Comer, Operating System Design: The Xinu Approach,
+    Prentice - Hall, 1983.
+[2] D. E. Comer, Operating System Design Vol. II, Internetworking with Xinu,
+    Prentice - Hall, 1986.
+[3] DEQNA User's Guide,
+    Digital Equipment corporation, 1984.
+.DE
+                        
+

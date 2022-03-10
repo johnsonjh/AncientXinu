@@ -1,0 +1,99 @@
+/*	VAX-11/780 Registers */
+
+#ifdef VAX
+	/* scratch registers */
+# define R0 0
+# define R1 1
+# define R2 2
+# define R3 3
+# define R4 4
+# define R5 5
+
+	/* register variables */
+# define R6 6
+# define R7 7
+# define R8 8
+# define R9 9
+# define R10 10
+# define R11 11
+
+	/* special purpose */
+# define AP 12		/* argument pointer */
+# define FP 13		/* frame pointer */
+# define SP 14	/* stack pointer */
+# define PC 15	/* program counter */
+
+	/* floating registers */
+
+	/* there are no floating point registers on the VAX */
+
+extern int fregs;
+extern int maxargs;
+
+#else
+/* 68000 registers */
+	/* registers */
+# define D0 0
+# define D1 1
+# define D2 2
+# define D3 3
+# define D4 4
+# define D5 5
+# define D6 6
+# define D7 7
+# define A0 8
+# define A1 9
+# define A2 10
+# define A3 11
+# define A4 12
+# define A5 13
+# define A6 14
+# define SP 15
+
+# define SAVEREGION 8 /* number of bytes for save area */
+
+#endif
+
+#ifdef VAX
+# define BYTEOFF(x) ((x)&03)
+#else
+# define BYTEOFF(x) ((x)&01)
+#endif
+# define wdal(k) (BYTEOFF(k)==0)
+# define BITOOR(x) ((x)>>3)  /* bit offset to oreg offset */
+
+# define REGSZ 16
+
+#ifdef VAX
+# define TMPREG FP
+#else
+# define TMPREG A6
+#endif
+
+#ifdef VAX
+# define R2REGS   /* permit double indexing */
+#endif
+
+# define STOARG(p)     /* just evaluate the arguments, and be done with it... */
+# define STOFARG(p)
+# define STOSTARG(p)
+# define genfcall(a,b) gencall(a,b)
+
+# define NESTCALLS
+
+# define MYREADER(p) myreader(p)
+int optim2();
+#ifdef VAX
+# define special(a, b) 0
+#endif
+
+
+#ifndef VAX
+	/* shape for constants between -128 and 127 */
+/* # define SCCON (SPECIAL+100) */
+	/* shape for constants between 0 and 32767 */
+# define SICON (SPECIAL+101)
+	/* shape for constants between 1 and 8 */
+# define S8CON (SPECIAL+102)
+extern int fltused;
+#endif

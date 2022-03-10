@@ -1,0 +1,51 @@
+.TH SUBEIS 1
+.SH NAME
+subEIS \- substitute code for \s-2LSI 11\s0 extended instructions
+.SH SYNOPSIS
+.B subASH
+.br
+.B subASHC
+.br
+.B subMUL
+.br
+.B subDIV
+.SH DESCRIPTION
+These programs read an \s-2LSI 11\s0 assembly language program from
+the standard input,
+replace opcodes from the  Extended Instruction
+Set (EIS) with a call to a library subroutine that simulates them,
+and write the new listing on the standard output.
+They are used mainly as filters for compiling \s-2LSI 11/02\s0 programs
+for machines without the EIS chip.
+.LP
+Each program checks for a different instruction;
+.I subMUL
+checks for (and replaces)
+.I mul
+instructions,
+.I subDIV
+checks for (and replaces)
+.I div
+instructions,
+.I subASH
+checks for (and replaces)
+.I ash
+instructions,
+and
+.I subASHC
+checks for (and replaces)
+.I ashc
+instructions.
+The resulting assembly language program must be loaded with
+the library
+.I libeis.a ,
+which contains the routines called.
+.SH SEE ALSO
+cc11(1), EIS(2)
+.SH DIAGNOSTICS
+The condition codes are correctly set by the above calling sequence.
+.SH BUGS
+Setting the condition codes accounts for most of the work these routines
+perform.
+Unfortunately, they are so slow that most programs, including Xinu
+are unusable on an 11/2 without the EIS hardware.

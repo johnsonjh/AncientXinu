@@ -1,0 +1,55 @@
+In order to download Xinu, the exception vectors must be initialized 
+to point to a panic routine.  This is done in lowcore.s.  Ron Ginosar
+said that the assembler is a vax assembler hacked for the mc68000.
+Beware of null-padding.  When skipping  blocks of memory, the assembler,
+null pads.
+
+    The "org" instruction can be used to set the location counter.
+    it takes as an argument an expression such as:
+	table:	org	6
+    which sets table to decimal location 6.
+    and then:
+		org	table+10
+    which allocates 10 bytes for table.
+
+Accessing an address beyond physical memory that is not mapped is a BUS error.
+
+When the pc and ps are pushed down on an exception (other than bus error
+and address error), the order is:
+	(low)	ps
+		pc high order word
+	(high)	pc low  order word
+
+for a total of 6 bytes (not  8).
+
+A picture of the exception table is on page 15-7 of  68000 A.S.P.
+
+The vivmon code is in /usr/m/dist1/vivmon/.
+
+The exception vectors  for vivmon are set up in vivmon/except.s.
+
+USART interrupts trap to  0x74 -- level 5 interrupt.
+
+Xinu11 starts at  01000  (0x200).
+Xinu68 starts at 010000 (0x1000).
+
+sizmem.s must be written -- see how the monitor for mx does it.
+For now, have sizmem return a constant (0x40000).
+
+The csr structure must be changed, however, the name , "csr", should 
+be kept.
+
+For the tty driver, change all references to the csr to macro calls.
+In Xinu11, these macro calls will be replaced by simple in-line calls,
+in Xinu68, however, they will be replaced by actual procedure calls for
+the most part.
+
+Also, have getc return an integer, with the one byte having the character
+read, and the other a constant code signifying the error detected in
+transmission.
+
+----------------------------------------------------------------------
+>>>>	 Next job is to get the disk driver routines to work	  <<<<
+----------------------------------------------------------------------
+
+Comments in mas are introduced with a '#'.

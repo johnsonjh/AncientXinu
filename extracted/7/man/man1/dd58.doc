@@ -1,0 +1,66 @@
+
+
+
+DD58(1)             Xinu Programmer's Manual              DD58(1)
+
+
+
+NAME
+     dd58 - copy a file to or from a TU58 connected to an asyn-
+     chronous VAX line
+
+SYNOPSIS
+     dd58 [option[=value]] ...
+
+DESCRIPTION
+     The TU58 tape drive is a block-addressable, random access
+     cartridge tape storage unit often used with LSI 11 microcom-
+     puters.  The program _d_d_5_8 provides a way to write TU58 tapes
+     from the VAX (e.g., to create a bootable system tape).  It
+     copies standard input to the TU58, or a given number of
+     blocks from the TU58 to its standard output.  Because the
+     TU58 controller is a block-oriented interface that relies on
+     the driver to supply data quickly, one should never use a
+     terminal as standard input.  Options are:
+
+     _o_p_t_i_o_n         _v_a_l_u_e_s
+     sam            set special addressing mode
+     -sam           disable special addressing mode (default)
+     verify         check data after reading or writing (default)
+     -verify        do not check data after reading or writing
+     maint          set maintenance mode
+     -maint         disable maintenance mode (default)
+     drive=_n        use drive number _n (default 0)
+     posit=_n        reading or writing begins with tape block _n
+                    (default 0)
+     count=_n        read or write _n bytes (default for _w_r_i_t_i_n_g is
+                    to end of file; this must be specified for
+                    reading)
+     _r_e_a_d           read from the TU58 and write to the standard
+                    output
+     _w_r_i_t_e          read from the standard input and write to the
+                    TU58
+     _s_e_e_k           position the TU58 drive at the given block
+                    number
+
+     For example, to put the file _x on a tape cartridge at block
+     31, using special address mode, use
+
+
+          dd58 sam posit=31 write < x
+
+     To read its first 512 bytes into the file _y, use
+
+
+          dd58 sam posit=31 count=512 read > y
+
+DIAGNOSTICS
+     Error messages are printed on the terminal; they are self-
+     explanatory.
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+

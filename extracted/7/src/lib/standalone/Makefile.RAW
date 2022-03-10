@@ -1,0 +1,86 @@
+#
+#  Make the standalone startup routine
+#
+
+AR	=	/bin/ar
+DIR	=	{Xinu-directory}
+CC	=	$(DIR)/bin/cc11
+CFLAGS	=	-c -O
+LD	=	$(DIR)/bin/ld11
+LIBDIR	=	$(DIR)/lib/standalone
+LORDER	=	/usr/bin/lorder
+RANLIB	=	$(DIR)/bin/ranlib11
+DLOADER	=	$(DIR)/bin/download
+
+SFILES	=	aldiv.s almul.s alrem.s cerror.s csv.s \
+		ldiv.s lmul.s lrem.s lowcore.s startup.s
+
+CFILES	=	printf.c sprintf.c
+
+OFILES	=	aldiv.o almul.o alrem.o cerror.o csv.o \
+		ldiv.o lmul.o lrem.o printf.o sprintf.o
+
+all:		libsa.a startup.o nullcore.o lowcore.o
+
+install:	all
+		cp libsa.a startup.o lowcore.o nullcore.o $(LIBDIR)
+		$(RANLIB) $(LIBDIR)/libsa.a
+
+clean:
+		rm -rf *.o *.a a.out core
+
+libsa.a:	$(OFILES)
+		rm -rf libsa.a
+		$(AR) cr libsa.a $(OFILES)
+		$(RANLIB) libsa.a
+
+startup.o:	startup.s
+		$(CC) -c startup.s
+
+lowcore.o:	lowcore.s
+		$(CC) -c lowcore.s
+
+nullcore.o:	nullcore.s
+		$(CC) -c nullcore.s
+
+demo:		a.out
+		$(DLOADER) -s a.out
+		@echo demo has been downloaded -- try it
+
+demo.o:		demo.c
+		$(CC) $(CFLAGS) demo.c
+
+a.out:		demo.o lowcore.o startup.o libsa.a nullcore.o
+#		Order is quite important in the following load
+#		Choose between lowcore and nullcore (see README)
+		$(LD) -e start lowcore.o startup.o demo.o libsa.a
+
+sprintf.o:	sprintf.c
+		$(CC) $(CFLAGS) sprintf.c
+
+printf.o:	printf.c
+		$(CC) $(CFLAGS) printf.c
+
+aldiv.o:	aldiv.s
+		$(CC) -c aldiv.s
+
+almul.o:	almul.s
+		$(CC) -c almul.s
+
+alrem.o:	alrem.s
+		$(CC) -c alrem.s
+
+cerror.o:	cerror.s
+		$(CC) -c cerror.s
+
+csv.o:		csv.s
+		$(CC) -c csv.s
+
+ldiv.o:		ldiv.s
+		$(CC) -c ldiv.s
+
+lmul.o:		lmul.s
+		$(CC) -c lmul.s
+
+lrem.o:		lrem.s
+		$(CC) -c lrem.s

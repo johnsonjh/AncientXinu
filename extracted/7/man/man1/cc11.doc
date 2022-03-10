@@ -1,0 +1,198 @@
+
+
+
+CC11(1)             Xinu Programmer's Manual              CC11(1)
+
+
+
+NAME
+     cc11 - cross compiler for the LSI-11
+
+SYNOPSIS
+     cc11 [ option ] ... file ...
+
+DESCRIPTION
+     _C_c_1_1 is a general-purpose script that invokes the C prepro-
+     cessor, C cross-compiler, cross-assembler, and cross-loader
+     to produce code for an LSI 11.  _C_c_1_1 is easier to use than
+     invoking the processors individually because it passes the
+     necessary arguments like library directories and keeps track
+     of intermediate files automatically.  By default, _c_c_1_1
+     leaves the result in a file named `a.out' that is ready for
+     downloading into the LSI 11 memory.  N.B.: _c_c_1_1 produces
+     object code in the PDP-11 UNIX format; as expected, it is
+     incompatible with the VAX UNIX object code format.
+
+     By default, _c_c_1_1 preprocesses, cross-compiles, cross-
+     assembles, and cross-loads a program; arguments can limit
+     which steps it performs and change such things as the order
+     in which libraries are searched.
+
+     Arguments whose names end with `.c' are taken to be C source
+     programs; they are compiled, and each object program is left
+     on the file whose name is that of the source with `.o' sub-
+     stituted for `.c'.
+
+     In the same way, arguments whose names end with `.s' are
+     taken to be assembly source language and are assembled, pro-
+     ducing a `.o' file.
+
+     Arguments whose names end with `.o' are combined with `.o'
+     files produced from `.c' and `.s' arguments by the loader to
+     produce an `a.out' file.
+
+     Arguments whose names end with `.a' are taken to be
+     libraries of `.o' programs, and are searched by the loader
+     in the order specified.
+
+     Other arguments to _c_c_1_1 control the process as follows:
+
+     -c      Suppress the loading phase of the compilation, and
+             force _c_c_1_1 to stop after producing `.o' files.
+
+     -o _o_u_t_p_u_t
+             Name the final output file _o_u_t_p_u_t.
+
+     -v      Verbose output narrating each step of the compile.
+             This is useful if you want to see what's going on.
+
+     -D_n_a_m_e=_d_e_f
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+
+
+
+
+CC11(1)             Xinu Programmer's Manual              CC11(1)
+
+
+
+     -D_n_a_m_e  Define the _n_a_m_e to the preprocessor, as if by
+             `#define'.  If no definition is given, the name is
+             defined as "1".
+
+     -E      Run only the macro preprocessor on the named C pro-
+             grams, and send the result to the standard output.
+
+     -I_d_i_r   `#include' files whose names do not begin with `/'
+             are always sought first in the directory of the _f_i_l_e
+             argument, then in directories named in -I options,
+             then in directories on a standard list.
+
+     -L      If loading, include the standalone startup routine
+             in preparation for downloading without Xinu.  The
+             default load sequence includes Xinu startup rou-
+             tines.
+
+     -O      Invoke an object-code improver as part of the C
+             cross-compilation.
+
+     -P      Run only the macro preprocessor on the named C pro-
+             grams, and send the result to corresponding files
+             suffixed `.i'.
+
+     -S      Compile the named C programs into assembly language,
+             and leave the assembler-language output on
+             corresponding files suffixed `.s', without assem-
+             bling or loading the result.
+
+     -U_n_a_m_e  Remove any initial definition of _n_a_m_e.
+
+     Other arguments are taken to be either loader option argu-
+     ments, or C-compatible object programs, typically produced
+     by an earlier _c_c_1_1 run, or perhaps libraries of C-compatible
+     routines.  These programs, together with the results of any
+     compilations specified, are loaded (in the order given) to
+     produce a file that may be downloaded to the LSI-11 for exe-
+     cution.  Unless changed with the -_o option, _c_c_1_1 leaves the
+     result of the load in file `a.out'.
+
+EXAMPLES
+     To compile a C program and load it with the Xinu libraries,
+     producing an image in `a.out' that is ready for downloading:
+
+                            cc11 program.c
+
+     To compile C code in file f1.c and leave the object code in
+     file f1.o:
+
+                             cc11 -c f1.c
+
+     To assemble code in file f2.s and leave the object code in
+
+
+
+Version 6b               Printed 1/12/87                        2
+
+
+
+
+
+
+CC11(1)             Xinu Programmer's Manual              CC11(1)
+
+
+
+     file f2.o:
+
+                             cc11 -c f2.s
+
+     To compile C code in file f3.c and combine it with previ-
+     ously compiled code in file f1.o:
+
+                            cc11 f3.c f1.o
+
+     To load three previously compiled files f1.o, f2.o, and
+     f3.o:
+
+                         cc11 f1.o f2.o f3.o
+
+     To compile and load the C code in file f4.c leaving the out-
+     put in `outfile' instead of `a.out':
+
+                        cc11 -o outfile  f4.c
+
+
+FILES
+     file.c           input C file
+     file.s           input or output assembler language file
+     file.o           input or output object file
+     a.out            loaded output
+     /tmp/ctm?        temporary compiler files
+     Xinu-directory/lib/cpp11preprocessor
+     Xinu-directory/lib/c0.11first pass
+     Xinu-directory/lib/c1.11second pass
+     Xinu-directory/lib/c2.11optional optimizer
+     Xinu-directory/include`#include' files
+
+DIAGNOSTICS
+     The diagnostics produced by C itself are intended to be
+     self-explanatory.  Occasional messages may be produced by
+     the assembler or loader.
+
+BUGS
+     _C_c_1_1 does not support arguments -_g, -_w, -_p, -_R, -_C, -_B, or
+     -_t that the VAX C compiler handles.
+
+SEE ALSO
+     as11(1), ld11(1), ranlib11(1), download(1), ar(1)
+
+
+
+
+
+
+
+
+
+
+
+
+Version 6b               Printed 1/12/87                        3
+
+
+

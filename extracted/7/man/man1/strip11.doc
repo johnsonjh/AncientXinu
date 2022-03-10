@@ -1,0 +1,66 @@
+
+
+
+STRIP11(1)          Xinu Programmer's Manual           STRIP11(1)
+
+
+
+NAME
+     strip11 - remove symbols and relocation bits from 11 object
+     file
+
+SYNOPSIS
+     strip11 name ...
+
+DESCRIPTION
+     _S_t_r_i_p_1_1 removes the symbol table and relocation bits ordi-
+     narily attached to the output of the assembler and loader.
+     This is useful to save space after a program has been
+     debugged.
+
+     The effect of _s_t_r_i_p_1_1 is the same as use of the -s option of
+     _l_d_1_1.
+
+FILES
+     /tmp/stm? temporary file
+
+SEE ALSO
+     ld11(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+

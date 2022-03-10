@@ -1,0 +1,7 @@
+	This file is {Xinu-directory}/src/serve11/sys/README
+
+This directory contains the source for the serve11 program that allows
+an LSI 11 to supply RARP, time, file, and domain name "servers".  By
+dedicating one LSI 11 to running serve11, it is possible to experiment
+with Xinu networking even if the site does not have an Internet network
+address and doesn not run the standard servers from 4.3 BSD UNIX.

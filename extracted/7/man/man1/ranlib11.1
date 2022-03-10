@@ -1,0 +1,37 @@
+.TH RANLIB11 1
+.SH NAME
+ranlib11 \- convert \s-2LSI 11\s0 cross-archives to random cross-libraries
+.SH SYNOPSIS
+.B ranlib11
+archive ...
+.SH DESCRIPTION
+.I Ranlib11
+converts each
+.I archive
+to a form which can be loaded
+more rapidly by the \s-2LSI 11\s0 cross-loader,
+by adding a table of contents named
+.B __.SYMDEF
+to the beginning of the archive.
+It uses
+.IR ar (1)
+to reconstruct the archive,
+so that sufficient temporary file space must
+be available in the file system containing the
+current directory.
+.SH SEE ALSO
+ld11(1), ar(1)
+.SH BUGS
+Because generation of a library by
+.I ar
+and randomization by
+.I ranlib11
+are separate,
+phase errors are possible.
+The cross-loader
+.I ld11
+warns when the modification date of
+a library is more recent than
+the creation of its dictionary;
+but this means you get the warning even if you
+only copy the library.

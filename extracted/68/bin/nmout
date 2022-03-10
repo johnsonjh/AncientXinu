@@ -1,0 +1,1 @@
+nm a.out | sort | grep $1 | more

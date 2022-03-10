@@ -1,0 +1,31 @@
+#
+# Makefile for the Extended Instruction Set simulator for the LSI 11/02
+#
+
+.SUFFIXES:	.o .s
+
+DIR	=	{Xinu-directory}
+LIB	=	$(DIR)/lib
+BIN	=	$(DIR)/bin
+CC	=	$(DIR)/bin/cc11
+CFLAGS	=	-c
+RANLIB	=	$(DIR)/bin/ranlib11
+
+.s.o:
+		$(CC) $(CFLAGS) $<
+
+OFILES	=	ash.o ashc.o mul.o div.o
+
+all:		libeis.a
+
+install:	libeis.a
+		cp libeis.a $(LIB)
+		$(RANLIB) $(LIB)/libeis.a
+
+clean:
+		rm -rf *.o core a.out libeis.a
+
+libeis.a:	$(OFILES)
+		rm -rf libeis.a
+		ar cr libeis.a $(OFILES)
+		$(RANLIB) libeis.a

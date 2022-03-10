@@ -1,0 +1,42 @@
+.TH ODTUNLOCK 1
+.SH NAME
+odtunlock \- release lock on a tty line
+.SH SYNOPSIS
+.B odtunlock
+[ \f3\-c\f1class ]
+[ \f3\-l\f1x ]
+.SH DESCRIPTION
+.I Odtunlock
+releases the caller's currently reserved microcomputer,
+making it available for others to use.
+Mutual exclusion locks are created automatically by
+\f2odt\f1 and \f2download\f1, and are reported by \f2lusers\f1.
+Reservations may expire after some idle time even if
+\f2odtunlock\f1 is not used (see default timeout values set in
+Xinu-directory/lib/machines).
+.PP
+Without arguments, \f2odtunlock\f1 removes the reservation on the tty line
+most recently accessed by the caller.
+Argument \f3\-c\f1 can be used to specify a \f2class\f1, in which
+case \f2odtunlock\f1 removes the user's most recently held reservation in
+that class.
+Argument \f3\-l\f1x forces \f2odtunlock\f1 to cancel the reservation
+on line number \f2x\f1 within the selected class.
+.PP
+Xinu's tty reservation system is a friendly, cooperative mutual-exclusion
+mechanism.
+All software that accesses tty lines for communicating with back-end
+microcomputers is expected to adhere to the reservation system to
+prevent multiple users from trying to access the same machine
+simultaneously.
+.SH FILES
+.ta 1.4i
+/dev/CLASS.i	tty lines for a particular class.
+.br
+/tmp/xinu/ulock.\f2user\f1	records current line allocated by \f2user\f1
+.br
+/tmp/xinu/\f2cname.i\f1	Lock file for line \f2i\f1 in class \f2cname\f1.
+.br
+{Xinu-directory}/lib/machines	database listing parameters for all machines
+.SH "SEE ALSO"
+lusers(1), odt(1), download(1), upload(1)

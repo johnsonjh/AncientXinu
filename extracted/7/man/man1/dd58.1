@@ -1,0 +1,117 @@
+.TH DD58 1
+.SH NAME
+dd58 \- copy a file to or from a TU58 connected to an asynchronous VAX line
+.SH SYNOPSIS
+.B dd58
+[option[=value]] ...
+.SH DESCRIPTION
+The TU58 tape drive is a block-addressable, random access cartridge
+tape storage unit often used with \s-2LSI 11\s0 microcomputers.
+The program
+.I dd58
+provides a way to write TU58 tapes from the VAX (e.g., to create a
+bootable system tape).
+It copies standard input to the TU58,
+or a given number of blocks from the TU58 to its standard output.
+Because the TU58 controller is a block-oriented interface that relies on
+the driver to supply data quickly,
+one should
+.B never
+use a terminal as standard input.
+Options are:
+.PP
+.br
+.ns
+.TP 15
+.I option
+.I values
+.br
+.ns
+.TP
+sam
+set special addressing mode
+.br
+.ns
+.TP
+-sam
+disable special addressing mode (default)
+.br
+.ns
+.TP
+verify
+check data after reading or writing (default)
+.br
+.ns
+.TP
+-verify
+do not check data after reading or writing
+.br
+.ns
+.TP
+maint
+set maintenance mode
+.br
+.ns
+.TP
+-maint
+disable maintenance mode (default)
+.br
+.ns
+.TP
+.RI drive= n
+use drive number
+.I n
+(default 0)
+.br
+.ns
+.TP
+.RI posit= n
+reading or writing begins with
+tape block
+.I n
+(default 0)
+.br
+.ns
+.TP
+.RI count= n
+read or write
+.I n
+bytes (default for
+.I writing
+is to end of file;
+this must be specified for reading)
+.br
+.ns
+.TP
+.I read
+read from the TU58 and write to the standard output
+.br
+.ns
+.TP
+.I write
+read from the standard input and write to the TU58
+.br
+.ns
+.TP
+.I seek
+position the TU58 drive at the given block number
+.PP
+For example, to put the file
+.I x
+on a tape cartridge at block 31, using special address mode,
+use
+.IP
+.nf
+dd58 sam posit=31 write < x
+.fi
+.LP
+To read its first 512 bytes into the file
+.IR y ,
+use
+.IP
+.nf
+dd58 sam posit=31 count=512 read > y
+.fi
+.SH DIAGNOSTICS
+Error messages are printed on the terminal;
+they are self-explanatory.

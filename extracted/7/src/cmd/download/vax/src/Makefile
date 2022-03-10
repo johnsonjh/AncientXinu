@@ -1,0 +1,133 @@
+#
+#  Make the VAX-specific downloader
+#
+
+HDIR    = ../h
+CFLAGS  = -O -I$(HDIR)
+SFLAGS	= -I$(HDIR)
+XINUDIR	= /usr/Xinu
+DOWNDIR	= $(XINUDIR)/src/cmd/download
+DEVLIB	= $(DOWNDIR)/lib/libd.a
+DESTDIR	= $(XINUDIR)/bin
+LIBDIR	= $(XINUDIR)/lib
+
+
+all:		edl sdl sdl.boot eul
+
+install:	all
+		chmod 755 edl eul sdl
+		chmod 644 sdl.boot
+		cp edl $(LIBDIR)/edl.vax
+		cp eul $(LIBDIR)/eul.vax
+		cp sdl $(LIBDIR)/sdl.vax
+		cp sdl.boot  $(LIBDIR)/sdl.boot.vax
+
+clean:
+		rm -rf *.o core a.out .,* ,*
+
+edl.o:		edl.c
+		cc $(CFLAGS) -c edl.c
+
+sdl.o:		sdl.c
+		cc $(CFLAGS) -c sdl.c
+
+sul.o:		sul.c
+		cc $(CFLAGS) -c sul.c
+
+eul.o:		eul.c
+		cc $(CFLAGS) -c eul.c
+
+edl:		edl.o $(DEVLIB)
+		cc -o edl edl.o $(DEVLIB)
+
+sdl:		sdl.o $(DEVLIB)
+		cc -o sdl sdl.o $(DEVLIB)
+
+eul:		eul.o $(DEVLIB)
+		cc -o eul eul.o $(DEVLIB)
+
+sul:		sul.o $(DEVLIB)
+		cc -o sul sul.o $(DEVLIB)
+
+$(DEVLIB):
+		(cd $(DOWNDIR) ; make libd.a)
+
+sdl.boot:	sdl.boot.s $(HDIR)/vaxdl.h
+		/lib/cpp $(SFLAGS) sdl.boot.s | as -o sdl.boot
+
+../eload/src/.version:
+		../eload/src/av.sh
+
+depend:
+		grep '^#include' *.c ../h/*.h			\
+		| sed	-e 's/</"..\/h\//;s/>/"/'		\
+			-e 's/:[^"]*"\([^"]*\)".*/: \1/'	\
+		| sed	's/\.c/.o/' >makedep
+		echo '/^# DO NOT DELETE	THIS LINE/+2,$$d' >eddep
+		echo '$$r makedep' >>eddep
+		echo 'w' >>eddep
+		cp Makefile .,oldmake
+		cp Makefile ,Makefile
+		ed - ,Makefile < eddep
+		/bin/rm eddep makedep
+		echo '#	DEPENDENCIES MUST END AT END OF	FILE' >>,Makefile
+		echo '#	IF YOU PUT STUFF HERE IT WILL GO AWAY'>>,Makefile
+		echo '#	see make depend	above'>>,Makefile
+		/bin/mv ,Makefile Makefile
+
+# DO NOT DELETE	THIS LINE
+# DEPENDENCIES MUST END	AT END OF FILE
+edl.o: /usr/include/errno.h
+edl.o: /usr/include/setjmp.h
+edl.o: /usr/include/signal.h
+edl.o: /usr/include/sgtty.h
+edl.o: /usr/include/stdio.h
+edl.o: /usr/include/sys/file.h
+edl.o: /usr/include/sys/types.h
+edl.o: /usr/include/ctype.h
+edl.o: /usr/include/a.out.h
+edl.o: /usr/include/netinet/in.h
+edl.o: /usr/include/sys/socket.h
+edl.o: /usr/include/netdb.h
+edl.o: ../h/getdev.h
+edl.o: ../h/download.h
+edl.o: ../h/dlpack.h
+edl.o: ../h/vaxdl.h
+edl.o: ../h/ethdown.h
+edl.o: ../eload/src/.version
+sdl.o: /usr/include/a.out.h
+sdl.o: /usr/include/errno.h
+sdl.o: /usr/include/setjmp.h
+sdl.o: /usr/include/signal.h
+sdl.o: /usr/include/sgtty.h
+sdl.o: /usr/include/stdio.h
+sdl.o: /usr/include/sys/file.h
+sdl.o: /usr/include/sys/types.h
+sdl.o: /usr/include/ctype.h
+sdl.o: /usr/include/netinet/in.h
+sdl.o: /usr/include/sys/socket.h
+sdl.o: /usr/include/netdb.h
+sdl.o: ../h/getdev.h
+sdl.o: ../h/download.h
+sdl.o: ../h/vaxdl.h
+vedl.o: /usr/include/a.out.h
+vedl.o: /usr/include/errno.h
+vedl.o: /usr/include/setjmp.h
+vedl.o: /usr/include/signal.h
+vedl.o: /usr/include/sgtty.h
+vedl.o: /usr/include/stdio.h
+vedl.o: /usr/include/sys/file.h
+vedl.o: /usr/include/sys/types.h
+vedl.o: /usr/include/ctype.h
+vedl.o: /usr/include/netinet/in.h
+vedl.o: /usr/include/sys/socket.h
+vedl.o: /usr/include/netdb.h
+vedl.o: ../h/baud.h
+vedl.o: ../h/getdev.h
+vedl.o: ../h/download.h
+vedl.o: ../h/vdownload.h
+vedl.o: ../h/dlpack.h
+vedl.o: ../h/ethdown.h
+#	DEPENDENCIES MUST END AT END OF	FILE
+#	IF YOU PUT STUFF HERE IT WILL GO AWAY
+#	see make depend	above

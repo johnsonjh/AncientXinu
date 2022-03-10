@@ -1,0 +1,66 @@
+
+
+
+RANLIB11(1)         Xinu Programmer's Manual          RANLIB11(1)
+
+
+
+NAME
+     ranlib11 - convert LSI 11 cross-archives to random cross-
+     libraries
+
+SYNOPSIS
+     ranlib11 archive ...
+
+DESCRIPTION
+     _R_a_n_l_i_b_1_1 converts each _a_r_c_h_i_v_e to a form which can be loaded
+     more rapidly by the LSI 11 cross-loader, by adding a table
+     of contents named __.SYMDEF to the beginning of the archive.
+     It uses _a_r(1) to reconstruct the archive, so that sufficient
+     temporary file space must be available in the file system
+     containing the current directory.
+
+SEE ALSO
+     ld11(1), ar(1)
+
+BUGS
+     Because generation of a library by _a_r and randomization by
+     _r_a_n_l_i_b_1_1 are separate, phase errors are possible.  The
+     cross-loader _l_d_1_1 warns when the modification date of a
+     library is more recent than the creation of its dictionary;
+     but this means you get the warning even if you only copy the
+     library.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+

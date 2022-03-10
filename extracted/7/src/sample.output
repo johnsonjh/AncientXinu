@@ -1,0 +1,190 @@
+*** Making all pieces of Xinu cross-development system
+
+
+
+*** Making commands in {Xinu-directory}/src/cmd
+ranlib /usr/Xinu/lib/lib58.a
+cc -O -s -o dd58 dd58.c /usr/Xinu/lib/lib58.a
+cc -O -s -o ld11 ld11.c
+cc -O -s -o nm11 nm11.c
+cc -O -s -o ranlib11 ranlib11.c
+cc -O -s -o size11 size11.c
+cc -O -s -o strip11 strip11.c
+chmod 755 cprint		 cvt		 dd58		 ld11		 lorder11	 nm11		 ranlib11	 size11		 strip11
+cp cprint		 cvt		 dd58		 ld11		 lorder11	 nm11		 ranlib11	 size11		 strip11 /usr/Xinu/bin
+
+*** Making commands in {Xinu-directory}/src/cmd/as11
+cc -O -c as11.c
+cc -o as11 -O as11.o as12.o as13.o as14.o as15.o as16.o as17.o as18.o as19.o
+cp as11 /usr/Xinu/bin/as11
+strip /usr/Xinu/bin/as11
+cp as11-2 /usr/Xinu/lib/as11-2
+strip /usr/Xinu/lib/as11-2
+
+*** Making commands in {Xinu-directory}/src/cmd/cc11
+cc -o cc11 cc11.c
+cp c0 /usr/Xinu/lib/c0.11
+cp c1 /usr/Xinu/lib/c1.11
+cp c2 /usr/Xinu/lib/c2.11
+strip /usr/Xinu/lib/c?.11
+chmod 711 /usr/Xinu/lib/c?.11
+cp cc11 /usr/Xinu/bin/cc11
+
+*** Making commands in {Xinu-directory}/src/cmd/cpp11
+chmod 755 cpp11
+cp cpp11 /usr/Xinu/lib/cpp11
+
+*** Making commands in {Xinu-directory}/src/cmd/download
+(cd lib   ; make all)
+cc  -O -I../h -c freedev.c
+cc  -O -I../h -c getdb.c
+cc  -O -I../h -c getdev.c
+cc  -O -I../h -c ulock.c
+rm -rf libd.a
+/bin/ar cr libd.a freedev.o getdb.o getdev.o ulock.o usleep.o
+ranlib libd.a
+(cd cmd   ; make all)
+cc -O -I../h -c download.c
+cc -O -I../h -o download download.o ../lib/libd.a
+cc -O -I../h -c odt.c
+cc -O -I../h -o odt odt.o ../lib/libd.a
+cc -O -I../h -c lusers.c
+cc -O -I../h -o lusers lusers.o ../lib/libd.a
+cc -O -I../h -c odtunlock.c
+cc -O -I../h -o odtunlock odtunlock.o ../lib/libd.a
+cc -O -I../h -c upload.c
+cc -O -I../h -o upload upload.o ../lib/libd.a
+(cd lsi11 ; make all)
+Making Lsi-11 resident portion of up/downloaders
+(cd eload ; make all)
+(cd src ; make all)
+/usr/Xinu/bin/cc11 -c -O eload.c
+eload.c:
+/usr/Xinu/bin/ld11 -e estart -o eload				 startup.o eload.o eread.o ewrite.o erstart.o	 estrt.o ewstart.o blkcopy.o blkequ.o netutil.o	 udpipwr.o edcmset.o cksum.o libsa.a		 /usr/Xinu/lib/libxc.a
+./en.sh
+Making UNIX portion of Lsi-11 up/downloaders
+(cd src   ; make all)
+cc -O -I../h -c edl.c
+cc -o edl edl.o /usr/Xinu/src/cmd/download/lib/libd.a
+cc -O -I../h -c sdl.c
+cc -o sdl sdl.o /usr/Xinu/src/cmd/download/lib/libd.a
+cc -O -I../h -c eul.c
+cc -o eul eul.o /usr/Xinu/src/cmd/download/lib/libd.a
+cc -O -I../h -c sul.c
+cc -o sul sul.o /usr/Xinu/src/cmd/download/lib/libd.a
+(cd vax   ; make all)
+Making VAX-resident portion of up/downloaders
+(cd eload ; make all)
+(cd src ; make all)
+/bin/cc -c -O eload.c
+/bin/cc -c -O -I../h blkequ.c
+/bin/ld -e estart -T ce000 -o eload			 startup.o eload.o eread.o ewrite.o erstart.o	 estrt.o ewstart.o blkcopy.o blkequ.o netutil.o	 udpipwr.o edcmset.o cksum.o qmapinit.o		 autostart.o sizmem.o
+Making UNIX portion of VAX up/downloaders
+(cd src   ; make all)
+cc -O -I../h -c edl.c
+cc -o edl edl.o /usr/Xinu/src/cmd/download/lib/libd.a
+cc -O -I../h -c sdl.c
+cc -o sdl sdl.o /usr/Xinu/src/cmd/download/lib/libd.a
+/lib/cpp -I../h sdl.boot.s | as -o sdl.boot
+cc -o eul eul.o /usr/Xinu/src/cmd/download/lib/libd.a
+(cd lib   ; make install)
+(cd cmd   ; make install)
+chmod 755 download odt lusers odtunlock upload
+cp download odt lusers odtunlock upload /usr/Xinu/bin
+(cd lsi11 ; make install)
+Making and installing Lsi-11 resident portion of up/downloaders
+(cd eload ; make install)
+(cd src ; make install)
+cp eload /usr/Xinu/lib/eload.lsi
+Making and installing UNIX portion of Lsi-11 up/downloaders
+(cd src   ; make install)
+chmod 755 edl sdl sul eul
+chmod 644 sdl.boot sul.boot
+cp edl /usr/Xinu/lib/edl.lsi
+cp sdl /usr/Xinu/lib/sdl.lsi
+cp eul /usr/Xinu/lib/eul.lsi
+cp sul /usr/Xinu/lib/sul.lsi
+cp sdl.boot  /usr/Xinu/lib/sdl.boot.lsi
+cp sul.boot  /usr/Xinu/lib/sul.boot.lsi
+(cd vax   ; make install)
+Making and installing VAX-resident portion of up/downloaders
+(cd eload ; make install)
+(cd src ; make install)
+cp eload /usr/Xinu/lib/eload.vax
+Making and installing UNIX portion of VAX up/downloaders
+(cd src   ; make install)
+chmod 755 edl eul sdl
+chmod 644 sdl.boot
+cp edl /usr/Xinu/lib/edl.vax
+cp eul /usr/Xinu/lib/eul.vax
+cp sdl /usr/Xinu/lib/sdl.vax
+cp sdl.boot  /usr/Xinu/lib/sdl.boot.vax
+
+*** Making commands in {Xinu-directory}/src/cmd/fs
+cc -O -o fsd fsd.c
+chmod 755 fs fsd
+cp fs fsd /usr/Xinu/bin
+cp: /usr/Xinu/bin/fs: Text file busy
+*** Exit 1
+
+Stop.
+
+*** Making commands in {Xinu-directory}/src/cmd/pm
+chmod 755 pm
+cp pm /usr/Xinu/bin
+
+*** Making commands in {Xinu-directory}/src/cmd/sub11
+chmod 755 subASH subASHC subMUL subDIV
+cp subASH subASHC subMUL subDIV /usr/Xinu/bin
+
+*** Making Xinu library {Xinu-directory}/src/lib/lib58
+cp lib58.a /usr/Xinu/lib
+chmod 644 /usr/Xinu/lib/lib58.a
+/usr/Xinu/bin/ranlib11 /usr/Xinu/lib/lib58.a
+
+*** Making Xinu library {Xinu-directory}/src/lib/libeis
+cp libeis.a /usr/Xinu/lib
+/usr/Xinu/bin/ranlib11 /usr/Xinu/lib/libeis.a
+
+*** Making Xinu library {Xinu-directory}/src/lib/libxc
+cp libxc.a /usr/Xinu/lib/libxc.a
+/usr/Xinu/bin/ranlib11 /usr/Xinu/lib/libxc.a
+
+*** Making Xinu library {Xinu-directory}/src/lib/standalone
+cp libsa.a startup.o lowcore.o nullcore.o /usr/Xinu/lib/standalone
+/usr/Xinu/bin/ranlib11 /usr/Xinu/lib/standalone/libsa.a
+
+*** Making serve11, the standalone server
+
+*** Making programs in {Xinu-directory}/src/serve11/con
+cp config ../sys/config
+
+*** Making programs in {Xinu-directory}/src/serve11/sys
+/usr/Xinu/bin/cc11 -O -c -I../h	naminit.c
+naminit.c:
+/bin/rm -f  libx.a
+/bin/ar cr libx.a	access.o arp_in.o arpfind.o	 arpinit.o				 blkcopy.o blkequ.o	 chprio.o ckmode.o cksum.o clkinit.o	 clkint.o close.o control.o create.o	 csv.o ctxsw.o				 dgalloc.o	 dgclose.o dgcntl.o dginit.o	 dgmcntl.o dgmopen.o dgparse.o dgread.o	 dgwrite.o dot2ip.o			 ethinit.o ethinter.o ethread.o ethstrt.o ethrstrt.o ethwrite.o ethwstrt.o	 freebuf.o freemem.o			 fserver.o  getaddr.o getbuf.o getc.o getitem.o	 getmem.o getname.o getnet.o getpath.o	 getpid.o getprio.o getstk.o gettime.o	 getutim.o				 icmp_in.o init.o	 insert.o insertd.o ioerr.o ioinit.o	 ioint.o ionull.o ip2name.o ip_in.o	 ipsend.o				 kill.o kprintf.o			 mark.o mkarp.o mkpool.o mount.o	 naminit.o nammap.o namopen.o namrepl.o	 netin.o netinit.o	 netnum.o netout.o netutil.o newqueue.o	 nserver.o  nqalloc.o				 open.o					 panic.o pcount.o pcreate.o pdelete.o	 pinit.o poolinit.o preceive.o preset.o	 psend.o ptclear.o putc.o putname.o	 queue.o				 rarp_in.o read.o ready.o receive.o	 recvclr.o recvtim.o remove.o rename.o	 resched.o resume.o  route.o 	 rserver.o  scount.o screate.o sdelete.o seek.o	 serinit.o  send.o sendf.o setclkr.o setdev.o	 setnok.o sh.o signal.o signaln.o	 sizmem.o sleep.o sleep10.o sndrarp.o	 sreset.o ssclock.o suspend.o		 test.o ttycntl.o ttygetc.o	 ttyiin.o ttyinit.o ttyoin.o ttyopen.o	 ttyputc.o ttyread.o ttywrite.o		 tserver.o  udpecho.o udpnxtp.o udpsend.o unmount.o	 unsleep.o userret.o			 wait.o wakeup.o write.o			 xdone.o
+/usr/Xinu/bin/ranlib11 libx.a
+/usr/Xinu/bin/ld11 -S -e start xinu.o test.o libx.a /usr/Xinu/lib/libxc.a libx.a
+mv a.out serve11
+./Mknlist ,nm
+cp serve11 /usr/Xinu/lib/serve11
+
+*** Making {Xinu--directory}/src/sys/con
+cp config ../sys/config
+
+
+***********************************************************
+***********************************************************
+***********************************************************
+***							***
+***			N O T E				***
+***	To make all of Xinu, change to directory	***
+***	{Xinu - directory}/src/sys/sys and look		***
+***	at file Configuration.  If your LSI 11 has	***
+***	a standard hardware configuration you may	***
+***	not need to recompile at all.			***
+***							***
+***********************************************************
+***********************************************************
+***********************************************************

@@ -1,0 +1,305 @@
+BITMASK	local2.c	?^# define BITMASK(n) ((1L<<n)-1)$?
+BITOOR	../mip/tags	?^BITOOR	../pcc68/mac2defs	?^# define BITOOR(x) ((x)?
+BTYPE	../mip/manifest	?^# define BTYPE(x)  ( (x)&BTMASK)   /* basic type o?
+CHARCAST	../mip/mfile1	?^# define CHARCAST(x) (char)(x)$?
+DECREF	../mip/manifest	?^# define DECREF(x) ((( (x)>>TSHIFT)&~BTMASK)|( (x)?
+DEUNSIGN	../mip/manifest	?^# define DEUNSIGN(x) ((x)+(INT-UNSIGNED))$?
+ENUNSIGN	../mip/manifest	?^# define ENUNSIGN(x) ((x)+(UNSIGNED-INT))$?
+FIXARG	../mip/mfile1	?^# define FIXARG(p)$?
+FIXDEF	../mip/mfile1	?^# define FIXDEF(p)$?
+FIXSTRUCT	../mip/mfile1	?^# define FIXSTRUCT(a,b)$?
+FOP	../mip/fort.c	?^# define FOP(x) (int)((x)&0377)$?
+INCREF	../mip/manifest	?^# define INCREF(x) ((( (x)&~BTMASK)<<TSHIFT)|PTR|(?
+ISARY	../mip/manifest	?^# define ISARY(x)   (( (x)&TMASK)==ARY)   /* is x ?
+ISFTN	../mip/manifest	?^# define ISFTN(x)  (( (x)&TMASK)==FTN)  /* is x a ?
+ISPTR	../mip/manifest	?^# define ISPTR(x) (( (x)&TMASK)==PTR)$?
+ISUNSIGNED	../mip/manifest	?^# define ISUNSIGNED(x) ((x)<=ULONG&&(x)>=UCHAR)$?
+LCON	../mip/optim.c	?^# define LCON(p) (p->in.left->in.op==ICON)$?
+LO	../mip/optim.c	?^# define LO(p) p->in.left->in.op$?
+LV	../mip/optim.c	?^# define LV(p) p->in.left->tn.lval$?
+MODTYPE	../mip/manifest	?^# define MODTYPE(x,y) x = ( (x)&(~BTMASK))|(y)  /*?
+Mcode	code.c	?^main( argc, argv ) char *argv[]; $?
+Mlocal2	local2.c	?^main( argc, argv ) char *argv[]; $?
+NOFIT	../mip/manifest	?^# define NOFIT(x,y,z)   ( ( (x)%(z) + (y) ) > (z) ?
+PKFIELD	../mip/manifest	?^# define PKFIELD(s,o) (( (o)<<6)| (s) )$?
+PUTCHAR	../mip/mfile2	?^# define PUTCHAR(x) putchar(x)$?
+R2PACK	../mip/mfile2	?^# define R2PACK(x,y,z) (0200*((x)+1)+y+040000*z)$?
+R2TEST	../mip/mfile2	?^# define R2TEST(x) ((x)>=0200)$?
+R2UPK1	../mip/mfile2	?^# define R2UPK1(x) ((((x)>>7)-1)&0177)$?
+R2UPK2	../mip/mfile2	?^# define R2UPK2(x) ((x)&0177)$?
+R2UPK3	../mip/mfile2	?^# define R2UPK3(x) (x>>14)$?
+RCON	../mip/optim.c	?^# define RCON(p) (p->in.right->in.op==ICON)$?
+REGLOOP	../mip/mfile2	?^# define REGLOOP(i) for(i=0;i<REGSZ;++i)$?
+REST	../mip/fort.c	?^# define REST(x) (((x)>>16)&0177777)$?
+RO	../mip/optim.c	?^# define RO(p) p->in.right->in.op$?
+RV	../mip/optim.c	?^# define RV(p) p->in.right->tn.lval$?
+SETOFF	../mip/manifest	?^# define SETOFF(x,y)   if( (x)%(y) != 0 ) (x) = ( ?
+SETSTO	../mip/mfile2	?^# define SETSTO(x,y) (stotree=(x),stocook=(y))$?
+SWAP	../mip/optim.c	?^# define SWAP(p,q) {sp=p; p=q; q=sp;}$?
+TNEXT	../mip/common	?^# define TNEXT(p) (p== &node[TREESZ-1]?node:p+1)$?
+UNIX	../mip/INDEX	?^in Volume 2 of the UNIX(TM) documentation.$?
+UNSIGNABLE	../mip/manifest	?^# define UNSIGNABLE(x) ((x)<=LONG&&(x)>=CHAR)$?
+UPKFOFF	../mip/manifest	?^# define UPKFOFF(v) ( (v) >>6)$?
+UPKFSZ	../mip/manifest	?^# define UPKFSZ(v)  ( (v) &077)$?
+VAL	../mip/fort.c	?^# define VAL(x) (int)(((x)>>8)&0377)$?
+acon	local2.c	?^acon( p ) register NODE *p; $?
+addcase	cgram.c	?^addcase(p) NODE *p; { /* add case to switch */$?
+adddef	cgram.c	?^adddef(){ /* add default case to switch */$?
+addroreg	local2.c	?^NODE * addroreg(l)$?
+adrcon	local2.c	?^adrcon( val ) CONSZ val; $?
+adrput	local2.c	?^adrput( p ) register NODE *p; $?
+allchk	../mip/allo.c	?^allchk(){$?
+allo	../mip/allo.c	?^allo( p, q ) NODE *p; struct optab *q; {$?
+allo0	../mip/allo.c	?^allo0(){ /* free everything */$?
+andable	local.c	?^andable( p ) NODE *p; $?
+aobeg	code.c	?^aobeg()$?
+aocode	code.c	?^aocode(p) struct symtab *p; $?
+aoend	code.c	?^aoend()$?
+argsize	order.c	?^argsize( p ) register NODE *p; $?
+asgop	../mip/manifest	?^#define asgop(o) (dope[o]&ASGFLG)$?
+autoincr	order.c	?^autoincr( p ) NODE *p; $?
+base	local2.c	?^base( p ) register NODE *p; $?
+bccode	code.c	?^bccode()$?
+bcon	../mip/trees.c	?^bcon( i ){ /* make a constant node with value i */?
+bdty	cgram.c	?^bdty( op, p, v ) NODE *p; {$?
+beginit	../mip/pftn.c	?^beginit(curid){$?
+bfcode	code.c	?^bfcode( a, n ) int a[]; $?
+block	../mip/trees.c	?^block( o, l, r, t, d, s ) register NODE *l, *r; TW?
+bpsize	../mip/trees.c	?^bpsize(p) register NODE *p; {$?
+branch	code.c	?^branch( n )$?
+bstruct	../mip/pftn.c	?^bstruct( idn, soru ){ /* begining of structure or ?
+buildtree	mybt.c	?^buildtree( o, l, r ) register NODE *l, *r; {$?
+bycode	code.c	?^bycode( t, i )$?
+callchk	../mip/mfile2	?^#define callchk(x) allchk()$?
+callop	../mip/manifest	?^#define callop(o) (dope[o]&CALLFLG)$?
+callreg	local2.c	?^callreg(p) NODE *p; $?
+caloff	../mip/common	?^unsigned caloff(){$?
+canaddr	local2.c	?^canaddr( p ) NODE *p; $?
+cast	local.c	?^cast( p, t ) register NODE *p; TWORD t; $?
+cbgen	local2.c	?^cbgen( o, lab, mode ) $?
+cendarg	local.c	?^cendarg()$?
+cerror	../mip/common	?^cerror( s, a, b, c ) char *s; { /* compiler error:?
+checkst	../mip/mfile1	?^# define checkst(x)$?
+chkpun	../mip/trees.c	?^chkpun(p) register NODE *p; {$?
+chkstr	../mip/trees.c	?^chkstr( i, j, type ) TWORD type; {$?
+cinit	local.c	?^cinit( p, sz ) NODE *p; $?
+cisreg	local.c	?^cisreg( t ) TWORD t; $?
+clocal	local.c	?^clocal(p) NODE *p; $?
+cntbits	local2.c	?^cntbits(i)$?
+codgen	../mip/reader.c	?^codgen( p, cookie ) NODE *p; {$?
+command	../mip/INDEX	?^The pcc command (see the pcc source) uses this mak?
+commdec	local.c	?^commdec( id )$?
+conput	local2.c	?^conput( p ) register NODE *p; $?
+conval	../mip/trees.c	?^conval( p, o, q ) register NODE *p, *q; {$?
+convert	../mip/trees.c	?^convert( p, f )  register NODE *p; {$?
+ctype	local.c	?^ctype( type )$?
+dclargs	../mip/pftn.c	?^dclargs(){$?
+dclstruct	../mip/pftn.c	?^dclstruct( oparam ){$?
+defalign	code.c	?^defalign(n) $?
+defid	../mip/pftn.c	?^defid( q, class )  NODE *q; {$?
+deflab	code.c	?^deflab( n )$?
+defnam	code.c	?^defnam( p ) register struct symtab *p; $?
+delay	../mip/reader.c	?^delay( p ) register NODE *p; {$?
+delay1	../mip/reader.c	?^delay1( p ) register NODE *p; {  /* look for COMOP?
+delay2	../mip/reader.c	?^delay2( p ) register NODE *p; {$?
+deltest	order.c	?^deltest( p ) register NODE *p; $?
+doinit	../mip/pftn.c	?^doinit( p ) register NODE *p; {$?
+doszof	../mip/trees.c	?^doszof( p )  register NODE *p; {$?
+dstash	cgram.c	?^dstash( n ){ /* put n into the dimension table */$?
+ecode	local.c	?^ecode( p ) NODE *p; {$?
+ecomp	../mip/trees.c	?^ecomp( p ) register NODE *p; {$?
+econvert	../mip/trees.c	?^econvert( p ) register NODE *p; {$?
+efcode	code.c	?^efcode()$?
+ejobcode	code.c	?^ejobcode( flag )$?
+endinit	../mip/pftn.c	?^endinit(){$?
+eobl2	local2.c	?^eobl2()$?
+eprint	../mip/trees.c	?^eprint( p, down, a, b ) register NODE *p; int *a, ?
+exname	local.c	?^exname( p ) char *p; $?
+expand	../mip/match.c	?^expand( p, cookie, cp ) NODE *p;  register char *c?
+falloc	../mip/pftn.c	?^falloc( p, w, new, pty )  register struct symtab *?
+fincode	local.c	?^fincode( d, sz ) double d; $?
+fixarg	local.c	?^fixarg(p)$?
+fixpre	local2.c	?^fixpre(p) NODE *p; $?
+fldal	code.c	?^fldal( t ) unsigned t; $?
+fldty	code.c	?^fldty( p ) struct symtab *p; $?
+flshape	local2.c	?^flshape( p ) register NODE *p; $?
+fortarg	../mip/optim.c	?^fortarg( p ) NODE *p; {$?
+freereg	../mip/allo.c	?^freereg( p, n ) NODE *p; {$?
+freetemp	../mip/allo.c	?^freetemp( k ){ /* allocate k integers worth of tem?
+freetstr	../mip/manifest	?^#define	freetstr()	curtstr = tstrbuf, tstrused = 0?
+ftnarg	../mip/pftn.c	?^ftnarg( idn ) {$?
+ftnend	../mip/pftn.c	?^ftnend(){ /* end of function */$?
+fwalk	../mip/common	?^fwalk( t, f, down ) register NODE *t; int (*f)(); ?
+genargs	order.c	?^genargs( p, ptemp ) register NODE *p, *ptemp; $?
+gencall	local2.c	?^gencall( p, cookie ) register NODE *p; $?
+genscall	local2.c	?^genscall( p, cookie ) register NODE *p; $?
+genswitch	code.c	?^genswitch(p,n) register struct sw *p;$?
+getlab	code.c	?^getlab()$?
+getlr	../mip/match.c	?^getlr( p, c ) NODE *p; {$?
+getstr	../mip/pftn.c	?^getstr(){ /* decide if the string is external or a?
+gotscal	../mip/pftn.c	?^gotscal(){$?
+hardconv	local2.c	?^hardconv(p)$?
+hardops	local2.c	?^hardops(p)  register NODE *p; $?
+hash	../mip/scan.c	?^hash(s)$?
+hopcode	local2.c	?^hopcode( f, o )$?
+icons	../mip/trees.c	?^icons(p) register NODE *p; {$?
+ilbrace	../mip/pftn.c	?^ilbrace(){ /* process an initializer's left brace ?
+incode	local.c	?^incode( p, sz ) register NODE *p; $?
+indexreg	local2.c	?^indexreg( p ) register NODE *p; $?
+inforce	../mip/pftn.c	?^inforce( n ) OFFSZ n; {  /* force inoff to have th?
+insput	local2.c	?^insput( p ) register NODE *p; $?
+instk	../mip/pftn.c	?^instk( id, t, d, s, off ) OFFSZ off; TWORD t; {$?
+irbrace	../mip/pftn.c	?^irbrace(){$?
+isbreg	../mip/mfile2	?^# define isbreg(r) (rstatus[r]&SBREG)$?
+isitfloat	local.c	?^isitfloat( s ) char *s; $?
+isitlong	local.c	?^isitlong( cb, ce )$?
+ispow2	../mip/optim.c	?^ispow2( c ) CONSZ c; {$?
+istnode	../mip/mfile2	?^# define istnode(p) (p->in.op==REG && istreg(p->tn?
+istreg	../mip/mfile2	?^# define istreg(r) (rstatus[r]&(STBREG|STAREG))$?
+lastchance	local2.c	?^lastchance( p, cook ) NODE *p; $?
+lccopy	../mip/fort.c	?^lccopy( n ) register n; {$?
+lcread	../mip/fort.c	?^lcread( cp, n ) char *cp; {$?
+lineid	local2.c	?^lineid( l, fn ) char *fn; $?
+lnread	../mip/fort.c	?^lnread()$?
+locctr	code.c	?^locctr( l )$?
+logop	../mip/manifest	?^#define logop(o) (dope[o]&LOGFLG)$?
+lopen	../mip/fort.c	?^lopen( s ) char *s; {$?
+lread	../mip/fort.c	?^long lread(){$?
+lxcom	../mip/scan.c	?^lxcom(){$?
+lxenter	../mip/scan.c	?^lxenter( s, m ) register char *s; register short m?
+lxget	../mip/scan.c	?^# define lxget(c,m) (lxgcp=yytext,lxmore(c,m))$?
+lxinit	../mip/scan.c	?^lxinit(){$?
+lxmore	../mip/scan.c	?^lxmore( c, m )  register c, m; {$?
+lxres	../mip/scan.c	?^lxres() {$?
+lxstr	../mip/scan.c	?^lxstr(ct){$?
+lxtitle	../mip/scan.c	?^lxtitle(){$?
+mainp1	../mip/scan.c	?^mainp1( argc, argv ) int argc; char *argv[]; {  /*?
+mainp2	../mip/fort.c	?^mainp2( argc, argv ) char *argv[]; {$?
+makeheap	code.c	?^makeheap(p, m, n)$?
+makeor2	local2.c	?^makeor2( p, q, b, o) register NODE *p, *q; registe?
+makety	../mip/trees.c	?^makety( p, t, d, s ) register NODE *p; TWORD t; {$?
+match	../mip/match.c	?^match( p, cookie ) NODE *p; {$?
+max	order.c	?^# define max(x,y) ((x)<(y)?(y):(x))$?
+min	order.c	?^# define min(x,y) ((x)<(y)?(x):(y))$?
+mixtypes	local2.c	?^mixtypes(p, q) NODE *p, *q;$?
+mkadrs	order.c	?^mkadrs(p) register NODE *p; $?
+mkdope	../mip/common	?^mkdope(){$?
+mkrall	order.c	?^mkrall( p, r ) register NODE *p; $?
+mkty	cgram.c	?^mkty( t, d, s ) unsigned t; {$?
+mlinit	../mip/match.c	?^mlinit(){$?
+mlmatch	../mip/match.c	?^mlmatch( subtree, target, subtarget ) NODE * subtr?
+moditype	../mip/trees.c	?^moditype( ty ) TWORD ty; {$?
+moedef	../mip/pftn.c	?^moedef( idn ){$?
+myputc	../mip/scan.c.save	?^myputc(c)$?
+myreader	local2.c	?^myreader(p) register NODE *p; $?
+ncopy	../mip/allo.c	?^ncopy( q, p ) NODE *p, *q; {$?
+nextcook	local2.c	?^nextcook( p, cookie ) NODE *p; $?
+niceuty	order.c	?^niceuty( p ) register NODE *p; $?
+nidcl	../mip/pftn.c	?^nidcl( p ) NODE *p; { /* handle unitialized declar?
+nncon	../mip/optim.c	?^nncon( p ) NODE *p; {$?
+noinit	local.c	?^noinit( t ) $?
+notlval	../mip/trees.c	?^notlval(p) register NODE *p; {$?
+notoff	order.c	?^notoff( t, r, off, cp) CONSZ off; char *cp; $?
+oalloc	../mip/pftn.c	?^oalloc( p, poff ) register struct symtab *p; regis?
+oconvert	../mip/trees.c	?^oconvert(p) register NODE *p; {$?
+offcon	local.c	?^offcon( off, t, d, s ) OFFSZ off; TWORD t; $?
+offset	local2.c	?^offset( p, tyl ) register NODE *p; int tyl; $?
+offstar	order.c	?^offstar( p ) register NODE *p; $?
+opact	../mip/trees.c	?^opact( p )  NODE *p; {$?
+optim	../mip/optim.c	?^optim(p) register NODE *p; {$?
+optim2	local2.c	?^optim2( p ) register NODE *p; $?
+optype	../mip/manifest	?^#define optype(o) (dope[o]&TYFLG)$?
+outstab	local.c	?^outstab(p)$?
+p2bbeg	../mip/reader.c	?^p2bbeg( aoff, myreg ) {$?
+p2bend	../mip/reader.c	?^p2bend(){$?
+p2compile	../mip/reader.c	?^p2compile( p ) NODE *p; {$?
+p2init	../mip/reader.c	?^p2init( argc, argv ) char *argv[];{$?
+p2tree	../mip/trees.c	?^p2tree(p) register NODE *p; {$?
+pconvert	../mip/trees.c	?^pconvert( p ) register NODE *p; {$?
+pfstab	local.c	?^pfstab(sname) $?
+plcstab	local.c	?^plcstab(level) $?
+poffs	local.c	?^poffs(p)$?
+popargs	local2.c	?^popargs( size ) register size; $?
+prcstab	local.c	?^prcstab(level) $?
+prtdcon	../mip/trees.c	?^prtdcon( p ) register NODE *p; {$?
+prtree	../mip/trees.c	?^prtree(p) register NODE *p; {$?
+prtype	local2.c	?^prtype(n) NODE *n;$?
+psave	../mip/pftn.c	?^psave( i ){$?
+psize	../mip/trees.c	?^psize( p ) NODE *p; {$?
+psline	local.c	?^psline() $?
+pstab	local.c	?^pstab(name, type)$?
+pstabdot	local.c	?^pstabdot(type, value)$?
+ptmatch	../mip/trees.c	?^ptmatch(p)  register NODE *p; {$?
+putbyte	../mip/pftn.c	?^putbyte( v ){ /* simulate byte v appearing in a li?
+rallo	order.c	?^rallo( p, down ) NODE *p; $?
+rbusy	../mip/allo.c	?^rbusy(r,t) TWORD t; {$?
+recl2	../mip/allo.c	?^recl2( p ) register NODE *p; {$?
+reclaim	../mip/allo.c	?^reclaim( p, rw, cookie ) NODE *p; {$?
+resetbc	cgram.c	?^resetbc(mask){$?
+rewfld	local2.c	?^rewfld( p ) NODE *p; $?
+rfree	../mip/allo.c	?^rfree( r, t ) TWORD t; {$?
+rmove	local2.c	?^rmove( rt, rs, t )$?
+rstruct	../mip/pftn.c	?^rstruct( idn, soru ){ /* reference to a structure ?
+rwprint	../mip/allo.c	?^rwprint( rw ){ /* print rewriting rule */$?
+savebc	cgram.c	?^savebc() {$?
+savestr	../mip/scan.c	?^savestr(cp)$?
+scnames	../mip/xdefs.c	?^char * scnames( c ) register c; {$?
+select	code.c	?^select(m) $?
+setasg	order.c	?^setasg( p ) register NODE *p; $?
+setasop	order.c	?^setasop( p ) register NODE *p; $?
+setbin	order.c	?^setbin( p ) register NODE *p; $?
+setincr	order.c	?^setincr( p ) register NODE *p; $?
+setregs	local2.c	?^setregs()$?
+setrew	../mip/match.c	?^setrew(){$?
+setstr	order.c	?^setstr( p ) register NODE *p; $?
+shareit	../mip/allo.c	?^shareit( p, r, n ) NODE *p; {$?
+shltype	local2.c	?^shltype( o, p ) register NODE *p; $?
+shortconv	local2.c	?^shortconv( p )$?
+shtemp	local2.c	?^shtemp( p ) register NODE *p; $?
+shumul	local2.c	?^shumul( p ) register NODE *p; $?
+special	local2.c	?^special( p, shape ) register NODE *p; $?
+spsz	local2.c	?^spsz( t, v ) TWORD t; CONSZ v; $?
+stoasg	order.c	?^stoasg( p, o ) register NODE *p; $?
+strargs	../mip/trees.c	?^strargs( p ) register NODE *p;  { /* rewrite struc?
+stref	../mip/trees.c	?^stref( p ) register NODE *p; {$?
+sucomp	order.c	?^sucomp( p ) register NODE *p; $?
+swend	cgram.c	?^swend(){ /* end a switch block */$?
+swstart	cgram.c	?^swstart(){$?
+szty	local2.c	?^szty(t)$?
+talign	../mip/pftn.c	?^talign( ty, s) register unsigned ty; register s; {?
+talloc	../mip/common	?^talloc(){$?
+tcheck	../mip/common	?^tcheck(){ /* ensure that all nodes have been freed?
+tcopy	../mip/allo.c	?^tcopy( p ) register NODE *p; {$?
+tfree	../mip/common	?^tfree( p )  NODE *p; {$?
+tfree1	../mip/common	?^tfree1(p)  NODE *p; {$?
+tinit	../mip/common	?^tinit(){ /* initialize expression tree search */$?
+tlen	local.c	?^tlen(p) NODE *p; $?
+toreg	code.c	?^*toreg(type)$?
+tprint	../mip/common	?^tprint( t )  TWORD t; { /* output a nice descripti?
+tshape	../mip/match.c	?^tshape( p, shape ) NODE *p; {$?
+tsize	../mip/pftn.c	?^tsize( ty, d, s )  TWORD ty; {$?
+tstr	../mip/common	?^tstr(cp)$?
+ttype	../mip/match.c	?^ttype( t, tword ) TWORD t; {$?
+tymatch	../mip/trees.c	?^tymatch(p)  register NODE *p; {$?
+uerror	../mip/common	?^uerror( s, a ) char *s; { /* nonfatal error messag?
+upoff	../mip/pftn.c	?^upoff( size, alignment, poff ) register alignment,?
+upput	local2.c	?^upput( p ) register NODE *p; $?
+usable	../mip/allo.c	?^usable( p, n, r ) NODE *p; {$?
+ushare	../mip/allo.c	?^ushare( p, f, r ) NODE *p; {$?
+vfdalign	../mip/pftn.c	?^vfdalign( n ){ /* make inoff have the offset the n?
+vfdzero	local.c	?^vfdzero( n )$?
+walkf	../mip/common	?^walkf( t, f ) register NODE *t;  int (*f)(); {$?
+walkheap	code.c	?^walkheap(start, limit)$?
+werror	../mip/common	?^werror( s, a, b ) char *s; {  /* warning */$?
+where	code.c	?^where(c)$?
+x	test.c	?^}$?
+xgetchar	../mip/scan.c	?^xgetchar()$?
+xungetc	../mip/scan.c	?^xungetc(c,filedes)$?
+yyaccpt	../mip/pftn.c	?^yyaccpt(){$?
+yyerror	../mip/pftn.c	?^yyerror( s ) char *s; { /* error printing routine ?
+yylex	../mip/scan.c	?^yylex(){$?
+yyparse	cgram.c	?^yyparse() {$?
+zappost	local2.c	?^zappost(p) NODE *p; $?
+zecode	code.c	?^zecode( n )$?
+zum	order.c	?^zum( p, zap ) register NODE *p; $?
+zzzcode	local2.c	?^zzzcode( p, c ) register NODE *p; $?

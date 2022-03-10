@@ -1,0 +1,66 @@
+
+
+
+ODT(1)              Xinu Programmer's Manual               ODT(1)
+
+
+
+NAME
+     odt - connect user's terminal to a micro console (odt) line
+
+SYNOPSIS
+     odt [ option ] ...
+
+DESCRIPTION
+     _O_d_t connects a terminal on the VAX to a microcomputer tty
+     line so the output of the micro appears on the terminal
+     screen and characters typed at the keyboard are sent to the
+     micro.  _O_d_t sets the micro tty line to raw mode, and the VAX
+     terminal to cbreak mode.  The connection can be broken by
+     killing the odt process (e.g., by typing the interrupt char-
+     acter (e.g., CONTROL-C).
+
+     When _o_d_t receives a backslash from the terminal, it switches
+     to raw mode to read one character, after which it switches
+     back to cbreak mode.  The backslash escape allows the user
+     to send characters like CONTROL-C to the micro even though
+     they are normally interpreted as signals.  As a special
+     case, an escaped null character (octal 0) causes _o_d_t to
+     force the micro line into a break condition for 1 second.
+     This is useful for trapping an LSI 11 into ODT mode.
+
+     Options are:
+
+     -lx  Connect to machine number _x. If this option is not
+          specified, download selects the LSI-11 that the user
+          has on reserve, or a free one if none is reserved.
+          E.g., -l9.
+
+     -cL  Use LSI in class L (as specified in the _m_a_c_h_i_n_e_s data-
+          base).
+
+     -BX  Use Baudrate _X in communicating with the LSI console.
+
+     -h   Hold the LSI, so multiple machines may be allocated to
+          one user.
+
+     -T[x]
+          Release LSI after _x minutes of idle time.  If no value
+          for _x is listed, the LSI will be held indefinitely.
+          The default timeout value is set in the _m_a_c_h_i_n_e_s data-
+          base.
+
+     -f   Turn off X-ON X-OFF flow control.  Flow control is on
+          by default.
+
+FILES
+     /dev/LSI.idefault LSI 11 connection (as specified by _X_i_n_u-
+     _d_i_r_e_c_t_o_r_y/_l_i_b/_m_a_c_h_i_n_e_s)
+     /tmp/xinu/LSI-*Lock files
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+

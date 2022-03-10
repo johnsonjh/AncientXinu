@@ -1,0 +1,132 @@
+
+
+
+ETHER(4)            Xinu Programmer's Manual             ETHER(4)
+
+
+
+NAME
+     ether - standard 10Mbps Ethernet network interface device
+     driver (type eth)
+
+SYNOPSIS
+     #include <deqna.h>
+     #include <ether.h>
+
+     read(device buffer, length)
+     write(device, buffer, length)
+     init(device)
+
+DESCRIPTION
+     The _e_t_h device driver provides input and output for a 10
+     Mbps Ethernet local area network.  The standard Xinu device
+     name for Ethernet devices is _E_T_H_E_R.
+
+     Implemented on a Digital Equipment Corporation DEQNA (Digi-
+     tal Equipment Q-Bus Network Adapter), the _e_t_h driver handles
+     DMA input and output at the physical network level,
+     transmitting complete frames between user processes and the
+     device.
+
+     The driver honors the following operations:
+
+     read(device buffer, length)
+          Reads one frame into _b_u_f_f_e_r, copying no more than
+          _l_e_n_g_t_h characters.  It returns the length of the frame
+          read; the count includes the 14-octet header.
+
+     write(device, buffer, length)
+          Writes a frame of _l_e_n_g_t_h characters found in _b_u_f_f_e_r.
+          It returns _O_K if the frame was acceptable, _S_Y_S_E_R_R oth-
+          erwise.  It it important to note that _b_u_f_f_e_r must
+          specify the address of a valid buffer allocated from
+          GETBUF(2), and that the driver does not copy the con-
+          tents of the buffer.  The call to _w_r_i_t_e will return
+          once output has been started, but the buffer will be in
+          use until the device finishes.  The driver calls
+          FREEBUF(2) to dispose of the buffer once the device
+          finishes using it.
+
+     init(device)
+          Initializes the device and driver, including DEQNA
+          setup packet processing.  The driver sets the device to
+          accept only those packets addressed directly to the
+          devices' physical address and broadcast packets (all
+          1's address).
+
+NOTES
+     Although the DEQNA supports chaining back-to-back operations
+     on both input and output, the driver forces a context switch
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+
+
+
+
+ETHER(4)            Xinu Programmer's Manual             ETHER(4)
+
+
+
+     and a new call from READ(2) or WRITE(2) to restart I/O, and
+     depends on the hardware to buffer packets from the Ethernet.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version 6b               Printed 1/12/87                        2
+
+
+

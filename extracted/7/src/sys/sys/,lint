@@ -1,0 +1,675 @@
+"access.c", line 15:access defined( access.c(15) ), but never used
+"adump.c", line 15:adump defined( adump.c(15) ), but never used
+"adump.c", line 20:kprintf: variable # of args.	kprintf.c(15)  ::  adump.c(20)
+"adump.c", line 25:kprintf: variable # of args.	kprintf.c(15)  ::  adump.c(25)
+"adump.c", line 30:kprintf: variable # of args.	kprintf.c(15)  ::  adump.c(30)
+"adump.c", line 37:kprintf: variable # of args.	kprintf.c(15)  ::  adump.c(37)
+"arp_in.c", line 16: warning: ps unused in function arp_in
+"arp_in.c", line 36:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  arp_in.c(36)
+"arp_in.c", line 45:write, arg. 2 used inconsistently	write.c(14)  ::  arp_in.c(45)
+"arp_in.c", line 56:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  arp_in.c(56)
+"arp_in.c", line 62:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  arp_in.c(62)
+"blkcopy.c", line 13:blkcopy, arg. 1 used inconsistently	blkcopy.c(13)  ::  dgread.c(62)
+"blkcopy.c", line 13:blkcopy, arg. 2 used inconsistently	blkcopy.c(13)  ::  dgwrite.c(42)
+"bpdump.c", line 13:bpdump defined( bpdump.c(13) ), but never used
+"bpdump.c", line 20:kprintf: variable # of args.	kprintf.c(15)  ::  bpdump.c(20)
+"chprio.c", line 14:chprio defined( chprio.c(14) ), but never used
+"chprio.c", line 17: warning: ps unused in function chprio
+"clkinit.c", line 38: warning: illegal combination of pointer and integer, op =
+"control.c", line 14:control, arg. 3 used inconsistently	control.c(14)  ::  getutim.c(27)
+"control.c", line 14:control, arg. 3 used inconsistently	control.c(14)  ::  ip2name.c(48)
+"control.c", line 14:control, arg. 3 used inconsistently	control.c(14)  ::  rfsend.c(26)
+"control.c", line 14:control, arg. 3 used inconsistently	control.c(14)  ::  rwhoind.c(23)
+"control.c", line 14:control: variable # of args.	control.c(14)  ::  getutim.c(27)
+"control.c", line 14:control: variable # of args.	control.c(14)  ::  ip2name.c(48)
+"control.c", line 14:control: variable # of args.	control.c(14)  ::  rfcntl.c(25)
+"control.c", line 14:control: variable # of args.	control.c(14)  ::  rfsend.c(26)
+"control.c", line 14:control: variable # of args.	control.c(14)  ::  rfsend.c(30)
+"control.c", line 14:control: variable # of args.	control.c(14)  ::  rwhoind.c(23)
+"create.c", line 21:create, arg. 1 used inconsistently	create.c(21)  ::  initialize.c(80)
+"create.c", line 21:create, arg. 1 used inconsistently	create.c(21)  ::  initialize.c(86)
+"create.c", line 21:create, arg. 1 used inconsistently	create.c(21)  ::  netin.c(23)
+"create.c", line 21:create, arg. 1 used inconsistently	create.c(21)  ::  rwho.c(14)
+"create.c", line 21:create, arg. 1 used inconsistently	create.c(21)  ::  rwho.c(15)
+"create.c", line 21:create, arg. 1 used inconsistently	create.c(21)  ::  test.c(21)
+"create.c", line 21:create: variable # of args.	create.c(21)  ::  netin.c(23)
+"create.c", line 21:create: variable # of args.	create.c(21)  ::  rwho.c(14)
+"create.c", line 21:create: variable # of args.	create.c(21)  ::  rwho.c(15)
+"create.c", line 21:create: variable # of args.	create.c(21)  ::  test.c(21)
+"create.c", line 27: warning: ps unused in function create
+"create.c", line 30: warning: illegal combination of pointer and integer, op =
+"create.c", line 31: warning: illegal combination of pointer and integer, op =
+"create.c", line 31: warning: illegal combination of pointer and integer, op ==
+"create.c", line 33:getstk value declared inconsistently	getstk.c(13)  ::  create.c(33)
+"create.c", line 33:getstk value used inconsistently	getstk.c(13)  ::  create.c(33)
+"create.c", line 33:getstk, arg. 1 used inconsistently	getstk.c(13)  ::  create.c(33)
+"devdump.c", line 11:devdump defined( devdump.c(11) ), but never used
+"devdump.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  devdump.c(15)
+"devdump.c", line 16:kprintf: variable # of args.	kprintf.c(15)  ::  devdump.c(16)
+"devdump.c", line 22:kprintf: variable # of args.	kprintf.c(15)  ::  devdump.c(22)
+"dfdsrch.c", line 17:dfdsrch defined( dfdsrch.c(17) ), but never used
+"dfdsrch.c", line 26: warning: struct/union or struct/union pointer required
+"dfdsrch.c", line 43:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  dfdsrch.c(43)
+"dfdsrch.c", line 43:write, arg. 2 used inconsistently	write.c(14)  ::  dfdsrch.c(43)
+"dgalloc.c", line 15: warning: ps unused in function dgalloc
+"dgclose.c", line 15: warning: ps unused in function dgclose
+"dgcntl.c", line 18: warning: ps unused in function dgcntl
+"dgdump.c", line 12:dgdump defined( dgdump.c(12) ), but never used
+"dgdump.c", line 22:kprintf: variable # of args.	kprintf.c(15)  ::  dgdump.c(22)
+"dgdump.c", line 28:kprintf: variable # of args.	kprintf.c(15)  ::  dgdump.c(28)
+"dgmcntl.c", line 12: warning: argument devptr unused in function dgmcntl
+"dgmopen.c", line 12: warning: argument devptr unused in function dgmopen
+"dgmopen.c", line 21: warning: ps unused in function dgmopen
+"dgparse.c", line 39:_ctype_ used( dgparse.c(39) ), but not defined
+"dgread.c", line 23: warning: ps unused in function dgread
+"dgread.c", line 51:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dgread.c(51)
+"dgread.c", line 62:blkcopy, arg. 1 used inconsistently	blkcopy.c(13)  ::  dgread.c(62)
+"dgread.c", line 64:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dgread.c(64)
+"dgwrite.c", line 26:getbuf value declared inconsistently	getbuf.c(14)  ::  dgwrite.c(26)
+"dgwrite.c", line 26:getbuf value used inconsistently	getbuf.c(14)  ::  dgwrite.c(26)
+"dgwrite.c", line 39:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dgwrite.c(39)
+"dgwrite.c", line 42:blkcopy, arg. 2 used inconsistently	blkcopy.c(13)  ::  dgwrite.c(42)
+"dscntl.c", line 14:dscntl defined( dscntl.c(14) ), but never used
+"dscntl.c", line 16: warning: ps unused in function dscntl
+"dsinit.c", line 18:dsinit defined( dsinit.c(18) ), but never used
+"dsinit.c", line 22: warning: ps unused in function dsinit
+"dsinit.c", line 25: warning: illegal pointer combination
+"dsinit.c", line 25:dstab used( dsinit.c(25) ), but not defined
+"dsinit.c", line 26: warning: illegal combination of pointer and integer, op =
+"dsinit.c", line 33: warning: illegal combination of pointer and integer, op =
+"dsinit.c", line 33:getbuf value declared inconsistently	getbuf.c(14)  ::  dsinit.c(33)
+"dsinit.c", line 33:getbuf value used inconsistently	getbuf.c(14)  ::  dsinit.c(33)
+"dsinit.c", line 34:iosetvec, arg. 2 used inconsistently	ioinit.c(31)  ::  dsinit.c(34)
+"dsinit.c", line 34:iosetvec, arg. 3 used inconsistently	ioinit.c(31)  ::  dsinit.c(34)
+"dsinit.c", line 47: warning: illegal combination of pointer and integer, op =
+"dsinter.c", line 13:dsinter defined( dsinter.c(13) ), but never used
+"dsinter.c", line 37:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsinter.c(37)
+"dsinter.c", line 40:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsinter.c(40)
+"dskbcpy.c", line 13:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  dfdsrch.c(43)
+"dskbcpy.c", line 13:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  dumkfs.c(33)
+"dskbcpy.c", line 13:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  dumkfs.c(64)
+"dskbcpy.c", line 13:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  ibfree.c(37)
+"dskbcpy.c", line 13:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  iblfree.c(44)
+"dskbcpy.c", line 13:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  ibnew.c(31)
+"dskbcpy.c", line 13:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  lfclose.c(36)
+"dskbcpy.c", line 13:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  lfsdfree.c(28)
+"dskbcpy.c", line 13:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  lfsnewd.c(33)
+"dskbcpy.c", line 13:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  lfsnewd.c(37)
+"dskbcpy.c", line 17: warning: illegal combination of pointer and integer, op =
+"dskbcpy.c", line 17:getbuf value declared inconsistently	getbuf.c(14)  ::  dskbcpy.c(17)
+"dskbcpy.c", line 17:getbuf value used inconsistently	getbuf.c(14)  ::  dskbcpy.c(17)
+"dskbcpy.c", line 20: warning: illegal combination of pointer and integer, op RETURN
+"dskenq.c", line 14:dskenq, arg. 2 used inconsistently	dskenq.c(14)  ::  dsread.c(27)
+"dskenq.c", line 14:dskenq, arg. 2 used inconsistently	dskenq.c(14)  ::  dsseek.c(28)
+"dskenq.c", line 14:dskenq, arg. 2 used inconsistently	dskenq.c(14)  ::  dswrite.c(26)
+"dskqopt.c", line 25:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(25)
+"dskqopt.c", line 32:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(32)
+"dskqopt.c", line 39:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(39)
+"dskqopt.c", line 40:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(40)
+"dsksync.c", line 18: warning: struct/union or struct/union pointer required
+"dsksync.c", line 20:getbuf value declared inconsistently	getbuf.c(14)  ::  dsksync.c(20)
+"dsksync.c", line 20:getbuf value used inconsistently	getbuf.c(14)  ::  dsksync.c(20)
+"dsksync.c", line 35:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsksync.c(35)
+"dsread.c", line 16:dsread defined( dsread.c(16) ), but never used
+"dsread.c", line 19: warning: ps unused in function dsread
+"dsread.c", line 22:getbuf value declared inconsistently	getbuf.c(14)  ::  dsread.c(22)
+"dsread.c", line 22:getbuf value used inconsistently	getbuf.c(14)  ::  dsread.c(22)
+"dsread.c", line 27:dskenq, arg. 2 used inconsistently	dskenq.c(14)  ::  dsread.c(27)
+"dsread.c", line 31:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsread.c(31)
+"dsseek.c", line 15:dsseek defined( dsseek.c(15) ), but never used
+"dsseek.c", line 17: warning: ps unused in function dsseek
+"dsseek.c", line 20:getbuf value declared inconsistently	getbuf.c(14)  ::  dsseek.c(20)
+"dsseek.c", line 20:getbuf value used inconsistently	getbuf.c(14)  ::  dsseek.c(20)
+"dsseek.c", line 28:dskenq, arg. 2 used inconsistently	dskenq.c(14)  ::  dsseek.c(28)
+"dswrite.c", line 16:dswrite defined( dswrite.c(16) ), but never used
+"dswrite.c", line 18: warning: ps unused in function dswrite
+"dswrite.c", line 21:getbuf value declared inconsistently	getbuf.c(14)  ::  dswrite.c(21)
+"dswrite.c", line 21:getbuf value used inconsistently	getbuf.c(14)  ::  dswrite.c(21)
+"dswrite.c", line 26:dskenq, arg. 2 used inconsistently	dskenq.c(14)  ::  dswrite.c(26)
+"dudir.c", line 16:dudir defined( dudir.c(16) ), but never used
+"dudir.c", line 17: warning: firstdb unused in function dudir
+"dudir.c", line 17: warning: lastdb unused in function dudir
+"dudir.c", line 21: warning: ps unused in function dudir
+"dudir.c", line 25: warning: struct/union or struct/union pointer required
+"dudir.c", line 28:kprintf: variable # of args.	kprintf.c(15)  ::  dudir.c(28)
+"dudir.c", line 30:kprintf: variable # of args.	kprintf.c(15)  ::  dudir.c(30)
+"dudir.c", line 36:kprintf: variable # of args.	kprintf.c(15)  ::  dudir.c(36)
+"dudir.c", line 39:kprintf: variable # of args.	kprintf.c(15)  ::  dudir.c(39)
+"dudir.c", line 44:kprintf: variable # of args.	kprintf.c(15)  ::  dudir.c(44)
+"dudir.c", line 47:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  dudir.c(47)
+"dudir.c", line 47:kprintf: variable # of args.	kprintf.c(15)  ::  dudir.c(47)
+"dumkfs.c", line 100:kprintf: variable # of args.	kprintf.c(15)  ::  dumkfs.c(100)
+"dumkfs.c", line 19:dumkfs defined( dumkfs.c(19) ), but never used
+"dumkfs.c", line 24:kprintf: variable # of args.	kprintf.c(15)  ::  dumkfs.c(24)
+"dumkfs.c", line 25: warning: struct/union or struct/union pointer required
+"dumkfs.c", line 33:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  dumkfs.c(33)
+"dumkfs.c", line 33:write, arg. 2 used inconsistently	write.c(14)  ::  dumkfs.c(33)
+"dumkfs.c", line 37:kprintf: variable # of args.	kprintf.c(15)  ::  dumkfs.c(37)
+"dumkfs.c", line 58:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  dumkfs.c(58)
+"dumkfs.c", line 58:kprintf: variable # of args.	kprintf.c(15)  ::  dumkfs.c(58)
+"dumkfs.c", line 59: warning: illegal pointer combination
+"dumkfs.c", line 59:getbuf value declared inconsistently	getbuf.c(14)  ::  dumkfs.c(59)
+"dumkfs.c", line 59:getbuf value used inconsistently	getbuf.c(14)  ::  dumkfs.c(59)
+"dumkfs.c", line 64:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  dumkfs.c(64)
+"dumkfs.c", line 64:write, arg. 2 used inconsistently	write.c(14)  ::  dumkfs.c(64)
+"dumkfs.c", line 64:write, arg. 3 used inconsistently	write.c(14)  ::  dumkfs.c(64)
+"dumkfs.c", line 66:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  dumkfs.c(66)
+"dumkfs.c", line 69:write, arg. 2 used inconsistently	write.c(14)  ::  dumkfs.c(69)
+"dumkfs.c", line 69:write, arg. 3 used inconsistently	write.c(14)  ::  dumkfs.c(69)
+"dumkfs.c", line 71:kprintf: variable # of args.	kprintf.c(15)  ::  dumkfs.c(71)
+"dumkfs.c", line 88: warning: i unused in function dumkil
+"ethinit.c", line 23:iosetvec, arg. 2 used inconsistently	ioinit.c(31)  ::  ethinit.c(23)
+"ethinit.c", line 23:iosetvec, arg. 3 used inconsistently	ioinit.c(31)  ::  ethinit.c(23)
+"ethinit.c", line 35: warning: illegal combination of pointer and integer, op =
+"ethinit.c", line 40: warning: illegal combination of pointer and integer, op =
+"ethinit.c", line 48:ethstrt, arg. 2 used inconsistently	ethstrt.c(14)  ::  ethinit.c(48)
+"ethinter.c", line 34: warning: illegal combination of pointer and integer, op =
+"ethinter.c", line 35: warning: illegal combination of pointer and integer, op =
+"ethinter.c", line 43:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  ethinter.c(43)
+"ethinter.c", line 51: warning: illegal combination of pointer and integer, op =
+"ethinter.c", line 52: warning: illegal combination of pointer and integer, op =
+"ethinter.c", line 55:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  ethinter.c(55)
+"ethread.c", line 17: warning: ps unused in function ethread
+"ethread.c", line 25: warning: dqptr set but not used in function ethread
+"ethread.c", line 33:ethstrt, arg. 2 used inconsistently	ethstrt.c(14)  ::  ethread.c(33)
+"ethrstrt.c", line 16:ethrstrt, arg. 2 used inconsistently	ethrstrt.c(16)  ::  ethstrt.c(38)
+"ethrstrt.c", line 22: warning: illegal combination of pointer and integer, op =
+"ethrstrt.c", line 27: warning: illegal combination of pointer and integer, op =
+"ethrstrt.c", line 28: warning: illegal combination of pointer and integer, op =
+"ethstrt.c", line 13: warning: structure dqsetup never defined
+"ethstrt.c", line 14:ethstrt, arg. 2 used inconsistently	ethstrt.c(14)  ::  ethinit.c(48)
+"ethstrt.c", line 14:ethstrt, arg. 2 used inconsistently	ethstrt.c(14)  ::  ethread.c(33)
+"ethstrt.c", line 25: warning: illegal combination of pointer and integer, op =
+"ethstrt.c", line 30: undefined structure or union
+"ethstrt.c", line 30: undefined structure or union
+"ethstrt.c", line 30: warning: illegal member use: dq_set
+"ethstrt.c", line 30: warning: illegal member use: dq_set
+"ethstrt.c", line 31: undefined structure or union
+"ethstrt.c", line 31: undefined structure or union
+"ethstrt.c", line 31: warning: illegal member use: dq_set
+"ethstrt.c", line 31: warning: illegal member use: dq_set
+"ethstrt.c", line 34: undefined structure or union
+"ethstrt.c", line 34: undefined structure or union
+"ethstrt.c", line 34: warning: illegal member use: dq_set
+"ethstrt.c", line 34: warning: illegal member use: dq_set
+"ethstrt.c", line 37: undefined structure or union
+"ethstrt.c", line 37: warning: illegal member use: dq_echo
+"ethstrt.c", line 38: undefined structure or union
+"ethstrt.c", line 38: undefined structure or union
+"ethstrt.c", line 38: warning: illegal member use: dq_crc
+"ethstrt.c", line 38: warning: illegal member use: dq_echo
+"ethstrt.c", line 38:ethrstrt, arg. 2 used inconsistently	ethrstrt.c(16)  ::  ethstrt.c(38)
+"ethstrt.c", line 39: undefined structure or union
+"ethstrt.c", line 39: undefined structure or union
+"ethstrt.c", line 39: warning: illegal member use: dq_set
+"ethstrt.c", line 39: warning: illegal member use: dq_set
+"ethstrt.c", line 39:ethwstrt, arg. 2 used inconsistently	ethwstrt.c(18)  ::  ethstrt.c(39)
+"ethwrite.c", line 19: warning: ps unused in function ethwrite
+"ethwstrt.c", line 18:ethwstrt, arg. 2 used inconsistently	ethwstrt.c(18)  ::  ethstrt.c(39)
+"ethwstrt.c", line 30: warning: illegal combination of pointer and integer, op =
+"ethwstrt.c", line 34: warning: illegal combination of pointer and integer, op =
+"ethwstrt.c", line 35: warning: illegal combination of pointer and integer, op =
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  arp_in.c(36)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  arp_in.c(56)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  arp_in.c(62)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dgread.c(51)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dgread.c(64)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dgwrite.c(39)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsinter.c(37)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsinter.c(40)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(25)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(32)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(39)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(40)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsksync.c(35)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsread.c(31)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  ethinter.c(43)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  ethinter.c(55)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  ibget.c(28)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  icmp_in.c(23)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  icmp_in.c(36)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  ip_in.c(41)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  ip_in.c(61)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  rarp_in.c(40)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  route.c(41)
+"freebuf.c", line 15: warning: ps unused in function freebuf
+"freemem.c", line 14:freemem, arg. 1 used inconsistently	freemem.c(14)  ::  ip2name.c(55)
+"freemem.c", line 14:freemem, arg. 1 used inconsistently	freemem.c(14)  ::  ip2name.c(83)
+"freemem.c", line 14:freemem, arg. 1 used inconsistently	freemem.c(14)  ::  kill.c(35)
+"freemem.c", line 14:freemem, arg. 2 used inconsistently	freemem.c(14)  ::  kill.c(35)
+"freemem.c", line 15: warning: ps unused in function freemem
+"freemem.c", line 20:end used( freemem.c(20) ), but not defined
+"getaddr.c", line 13:getaddr, arg. 1 used inconsistently	getaddr.c(13)  ::  getname.c(19)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  dgwrite.c(26)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  dsinit.c(33)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  dskbcpy.c(17)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  dsksync.c(20)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  dsread.c(22)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  dsseek.c(20)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  dswrite.c(21)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  dumkfs.c(59)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  ibfree.c(25)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  ibget.c(22)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  ibput.c(26)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  lfsdfree.c(23)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  mkarp.c(20)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  netin.c(45)
+"getbuf.c", line 14:getbuf value declared inconsistently	getbuf.c(14)  ::  rwhod.c(54)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  dgwrite.c(26)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  dsinit.c(33)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  dskbcpy.c(17)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  dsksync.c(20)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  dsread.c(22)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  dsseek.c(20)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  dswrite.c(21)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  dumkfs.c(59)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  ibfree.c(25)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  ibget.c(22)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  ibput.c(26)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  lfsdfree.c(23)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  mkarp.c(20)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  netin.c(25)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  netin.c(35)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  netin.c(40)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  netin.c(45)
+"getbuf.c", line 14:getbuf value used inconsistently	getbuf.c(14)  ::  rwhod.c(54)
+"getbuf.c", line 15: warning: ps unused in function getbuf
+"getc.c", line 13:getc defined( getc.c(13) ), but never used
+"getmem.c", line 13:getmem value declared inconsistently	getmem.c(13)  ::  ip2name.c(21)
+"getmem.c", line 13:getmem value declared inconsistently	getmem.c(13)  ::  mkpool.c(28)
+"getmem.c", line 13:getmem value declared inconsistently	getmem.c(13)  ::  pinit.c(25)
+"getmem.c", line 13:getmem value used inconsistently	getmem.c(13)  ::  ip2name.c(21)
+"getmem.c", line 13:getmem value used inconsistently	getmem.c(13)  ::  mkpool.c(28)
+"getmem.c", line 13:getmem value used inconsistently	getmem.c(13)  ::  pinit.c(25)
+"getmem.c", line 13:getmem, arg. 1 used inconsistently	getmem.c(13)  ::  mkpool.c(28)
+"getmem.c", line 13:getmem, arg. 1 used inconsistently	getmem.c(13)  ::  pinit.c(25)
+"getmem.c", line 14: warning: ps unused in function getmem
+"getmem.c", line 18: warning: illegal pointer combination
+"getmem.c", line 23: warning: illegal pointer combination
+"getname.c", line 19:getaddr, arg. 1 used inconsistently	getaddr.c(13)  ::  getname.c(19)
+"getname.c", line 20:ip2name, arg. 1 used inconsistently	ip2name.c(14)  ::  getname.c(20)
+"getpath.c", line 19: warning: ps unused in function getpath
+"getpath.c", line 21: warning: apacptr unused in function getpath
+"getpath.c", line 41:write, arg. 2 used inconsistently	write.c(14)  ::  getpath.c(41)
+"getprio.c", line 13:getprio defined( getprio.c(13) ), but never used
+"getprio.c", line 15: warning: ps unused in function getprio
+"getstk.c", line 13:getstk value declared inconsistently	getstk.c(13)  ::  create.c(33)
+"getstk.c", line 13:getstk value used inconsistently	getstk.c(13)  ::  create.c(33)
+"getstk.c", line 13:getstk, arg. 1 used inconsistently	getstk.c(13)  ::  create.c(33)
+"getstk.c", line 14: warning: ps unused in function getstk
+"getstk.c", line 25: warning: illegal pointer combination
+"getstk.c", line 27: warning: illegal pointer combination
+"getstk.c", line 32: warning: illegal pointer combination
+"getstk.c", line 41: warning: illegal combination of pointer and integer, op =
+"getutim.c", line 17: warning: len unused in function getutim
+"getutim.c", line 19: warning: now unused in function getutim
+"getutim.c", line 27:control, arg. 3 used inconsistently	control.c(14)  ::  getutim.c(27)
+"getutim.c", line 27:control: variable # of args.	control.c(14)  ::  getutim.c(27)
+"getutim.c", line 27:open, arg. 3 used inconsistently	open.c(15)  ::  getutim.c(27)
+"getutim.c", line 32:read, arg. 2 used inconsistently	read.c(14)  ::  getutim.c(32)
+"ibfree.c", line 17:ibfree defined( ibfree.c(17) ), but never used
+"ibfree.c", line 24: warning: struct/union or struct/union pointer required
+"ibfree.c", line 25: warning: illegal combination of pointer and integer, op =
+"ibfree.c", line 25:getbuf value declared inconsistently	getbuf.c(14)  ::  ibfree.c(25)
+"ibfree.c", line 25:getbuf value used inconsistently	getbuf.c(14)  ::  ibfree.c(25)
+"ibfree.c", line 27:read, arg. 3 used inconsistently	read.c(14)  ::  ibfree.c(27)
+"ibfree.c", line 36:write, arg. 3 used inconsistently	write.c(14)  ::  ibfree.c(36)
+"ibfree.c", line 37:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  ibfree.c(37)
+"ibfree.c", line 37:write, arg. 2 used inconsistently	write.c(14)  ::  ibfree.c(37)
+"ibget.c", line 22: warning: illegal combination of pointer and integer, op =
+"ibget.c", line 22:getbuf value declared inconsistently	getbuf.c(14)  ::  ibget.c(22)
+"ibget.c", line 22:getbuf value used inconsistently	getbuf.c(14)  ::  ibget.c(22)
+"ibget.c", line 28:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  ibget.c(28)
+"iblfree.c", line 17:iblfree defined( iblfree.c(17) ), but never used
+"iblfree.c", line 27: warning: struct/union or struct/union pointer required
+"iblfree.c", line 44:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  iblfree.c(44)
+"iblfree.c", line 44:write, arg. 2 used inconsistently	write.c(14)  ::  iblfree.c(44)
+"ibnew.c", line 21: warning: i unused in function ibnew
+"ibnew.c", line 25: warning: struct/union or struct/union pointer required
+"ibnew.c", line 31:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  ibnew.c(31)
+"ibnew.c", line 31:write, arg. 2 used inconsistently	write.c(14)  ::  ibnew.c(31)
+"ibput.c", line 26: warning: illegal combination of pointer and integer, op =
+"ibput.c", line 26:getbuf value declared inconsistently	getbuf.c(14)  ::  ibput.c(26)
+"ibput.c", line 26:getbuf value used inconsistently	getbuf.c(14)  ::  ibput.c(26)
+"ibput.c", line 29:read, arg. 3 used inconsistently	read.c(14)  ::  ibput.c(29)
+"ibput.c", line 34:write, arg. 3 used inconsistently	write.c(14)  ::  ibput.c(34)
+"icmp_in.c", line 23:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  icmp_in.c(23)
+"icmp_in.c", line 32:cksum, arg. 1 used inconsistently	icmp_in.c(32)  ::  ipsend.c(29)
+"icmp_in.c", line 34:psend, arg. 2 used inconsistently	psend.c(15)  ::  icmp_in.c(34)
+"icmp_in.c", line 36:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  icmp_in.c(36)
+"initialize.c", line 101:sysinit returns value which is always ignored
+"initialize.c", line 115: warning: illegal combination of pointer and integer, op =
+"initialize.c", line 125: warning: illegal combination of pointer and integer, op =
+"initialize.c", line 127: warning: illegal combination of pointer and integer, op =
+"initialize.c", line 64: warning: ps unused in function nulluser
+"initialize.c", line 66:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  initialize.c(66)
+"initialize.c", line 68:kprintf: variable # of args.	kprintf.c(15)  ::  initialize.c(68)
+"initialize.c", line 72:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  initialize.c(72)
+"initialize.c", line 74:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  initialize.c(74)
+"initialize.c", line 75:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  initialize.c(75)
+"initialize.c", line 80:create, arg. 1 used inconsistently	create.c(21)  ::  initialize.c(80)
+"initialize.c", line 86:create, arg. 1 used inconsistently	create.c(21)  ::  initialize.c(86)
+"ioinit.c", line 13:ioinit defined( ioinit.c(13) ), but never used
+"ioinit.c", line 31:iosetvec, arg. 2 used inconsistently	ioinit.c(31)  ::  dsinit.c(34)
+"ioinit.c", line 31:iosetvec, arg. 2 used inconsistently	ioinit.c(31)  ::  ethinit.c(23)
+"ioinit.c", line 31:iosetvec, arg. 3 used inconsistently	ioinit.c(31)  ::  dsinit.c(34)
+"ioinit.c", line 31:iosetvec, arg. 3 used inconsistently	ioinit.c(31)  ::  ethinit.c(23)
+"ioinit.c", line 45: warning: questionable conversion of function pointer
+"ioinit.c", line 48: warning: questionable conversion of function pointer
+"ip2name.c", line 14:ip2name, arg. 1 used inconsistently	ip2name.c(14)  ::  getname.c(20)
+"ip2name.c", line 21:getmem value declared inconsistently	getmem.c(13)  ::  ip2name.c(21)
+"ip2name.c", line 21:getmem value used inconsistently	getmem.c(13)  ::  ip2name.c(21)
+"ip2name.c", line 47:open, arg. 3 used inconsistently	open.c(15)  ::  ip2name.c(47)
+"ip2name.c", line 48:control, arg. 3 used inconsistently	control.c(14)  ::  ip2name.c(48)
+"ip2name.c", line 48:control: variable # of args.	control.c(14)  ::  ip2name.c(48)
+"ip2name.c", line 55:freemem, arg. 1 used inconsistently	freemem.c(14)  ::  ip2name.c(55)
+"ip2name.c", line 83:freemem, arg. 1 used inconsistently	freemem.c(14)  ::  ip2name.c(83)
+"ip_in.c", line 23: warning: ps unused in function ip_in
+"ip_in.c", line 41:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  ip_in.c(41)
+"ip_in.c", line 44:psend, arg. 2 used inconsistently	psend.c(15)  ::  ip_in.c(44)
+"ip_in.c", line 61:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  ip_in.c(61)
+"ipsend.c", line 29:cksum, arg. 1 used inconsistently	icmp_in.c(32)  ::  ipsend.c(29)
+"kill.c", line 19: warning: ps unused in function kill
+"kill.c", line 35:freemem, arg. 1 used inconsistently	freemem.c(14)  ::  kill.c(35)
+"kill.c", line 35:freemem, arg. 2 used inconsistently	freemem.c(14)  ::  kill.c(35)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  dudir.c(47)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  dumkfs.c(58)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  dumkfs.c(66)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  initialize.c(66)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  initialize.c(72)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  initialize.c(74)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  initialize.c(75)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  mdump.c(35)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  mdump.c(37)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  mdump.c(39)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  mdump.c(44)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  ndump.c(22)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  ndump.c(30)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  netdump.c(18)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  prdump.c(43)
+"kprintf.c", line 15:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  tdump.c(84)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  adump.c(20)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  adump.c(25)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  adump.c(30)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  adump.c(37)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  bpdump.c(20)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  devdump.c(15)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  devdump.c(16)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  devdump.c(22)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  dgdump.c(22)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  dgdump.c(28)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  dudir.c(28)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  dudir.c(30)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  dudir.c(36)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  dudir.c(39)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  dudir.c(44)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  dudir.c(47)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  dumkfs.c(100)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  dumkfs.c(24)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  dumkfs.c(37)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  dumkfs.c(58)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  dumkfs.c(71)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  initialize.c(68)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  mdump.c(35)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  mdump.c(39)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  mdump.c(40)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  mdump.c(44)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  ndump.c(24)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  ndump.c(30)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  netdump.c(17)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  netdump.c(20)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  netdump.c(26)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(24)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(43)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(54)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(57)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(58)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(61)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(66)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(70)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(74)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  qdump.c(26)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  qdump.c(76)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  resched.c(41)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  resched.c(47)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  rfdump.c(18)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  rfdump.c(26)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  tdump.c(42)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  tdump.c(59)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  tdump.c(61)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  tdump.c(68)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  tdump.c(83)
+"kprintf.c", line 15:kprintf: variable # of args.	kprintf.c(15)  ::  tdump.c(88)
+"kprintf.c", line 72: warning: ps may be used before set
+"kprintf.c", line 92: warning: ps set but not used in function rststate
+"lfclose.c", line 16:lfclose defined( lfclose.c(16) ), but never used
+"lfclose.c", line 21: warning: ps unused in function lfclose
+"lfclose.c", line 36:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  lfclose.c(36)
+"lfclose.c", line 36:write, arg. 2 used inconsistently	write.c(14)  ::  lfclose.c(36)
+"lfgetc.c", line 19: warning: ps unused in function lfgetc
+"lfinit.c", line 19:lfinit defined( lfinit.c(19) ), but never used
+"lfinit.c", line 22: illegal lhs of assignment operator
+"lfinit.c", line 22: warning: illegal pointer combination
+"lfputc.c", line 19: warning: ps unused in function lfputc
+"lfread.c", line 17:lfread defined( lfread.c(17) ), but never used
+"lfsdfree.c", line 21: warning: struct/union or struct/union pointer required
+"lfsdfree.c", line 23:getbuf value declared inconsistently	getbuf.c(14)  ::  lfsdfree.c(23)
+"lfsdfree.c", line 23:getbuf value used inconsistently	getbuf.c(14)  ::  lfsdfree.c(23)
+"lfsdfree.c", line 27:write, arg. 2 used inconsistently	write.c(14)  ::  lfsdfree.c(27)
+"lfsdfree.c", line 27:write, arg. 3 used inconsistently	write.c(14)  ::  lfsdfree.c(27)
+"lfsdfree.c", line 28:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  lfsdfree.c(28)
+"lfsdfree.c", line 28:write, arg. 2 used inconsistently	write.c(14)  ::  lfsdfree.c(28)
+"lfseek.c", line 16:lfseek defined( lfseek.c(16) ), but never used
+"lfseek.c", line 19: warning: ps unused in function lfseek
+"lfsetup.c", line 48:read, arg. 3 used inconsistently	read.c(14)  ::  lfsetup.c(48)
+"lfsflush.c", line 21:write, arg. 2 used inconsistently	write.c(14)  ::  lfsflush.c(21)
+"lfsflush.c", line 21:write, arg. 3 used inconsistently	write.c(14)  ::  lfsflush.c(21)
+"lfsnewd.c", line 26: warning: struct/union or struct/union pointer required
+"lfsnewd.c", line 31:read, arg. 2 used inconsistently	read.c(14)  ::  lfsnewd.c(31)
+"lfsnewd.c", line 31:read, arg. 3 used inconsistently	read.c(14)  ::  lfsnewd.c(31)
+"lfsnewd.c", line 33:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  lfsnewd.c(33)
+"lfsnewd.c", line 33:write, arg. 2 used inconsistently	write.c(14)  ::  lfsnewd.c(33)
+"lfsnewd.c", line 37:dskbcpy, arg. 1 used inconsistently	dskbcpy.c(13)  ::  lfsnewd.c(37)
+"lfsnewd.c", line 37:write, arg. 2 used inconsistently	write.c(14)  ::  lfsnewd.c(37)
+"lfsnewd.c", line 37:write, arg. 3 used inconsistently	write.c(14)  ::  lfsnewd.c(37)
+"lfwrite.c", line 14:lfwrite defined( lfwrite.c(14) ), but never used
+"mdump.c", line 13:mdump defined( mdump.c(13) ), but never used
+"mdump.c", line 14: warning: ps unused in function mdump
+"mdump.c", line 35:edata used( mdump.c(35) ), but not defined
+"mdump.c", line 35:etext used( mdump.c(35) ), but not defined
+"mdump.c", line 35:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  mdump.c(35)
+"mdump.c", line 35:kprintf: variable # of args.	kprintf.c(15)  ::  mdump.c(35)
+"mdump.c", line 37:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  mdump.c(37)
+"mdump.c", line 39:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  mdump.c(39)
+"mdump.c", line 39:kprintf: variable # of args.	kprintf.c(15)  ::  mdump.c(39)
+"mdump.c", line 40:kprintf: variable # of args.	kprintf.c(15)  ::  mdump.c(40)
+"mdump.c", line 44:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  mdump.c(44)
+"mdump.c", line 44:kprintf: variable # of args.	kprintf.c(15)  ::  mdump.c(44)
+"mkarp.c", line 20:getbuf value declared inconsistently	getbuf.c(14)  ::  mkarp.c(20)
+"mkarp.c", line 20:getbuf value used inconsistently	getbuf.c(14)  ::  mkarp.c(20)
+"mkpool.c", line 15: warning: ps unused in function mkpool
+"mkpool.c", line 28: warning: illegal combination of pointer and integer, op ==
+"mkpool.c", line 28:getmem value declared inconsistently	getmem.c(13)  ::  mkpool.c(28)
+"mkpool.c", line 28:getmem value used inconsistently	getmem.c(13)  ::  mkpool.c(28)
+"mkpool.c", line 28:getmem, arg. 1 used inconsistently	getmem.c(13)  ::  mkpool.c(28)
+"mount.c", line 19: warning: ps unused in function mount
+"nammap.c", line 15: warning: ps unused in function nammap
+"namopen.c", line 12: warning: argument devptr unused in function namopen
+"namrepl.c", line 18: warning: ps unused in function namrepl
+"ndump.c", line 15:ndump defined( ndump.c(15) ), but never used
+"ndump.c", line 22:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  ndump.c(22)
+"ndump.c", line 24:kprintf: variable # of args.	kprintf.c(15)  ::  ndump.c(24)
+"ndump.c", line 30:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  ndump.c(30)
+"ndump.c", line 30:kprintf: variable # of args.	kprintf.c(15)  ::  ndump.c(30)
+"netdump.c", line 12:netdump defined( netdump.c(12) ), but never used
+"netdump.c", line 17:kprintf: variable # of args.	kprintf.c(15)  ::  netdump.c(17)
+"netdump.c", line 18:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  netdump.c(18)
+"netdump.c", line 20:kprintf: variable # of args.	kprintf.c(15)  ::  netdump.c(20)
+"netdump.c", line 26:kprintf: variable # of args.	kprintf.c(15)  ::  netdump.c(26)
+"netin.c", line 23:create, arg. 1 used inconsistently	create.c(21)  ::  netin.c(23)
+"netin.c", line 23:create: variable # of args.	create.c(21)  ::  netin.c(23)
+"netin.c", line 25:getbuf value used inconsistently	getbuf.c(14)  ::  netin.c(25)
+"netin.c", line 27:read, arg. 2 used inconsistently	read.c(14)  ::  netin.c(27)
+"netin.c", line 35:getbuf value used inconsistently	getbuf.c(14)  ::  netin.c(35)
+"netin.c", line 40:getbuf value used inconsistently	getbuf.c(14)  ::  netin.c(40)
+"netin.c", line 45:getbuf value declared inconsistently	getbuf.c(14)  ::  netin.c(45)
+"netin.c", line 45:getbuf value used inconsistently	getbuf.c(14)  ::  netin.c(45)
+"netout.c", line 25: warning: & before array or function: ignored
+"nqalloc.c", line 16: warning: ps unused in function nqalloc
+"open.c", line 15:open, arg. 3 used inconsistently	open.c(15)  ::  getutim.c(27)
+"open.c", line 15:open, arg. 3 used inconsistently	open.c(15)  ::  ip2name.c(47)
+"open.c", line 15:open, arg. 3 used inconsistently	open.c(15)  ::  rfsend.c(23)
+"open.c", line 15:open, arg. 3 used inconsistently	open.c(15)  ::  rwhoind.c(23)
+"open.c", line 15:open, arg. 3 used inconsistently	open.c(15)  ::  udpecho.c(18)
+"pcount.c", line 17: warning: ps unused in function pcount
+"pcreate.c", line 15: warning: ps unused in function pcreate
+"pdelete.c", line 15:pdelete defined( pdelete.c(15) ), but never used
+"pdelete.c", line 16: warning: ps unused in function pdelete
+"pinit.c", line 25:getmem value declared inconsistently	getmem.c(13)  ::  pinit.c(25)
+"pinit.c", line 25:getmem value used inconsistently	getmem.c(13)  ::  pinit.c(25)
+"pinit.c", line 25:getmem, arg. 1 used inconsistently	getmem.c(13)  ::  pinit.c(25)
+"poolinit.c", line 22: warning: ps unused in function poolinit
+"prdump.c", line 13:prdump defined( prdump.c(13) ), but never used
+"prdump.c", line 22:prdumph defined( prdump.c(22) ), but never used
+"prdump.c", line 24:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(24)
+"prdump.c", line 33:prdumpa defined( prdump.c(33) ), but never used
+"prdump.c", line 40: warning: ps unused in function pxdump
+"prdump.c", line 43:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  prdump.c(43)
+"prdump.c", line 43:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(43)
+"prdump.c", line 54:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(54)
+"prdump.c", line 57:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(57)
+"prdump.c", line 58:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(58)
+"prdump.c", line 61:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(61)
+"prdump.c", line 66:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(66)
+"prdump.c", line 70:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(70)
+"prdump.c", line 74:kprintf: variable # of args.	kprintf.c(15)  ::  prdump.c(74)
+"preceive.c", line 15: warning: ps unused in function preceive
+"preset.c", line 16: warning: ps unused in function preset
+"psend.c", line 15:psend, arg. 2 used inconsistently	psend.c(15)  ::  icmp_in.c(34)
+"psend.c", line 15:psend, arg. 2 used inconsistently	psend.c(15)  ::  ip_in.c(44)
+"psend.c", line 16: warning: ps unused in function psend
+"putc.c", line 14:putc defined( putc.c(14) ), but never used
+"qdump.c", line 15:qdump defined( qdump.c(15) ), but never used
+"qdump.c", line 24:qdumph defined( qdump.c(24) ), but never used
+"qdump.c", line 26:kprintf: variable # of args.	kprintf.c(15)  ::  qdump.c(26)
+"qdump.c", line 35:qdumpa defined( qdump.c(35) ), but never used
+"qdump.c", line 76:kprintf: variable # of args.	kprintf.c(15)  ::  qdump.c(76)
+"rarp_in.c", line 16: warning: ps unused in function rarp_in
+"rarp_in.c", line 40:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  rarp_in.c(40)
+"read.c", line 14:read, arg. 2 used inconsistently	read.c(14)  ::  getutim.c(32)
+"read.c", line 14:read, arg. 2 used inconsistently	read.c(14)  ::  lfsnewd.c(31)
+"read.c", line 14:read, arg. 2 used inconsistently	read.c(14)  ::  netin.c(27)
+"read.c", line 14:read, arg. 2 used inconsistently	read.c(14)  ::  rfsend.c(38)
+"read.c", line 14:read, arg. 3 used inconsistently	read.c(14)  ::  ibfree.c(27)
+"read.c", line 14:read, arg. 3 used inconsistently	read.c(14)  ::  ibput.c(29)
+"read.c", line 14:read, arg. 3 used inconsistently	read.c(14)  ::  lfsetup.c(48)
+"read.c", line 14:read, arg. 3 used inconsistently	read.c(14)  ::  lfsnewd.c(31)
+"receive.c", line 12:receive defined( receive.c(12) ), but never used
+"receive.c", line 15: warning: ps unused in function receive
+"recvclr.c", line 13: warning: ps unused in function recvclr
+"recvtim.c", line 18: warning: ps unused in function recvtim
+"remove.c", line 15:remove defined( remove.c(15) ), but never used
+"rename.c", line 15:rename defined( rename.c(15) ), but never used
+"resched.c", line 41:kprintf: variable # of args.	kprintf.c(15)  ::  resched.c(41)
+"resched.c", line 47:kprintf: variable # of args.	kprintf.c(15)  ::  resched.c(47)
+"resume.c", line 14: warning: ps unused in function resume
+"rfalloc.c", line 15: warning: ps unused in function rfalloc
+"rfcntl.c", line 12: warning: argument devptr unused in function rfcntl
+"rfcntl.c", line 25:control: variable # of args.	control.c(14)  ::  rfcntl.c(25)
+"rfcntl.c", line 31:rfmkpac, arg. 5 used inconsistently	rfmkpac.c(19)  ::  rfcntl.c(31)
+"rfdump.c", line 13:rfdump defined( rfdump.c(13) ), but never used
+"rfdump.c", line 18:kprintf: variable # of args.	kprintf.c(15)  ::  rfdump.c(18)
+"rfdump.c", line 26:kprintf: variable # of args.	kprintf.c(15)  ::  rfdump.c(26)
+"rfmkpac.c", line 19:rfmkpac, arg. 5 used inconsistently	rfmkpac.c(19)  ::  rfcntl.c(31)
+"rfopen.c", line 12: warning: argument devptr unused in function rfopen
+"rfopen.c", line 20: warning: ps unused in function rfopen
+"rfsend.c", line 18: warning: ps unused in function rfsend
+"rfsend.c", line 23:open, arg. 3 used inconsistently	open.c(15)  ::  rfsend.c(23)
+"rfsend.c", line 26:control, arg. 3 used inconsistently	control.c(14)  ::  rfsend.c(26)
+"rfsend.c", line 26:control: variable # of args.	control.c(14)  ::  rfsend.c(26)
+"rfsend.c", line 30:control: variable # of args.	control.c(14)  ::  rfsend.c(30)
+"rfsend.c", line 33:write, arg. 2 used inconsistently	write.c(14)  ::  rfsend.c(33)
+"rfsend.c", line 38:read, arg. 2 used inconsistently	read.c(14)  ::  rfsend.c(38)
+"route.c", line 41:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  route.c(41)
+"route.c", line 49:write, arg. 2 used inconsistently	write.c(14)  ::  route.c(49)
+"rwho.c", line 14:create, arg. 1 used inconsistently	create.c(21)  ::  rwho.c(14)
+"rwho.c", line 14:create: variable # of args.	create.c(21)  ::  rwho.c(14)
+"rwho.c", line 15:create, arg. 1 used inconsistently	create.c(21)  ::  rwho.c(15)
+"rwho.c", line 15:create: variable # of args.	create.c(21)  ::  rwho.c(15)
+"rwhod.c", line 24: warning: ps unused in function rwhod
+"rwhod.c", line 54:getbuf value declared inconsistently	getbuf.c(14)  ::  rwhod.c(54)
+"rwhod.c", line 54:getbuf value used inconsistently	getbuf.c(14)  ::  rwhod.c(54)
+"rwhod.c", line 72:Shl used( rwhod.c(72) ), but not defined
+"rwhoind.c", line 18: warning: ps unused in function rwhoind
+"rwhoind.c", line 23:control, arg. 3 used inconsistently	control.c(14)  ::  rwhoind.c(23)
+"rwhoind.c", line 23:control: variable # of args.	control.c(14)  ::  rwhoind.c(23)
+"rwhoind.c", line 23:open, arg. 3 used inconsistently	open.c(15)  ::  rwhoind.c(23)
+"screate.c", line 16: warning: ps unused in function screate
+"sdelete.c", line 16: warning: ps unused in function sdelete
+"seek.c", line 14:seek defined( seek.c(14) ), but never used
+"send.c", line 16: warning: ps unused in function send
+"sendf.c", line 14:sendf defined( sendf.c(14) ), but never used
+"sendf.c", line 16: warning: ps unused in function sendf
+"setdev.c", line 14:setdev defined( setdev.c(14) ), but never used
+"setnok.c", line 14:setnok defined( setnok.c(14) ), but never used
+"setnok.c", line 15: warning: ps unused in function setnok
+"signal.c", line 17: warning: ps unused in function signal
+"signaln.c", line 18: warning: ps unused in function signaln
+"sleep.c", line 16: warning: ps unused in function sleep
+"sleep10.c", line 16: warning: ps unused in function sleep10
+"sndrarp.c", line 19: warning: ps unused in function sndrarp
+"sndrarp.c", line 29:write, arg. 2 used inconsistently	write.c(14)  ::  sndrarp.c(29)
+"sreset.c", line 18: warning: ps unused in function sreset
+"ssclock.c", line 14:stopclk defined( ssclock.c(14) ), but never used
+"ssclock.c", line 23:strtclk defined( ssclock.c(23) ), but never used
+"ssclock.c", line 24: warning: ps unused in function strtclk
+"suspend.c", line 15: warning: ps unused in function suspend
+"tdump.c", line 40:tdumph defined( tdump.c(40) ), but never used
+"tdump.c", line 42:kprintf: variable # of args.	kprintf.c(15)  ::  tdump.c(42)
+"tdump.c", line 54: warning: ps unused in function tdump1
+"tdump.c", line 59:kprintf: variable # of args.	kprintf.c(15)  ::  tdump.c(59)
+"tdump.c", line 61:kprintf: variable # of args.	kprintf.c(15)  ::  tdump.c(61)
+"tdump.c", line 68:kprintf: variable # of args.	kprintf.c(15)  ::  tdump.c(68)
+"tdump.c", line 83:kprintf: variable # of args.	kprintf.c(15)  ::  tdump.c(83)
+"tdump.c", line 84:kprintf, arg. 2 used inconsistently	kprintf.c(15)  ::  tdump.c(84)
+"tdump.c", line 88:kprintf: variable # of args.	kprintf.c(15)  ::  tdump.c(88)
+"test.c", line 21:create, arg. 1 used inconsistently	create.c(21)  ::  test.c(21)
+"test.c", line 21:create: variable # of args.	create.c(21)  ::  test.c(21)
+"ttycntl.c", line 19: warning: ps unused in function ttycntl
+"ttygetc.c", line 15: warning: ps unused in function ttygetc
+"ttyinit.c", line 53: warning: junk set but not used in function ttyinit
+"ttyopen.c", line 13: warning: argument mode unused in function ttyopen
+"ttyputc.c", line 18: warning: ps unused in function ttyputc
+"ttyread.c", line 17: warning: ps unused in function ttyread
+"ttywrite.c", line 20: warning: ps unused in function ttywrite
+"udpecho.c", line 18:open, arg. 3 used inconsistently	open.c(15)  ::  udpecho.c(18)
+"udpnxtp.c", line 17: warning: ps unused in function udpnxtp
+"unmount.c", line 13:unmount defined( unmount.c(13) ), but never used
+"unmount.c", line 15: warning: ps unused in function unmount
+"unsleep.c", line 20: warning: ps unused in function unsleep
+"wait.c", line 16: warning: ps unused in function wait
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  arp_in.c(45)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  dfdsrch.c(43)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  dumkfs.c(33)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  dumkfs.c(64)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  dumkfs.c(69)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  getpath.c(41)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  ibfree.c(37)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  iblfree.c(44)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  ibnew.c(31)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  lfclose.c(36)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  lfsdfree.c(27)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  lfsdfree.c(28)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  lfsflush.c(21)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  lfsnewd.c(33)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  lfsnewd.c(37)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  rfsend.c(33)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  route.c(49)
+"write.c", line 14:write, arg. 2 used inconsistently	write.c(14)  ::  sndrarp.c(29)
+"write.c", line 14:write, arg. 3 used inconsistently	write.c(14)  ::  dumkfs.c(64)
+"write.c", line 14:write, arg. 3 used inconsistently	write.c(14)  ::  dumkfs.c(69)
+"write.c", line 14:write, arg. 3 used inconsistently	write.c(14)  ::  ibfree.c(36)
+"write.c", line 14:write, arg. 3 used inconsistently	write.c(14)  ::  ibput.c(34)
+"write.c", line 14:write, arg. 3 used inconsistently	write.c(14)  ::  lfsdfree.c(27)
+"write.c", line 14:write, arg. 3 used inconsistently	write.c(14)  ::  lfsflush.c(21)
+"write.c", line 14:write, arg. 3 used inconsistently	write.c(14)  ::  lfsnewd.c(37)

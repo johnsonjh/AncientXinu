@@ -1,0 +1,691 @@
+/*----------------------------------------------------------------------*/
+/*									*/
+/*	download	+++ load programs into LSI 11 +++		*/
+/*									*/
+/* This program takes PDP-11 a.out format files and downloads them	*/
+/* into a PDP-11/02.							*/
+/*									*/
+/* Usage:								*/
+/*	download [filename] [-lLSI#] [-b filename] [-v] [-s]		*/
+/*									*/
+/* Authors:								*/
+/*	R. Brown, Doug Comer						*/
+/*	Purdue University/CS Deptartment				*/
+/*	September, 1981 - Nov. 1983					*/
+/*									*/
+/* (c) Copyright, 1982, All rights reserved.				*/
+/*									*/
+/*									*/
+/*----------------------------------------------------------------------*/
+
+#include <stdio.h>
+#include <sgtty.h>
+#include <signal.h>
+#include <errno.h>
+#include "{Xinu-directory}/include/a.out.h"
+#include "{Xinu-directory}/include/baud.h"
+#include "getdev.h"
+
+#define DEFFILE	"a.out"
+#define LOADER	"{Xinu-directory}/lib/dl"
+
+#define settimer(t,m)	msgval = m; alarm(t)
+#define canceltimer()	alarm(0)
+#define	unctrl(ch)	(_unctrl[ch])
+
+char	*_unctrl[]	= {	/* unctrl codes for ttys		*/
+	"^@", "^A", "^B", "^C", "^D", "^E", "^F", "^G", "^H", "^I", "^J", "^K",
+	"^L", "^M", "^N", "^O", "^P", "^Q", "^R", "^S", "^T", "^U", "^V", "^W",
+	"^X", "^Y", "^Z", "^[", "^\\", "^]", "^~", "^_",
+	" ", "!", "\"", "#", "$",  "%", "&", "'", "(", ")", "*", "+", ",", "-",
+	".", "/", "0",	"1", "2",  "3", "4", "5", "6", "7", "8", "9", ":", ";",
+	"<", "=", ">",	"?", "@",  "A", "B", "C", "D", "E", "F", "G", "H", "I",
+	"J", "K", "L",	"M", "N",  "O", "P", "Q", "R", "S", "T", "U", "V", "W",
+	"X", "Y", "Z",	"[", "\\", "]", "^", "_", "`", "a", "b", "c", "d", "e",
+	"f", "g", "h",	"i", "j",  "k", "l", "m", "n", "o", "p", "q", "r", "s",
+	"t", "u", "v",	"w", "x",  "y", "z", "{", "|", "}", "~", "^?"
+};
+#ifndef TRUE
+#define TRUE	1
+#define FALSE	0
+typedef int	Bool;
+#endif
+typedef unsigned short lsiword;
+
+#define SOH		'/'
+#define ACK		'y'
+#define NAK		'n'
+#define ESC		'\033'
+#define PACKSIZE	0200
+#define LSIPORT		0177560
+#define	LSISPEED	B9600		/* speed of LSI line for stty	*/
+#define INTDISABLE	0340
+#define EOS		((char)0)
+#define MAXADDR		0160000
+
+#define LOADSTART	0
+#define SP		6
+
+/*
+ * Argument defaults then global structure
+ */
+
+
+struct {
+	char *lsiline;
+	int  baudrate;
+	char *filename;
+	char *loader;
+	int  startdelay;
+	Bool verbose;
+	Bool silent;
+	Bool autostart;
+} A;
+
+int Haltedat;
+int Devfd;
+char class[MAXNAMELEN];
+int useclass;			/* TRUE iff class requested explicitly	*/
+int machnum;			/* device number requested/received	*/
+char dev[MAXNAMELEN], devname[MAXNAMELEN];
+char *msgval;
+char	lockfile[20];
+char *Openfiles[20];
+extern int errno;
+
+/*
+ * MAIN PROGRAM...
+ */
+main ( argc, argv )
+int argc;
+char *argv[];
+{
+	int aoutfd, ldrfd;
+	int alarmhandler(), inthandler();
+        int bsize, asize;
+	char buf[32];
+	struct exec ahdr, bhdr;
+
+	/*
+	 * set up terminal modes...prepare to reset on interrupt
+	 */
+	procargs(argc, argv);
+	if ( signal(SIGINT,SIG_IGN) != SIG_IGN )
+		signal(SIGINT,inthandler);
+	if ( signal(SIGTERM,SIG_IGN) != SIG_IGN )
+		signal(SIGTERM,inthandler);
+	if ( signal(SIGQUIT,SIG_IGN) != SIG_IGN )
+		signal(SIGQUIT,inthandler);
+
+	signal(SIGALRM, alarmhandler);
+	/*
+	 * open lines and files - set line mode
+	 */
+	if ((machnum=getdev(useclass, class, machnum, &Devfd, lockfile)) < 0)
+		exit(1);
+	if (machnum == 0) {
+		strcpy(devname, class);
+		if ( !A.silent )
+			printf("Using %s\n", class);
+	}
+	else {
+		sprintf(devname, DEVNAME, DEVDIR, class);
+		if ( !A.silent )
+			printf("Using %s #%d\n", class, machnum);
+	}
+	Openfiles[Devfd] = A.lsiline = sprintf(dev, devname, machnum);
+	aoutfd = openfile(A.filename,0);
+	ldrfd = openfile(A.loader,0);
+	linemode(Devfd,A.baudrate,RAW);
+	/*
+	 * download sequence -
+	 *    get ODT's attention
+	 * load bootstrap, enter
+	 * load program
+	 */
+	gethdr(aoutfd, &ahdr);
+	gethdr(ldrfd,&bhdr);
+	message("getting ODT...");
+	getodt(Devfd);
+	bsize = bhdr.a_text+bhdr.a_data;
+	asize = ahdr.a_text+ahdr.a_data;
+	message("loading boot program...");
+	bootload(ldrfd,&bhdr,0);
+	setreg(Devfd,1,ahdr.a_bss);
+	setreg(Devfd,2,(A.autostart ? A.startdelay : -1));
+	setreg(Devfd,3,ahdr.a_entry & (~1));
+	setreg(Devfd,4,LSIPORT);
+        message("\rstarting boot loader...");
+	sendodt(Devfd,"P",FALSE);
+        fastload(aoutfd, &ahdr);
+	autostart(Devfd,&ahdr);
+        message("done");
+	touch(lockfile);
+	callexit(0);
+}
+/*
+ *====================================================================
+ * procargs - parse and check command line, setup global A structure
+ *====================================================================
+ */
+procargs(argc, argv)
+int argc;
+char *argv[];
+{
+	int arg, i;
+	int unswitched;
+
+	A.filename  = DEFFILE;
+	A.baudrate = B9600;
+	strcpy(class, "LSI");
+	useclass = FALSE;
+	machnum = ANYDEV;
+	A.loader    = LOADER;
+	A.verbose = FALSE;
+	A.silent = FALSE;
+	A.autostart = FALSE;
+	A.startdelay = 0;
+	unswitched = 0;
+	for ( arg=1 ; arg<argc ; arg++ ) {
+		if ( argv[arg][0] == '-' ) {
+			switch ( argv[arg][1] ) {
+			case 'c':
+				argv[arg] += 2;
+				strcpy(class, argv[arg]);
+				useclass = TRUE;
+				break;
+			case 'l':
+				argv[arg] += 2;
+				if ( (machnum=atoi(argv[arg])) < 0)
+					usagexit(argv[0]);
+				break;
+			case 't':
+				argv[arg] += 2;
+				strcpy(class, argv[arg]);
+				machnum = TTYNAME;
+				break;
+			case 'B':
+				if (*(argv[arg]+=2) == '\0') {
+					A.baudrate = NOBAUD;
+					break;
+				}
+				for (i = 0; i < NBAUD; ++i)
+					if (strcmp(baudlist[i].name,
+						argv[arg]) == 0)
+							break;
+				if (i < NBAUD)
+					A.baudrate = baudlist[i].rate;
+				else {
+					fprintf(stderr,
+						"Unknown baud rate: %s\n",
+						argv[arg]);
+					exit(1);
+				}
+				break;
+			case 'b':
+				if ( ++arg >= argc )
+					usagexit(argv[0]);
+				A.loader = argv[arg];
+				break;
+			case 'v':
+				A.verbose = TRUE;
+				break;
+			case 's':
+				A.silent = TRUE;
+				break;
+			case 'a':
+				A.autostart = TRUE;
+				A.startdelay = atoi(&argv[arg][2]);
+				break;
+			default:
+				usagexit(argv[0]);
+			}
+		} else /* ( argv[arv][1] != '-' ) */ {
+			switch ( unswitched++ ) {
+			case 0:
+				A.filename = argv[arg];
+				break;
+			default:
+				usagexit(argv[0]);
+			}
+		}
+	}
+}
+
+/*
+ *================================
+ * gethdr - read an a.out header
+ *================================
+ */
+gethdr(fd,hdr)
+int fd;
+struct exec *hdr;
+{
+	if ( read(fd, hdr, sizeof *hdr) != sizeof *hdr) {
+		fprintf(stderr,"%s: EOF reading a.out header\n",Openfiles[fd]);
+		callexit(1);
+	}
+	if ( hdr->a_magic != A_MAGIC1 ) {
+		fprintf(stderr,"%s: wrong magic number\n",Openfiles[fd]);
+		callexit(1);
+	}
+}
+
+/*
+ *==========================================
+ * usagexit - print usage message and exit
+ *==========================================
+ */
+usagexit(pgm)
+char *pgm;
+{
+	fprintf(stderr,
+	"usage: %s [filename] [-l lsi#] [-b filename] [-v] [-s] [-a [delay]]",
+		pgm);
+	callexit(1);
+}
+
+/*
+ *==========================================================
+ * openfile - try to open file, exit with message if error
+ *==========================================================
+ */
+openfile(name,mode)
+char *name;
+int mode;
+{
+	int fd;
+	settimer(10, "open timed out");
+	if ((fd=open(name,mode)) < 0 ) {
+		perror(name);
+		callexit(1);
+	}
+	canceltimer();
+	Openfiles[fd] = name;
+	return(fd);
+}
+/*
+ *=======================================
+ * linemode - set up linemode and speed
+ *=======================================
+ */
+linemode(fd,speed,mode)
+int fd, speed, mode;
+{
+	struct sgttyb tcb;
+	if ( gtty(fd,&tcb) < 0 ) {
+		perror(Openfiles[fd]);
+		callexit(1);
+	}
+	if (speed != NOBAUD)
+		tcb.sg_ispeed = tcb.sg_ospeed = speed;
+	tcb.sg_flags = mode;
+	stty(fd,&tcb);
+}
+
+/*
+ *===============================
+ * getodt - get ODT's attention
+ *===============================
+ * Input state - undefined
+ * Output state - immediately after ODT prompt
+ */
+getodt(fd)
+int fd;
+{
+        char buf[BUFSIZ], *atptr, *rindex();
+
+	ioctl(fd, TIOCSBRK, NULL);
+	sleep(2);
+	ioctl(fd, TIOCCBRK, NULL);
+        readuntil(fd,"@",buf,10);
+        atptr = rindex(buf,'@');
+        if ( atptr != buf && *(atptr-1) == '^' )
+                readuntil(fd,"@",buf,10);
+}
+/*
+ *==================================================
+ * readuntil - read from line until some character
+ *==================================================
+ */
+readuntil ( fd, ch, buf, time )
+int fd, time;
+char *ch, *buf;
+{
+	settimer(time, "read timed out");
+	if ( A.verbose )
+		printf("IN: ");
+	do {
+		if ( read(fd, buf, 1) != 1 ) {
+			perror(Openfiles[fd]);
+			callexit(1);
+		}
+		if (A.verbose )
+			printf("%s",unctrl(*buf));
+	} while ( *buf == EOS || index(ch,*buf++) == NULL );
+	*buf = EOS;
+	canceltimer();
+	if ( A.verbose )
+		printf("\n");
+}
+
+/*
+ *=========================================
+ * alarmhandler - return from alarm calls
+ *=========================================
+ */
+alarmhandler()
+{
+	signal(SIGALRM, alarmhandler);
+	fprintf(stdout, "%s\n", msgval);
+	exit(1);
+}
+
+/*
+ *=====================================
+ * inthandler -- interrupt processing
+ *=====================================
+ */
+inthandler()
+{
+	callexit(2);
+}
+/*
+ *=======================================
+ * callexit - restore ttymodes and exit
+ *=======================================
+ */
+callexit(ret)
+int ret;
+{
+	exit(ret);
+}
+/*
+ *===========================================
+ * bootload - load bootstrap loader via ODT
+ *===========================================
+ * input state: after ODT prompt
+ * output state: same
+ */
+bootload(fdin, hdr, loc)
+int fdin;
+int loc;
+struct exec *hdr;
+{
+	FILE *infile;
+	int length, stklen, i, addr;
+	lsiword word;
+	char buf[32], *stack;
+
+	infile = fdopen(dup(fdin),"r");
+	fseek(infile,sizeof(struct exec),0);
+	length = hdr->a_text + hdr->a_data;
+	addr = LOADSTART;
+	/*
+	 * load first part of the boot loader at location LOADSTART
+	 */
+	do {
+		fread ( &word, sizeof word, 1, infile);
+		if ( addr == LOADSTART ) {
+			sprintf(buf,"%o/",addr+loc);
+			sendodt(Devfd,buf,TRUE);
+		} else
+			sendodt(Devfd,"\n",TRUE);
+		readuntil(Devfd," ?", buf, 7);
+		sprintf(buf,"%o",word&0xffff);
+		sendodt(Devfd,buf,TRUE);
+		if ( !A.silent && ! A.verbose )
+			displayval(addr);
+		addr += sizeof (lsiword);
+	} while ( word != 0177777 );
+	if ( !A.silent && ! A.verbose )
+                printf("\r");
+	sendodt(Devfd,"\r",TRUE);
+	readuntil(Devfd,"@",buf,5);
+	/*
+	 * send the boot loader in reverse order
+	 */
+	stack = (char *)malloc(length);
+	stklen = 0;
+	while ( addr+stklen < length )
+		stack[stklen++] = getc(infile);
+	setreg(Devfd,0,MAXADDR);
+	setreg(Devfd,1,stklen);
+        setreg(Devfd,7,LOADSTART);
+        setreg(Devfd,-1,INTDISABLE);
+        sendodt(Devfd,"P", FALSE);
+        sleep(1);
+	for ( i=stklen-1 ; i>=0 ; i-- ) {
+		write(Devfd, &stack[i], 1);
+		if ( A.verbose )
+			printf("%03o ",stack[i]&0xff);
+	}
+        if ( A.verbose )
+                printf("\n");
+	readuntil(Devfd,"@",buf,5);
+}
+
+/*
+ *==============================================
+ * sendodt - send a message to ODT half duplex
+ *==============================================
+ */
+sendodt(fd, msg, wait)
+int fd;
+char *msg;
+Bool wait;
+{
+
+	char buf[32], *ptr, tmpstr[2];
+	if ( A.verbose ) {
+		printf("OUT: ");
+		for ( ptr=msg ; *ptr!=EOS ; ptr++ ) {
+			printf("%s",unctrl(*ptr));
+		}
+		printf("\n");
+	}
+	while (*msg!=EOS) {
+		write(fd,msg,1);
+                if ( wait ) {
+                        tmpstr[0] = *msg;
+                        tmpstr[1] = EOS;
+                        readuntil(fd, tmpstr, buf, 5);
+                }
+		msg++;
+	}
+}
+
+/*
+ *==========================================
+ * setreg - preload a register through ODT
+ *==========================================
+ */
+setreg(fd, reg, value)
+int fd, reg, value;
+{
+	char buf[32];
+        if ( reg >= 0 )
+                sprintf(buf,"R%d/",reg);
+        else
+                sprintf(buf,"$S/");
+	sendodt(fd,buf,TRUE);
+        if ( !A.silent && !A.verbose )
+                displayreg(reg);
+	readuntil(fd," ",buf,5);
+	sprintf(buf,"%o\r",value&0xffff);
+	sendodt(fd,buf,TRUE);
+	readuntil(fd,"@",buf,5);
+}
+
+/*
+ *=================================================
+ * message - conditionally display status message
+ *=================================================
+ */
+message(str)
+char *str;
+{
+	if ( !A.silent )
+		puts(str);
+}
+
+/*
+ *================================
+ * fastload - load user program
+ *================================
+ */
+
+FILE *Fastline;
+char Fastbuf[BUFSIZ];
+
+fastload(fd,ahdr)
+int fd;
+struct exec *ahdr;
+{
+        int words, addr, length, total;
+	FILE *infile;
+	lsiword buf[PACKSIZE];
+	char resp;
+
+	words = (ahdr->a_text+ahdr->a_data) / sizeof (lsiword);
+	Fastline = fdopen(Devfd,"w");
+	setbuf(Fastline,Fastbuf);
+	infile = fdopen(fd,"r");
+	fseek(infile, (long) sizeof (struct exec), 0);
+	addr = LOADSTART;
+	while ( words > 0 ) {
+		length = (words>PACKSIZE ? PACKSIZE : words);
+		fread(buf,sizeof(lsiword),length,infile);
+		do {
+			sendpack(addr,length,buf);
+                        settimer(6, "fastload read timed out");
+                        if ( read ( Devfd, &resp, 1) != 1 ) {
+				perror(Openfiles[Devfd]);
+				exit(1);
+                        }
+                        canceltimer();
+                        if ( A.verbose )
+                                printf("response is %s\n",unctrl(resp));
+                        else if ( resp == NAK )
+                                fprintf(stderr,"NAK\n");
+		} while ( resp != ACK );
+
+		addr += length * sizeof (lsiword);
+		words -= length;
+                if ( !A.silent && !A.verbose )
+                        displayval(words);
+	}
+        if ( !A.silent && !A.verbose ) {
+                displayval(0);
+                printf("\r");
+        }
+        sendpack ( addr, 0, buf );
+}
+
+/*
+ *=========================================
+ * sendpack - send a packet to the LSI-11
+ *=========================================
+ */
+
+#define putwsum(w) putw(w), sum += w
+#define rawputc(c) putc(c,Fastline)
+
+sendpack(addr, length, buf)
+int addr, length;
+lsiword *buf;
+{
+	int sum, i;
+        if ( A.verbose ) {
+                printf("Sending packet addr=%6o len=%d\n",addr,length);
+                for ( i=0 ; i<length ; i++ )
+                        printf("%03o ",buf[i]&0xff);
+                printf("\n");
+        }
+	rawputc(SOH);
+	sum = 0;
+	putwsum(addr);
+	putwsum(length);
+	for ( i=0 ; i<length ; i++ )
+		putwsum(buf[i]);
+        if ( A.verbose )
+                printf("sum is %d\n",(-sum)&0xffff);
+        putwsum((-(lsiword)sum));
+	fflush(Fastline);
+}
+/*
+ *=============================================
+ * putw - write a word to the high speed line
+ *=============================================
+ */
+putw(word)
+lsiword word;
+{
+	putch((char)(word&0xff));
+	putch((char)((word>>8)&0xff));
+}
+/*
+ *=================================================
+ * putch - put a character on the high speed line
+ *=================================================
+ */
+putch(ch)
+char ch;
+{
+	if ( ch == ESC || ch == SOH )
+		rawputc(ESC);
+	rawputc(ch);
+}
+
+/*
+ *========================================
+ * autostart - implement startup options
+ *========================================
+ */
+autostart(fd,hdr)
+int fd;
+struct exec *hdr;
+{
+	int i;
+	char buf[32];
+
+	if ( !A.autostart ) {
+		readuntil(fd, "@", buf, 2);
+		setreg(fd, 7, (i=hdr->a_entry & (~1)) );
+		setreg(fd, 6, hdr->a_text + hdr->a_data + hdr->a_bss + 6);
+		setreg(fd, -1, INTDISABLE);
+		if ( !A.silent )
+			printf("\rStart at 0%o\n",i);
+	}
+}
+/*
+ *============================================
+ * displayval - display a number on one line
+ *============================================
+ */
+displayval(val)
+int val;
+{
+	char buf[32];
+	sprintf(buf,"%d",val);
+	strncat(buf,"        ",8-strlen(buf));
+	printf("\r%s",buf);
+	fflush(stdout);
+}
+/*
+ *==============================================
+ * displayreg - display a register on one line
+ *==============================================
+ */
+displayreg(val)
+int val;
+{
+	char buf[32];
+        if ( val < 0 )
+                strcpy(buf,"PS");
+        else
+                sprintf(buf,"R%d",val);
+        strncat(buf,"        ",8-strlen(buf));
+	printf("\r%s",buf);
+	fflush(stdout);
+}

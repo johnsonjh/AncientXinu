@@ -1,0 +1,28 @@
+.TH DISABLE 3
+.SH NAME
+disable, enable, restore \- change and restore processor interrupt status
+.SH SYNOPSIS
+.B disable(ps);
+.br
+.B enable(ps);
+.br
+.B restore(ps);
+.PP
+.B char	ps;
+.br
+.SH DESCRIPTION
+These routines change the processor interrupt status mode.
+Normally, procedures use
+.I disable
+and
+.I restore
+to save the interrupt status, mask interrupts off, and then restore
+the saved status.
+\f2Enable\f1 explicitly enables interrupts; it is used only at system
+startup.
+.SH SEE ALSO
+cvt(1)
+.SH BUGS
+In this implementation, \f2disable\f1 and \f2restore\f1 are macros
+that must have local variable \f2ps\f1 as an argument, and must use
+CVT(1) to convert the assembler code they produce to legal assembler.

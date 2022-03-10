@@ -1,0 +1,106 @@
+#ifdef VAX
+# define makecc(val,i)  lastcon = (lastcon<<8)|((val<<24)>>24);  
+#else 
+# define makecc(val,i)	lastcon = i ? (val<<8)|lastcon : val
+#endif
+
+#ifdef VAX 
+# define  ARGINIT 32 
+# define  AUTOINIT 0 
+#else 
+# define  ARGINIT 64 
+# define  AUTOINIT 0
+#endif 
+
+# define  SZCHAR 8
+# define  SZINT 32
+# define  SZFLOAT 32
+# define  SZDOUBLE 64
+# define  SZLONG 32
+# define  SZSHORT 16
+# define SZPOINT 32
+# define ALCHAR 8
+#ifdef VAX 
+# define ALINT 32
+# define ALFLOAT 32
+# define ALDOUBLE 32
+# define ALLONG 32
+# define ALSHORT 16
+# define ALPOINT 32
+# define ALSTRUCT 8
+# define  ALSTACK 32 
+#else 
+# define ALINT 16
+# define ALFLOAT 16
+# define ALDOUBLE 16
+# define ALLONG 16
+# define ALSHORT 16
+# define ALPOINT 16
+# define ALSTRUCT 16
+# define  ALSTACK 16
+#endif 
+
+/*	size in which constants are converted */
+/*	should be long if feasable */
+
+# define CONSZ long
+# define CONFMT "%ld"
+
+/*	size in which offsets are kept
+/*	should be large enough to cover address space in bits
+*/
+
+# define OFFSZ long
+
+/* 	character set macro */
+
+# define  CCTRANS(x) x
+
+/* register cookie for stack poINTer */
+
+#ifdef VAX 
+# define  STKREG 13
+# define ARGREG 12
+#else 
+# define  STKREG 14
+# define ARGREG 14
+#endif 
+
+/*	maximum and minimum register variables */
+
+#ifdef VAX 
+# define MAXRVAR 11
+# define MINRVAR 6
+#else 
+# define MAXRVAR 7
+# define MINRVAR 2
+#endif 
+
+
+	/* various standard pieces of code are used */
+# define LABFMT "L%d"
+
+/* show stack grows negatively */
+#define BACKAUTO
+#define BACKTEMP
+
+#ifdef VAX
+/* show field hardware support on VAX */
+#define FIELDOPS 
+
+/* bytes are numbered from right to left */
+#define RTOLBYTES
+#endif
+
+/* we want prtree included */
+# define STDPRTREE
+# ifndef FORT
+# define ONEPASS
+#endif
+
+# define ENUMSIZE(high,low) INT
+
+
+# define ADDROREG
+# define FIXDEF(p) outstab(p)
+# define FIXARG(p) fixarg(p)

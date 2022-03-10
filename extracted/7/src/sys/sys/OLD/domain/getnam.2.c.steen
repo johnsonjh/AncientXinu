@@ -1,0 +1,85 @@
+/* getnam2.c - IPtoname */
+
+#include <conf.h>
+#include <kernel.h>
+#include <proc.h>
+#include <network.h>
+#include <IPtoname.h>
+
+/*-----------------------------------------------------
+ * IPtoname - resolve an IP address into a domain name
+ *-----------------------------------------------------
+ */
+SYSCALL IPtoname (ipaddr, name, buf, buflen)
+IPaddr ipaddr;
+char *name;
+char *buf;
+int buflen;
+{
+    int count;
+    int dg;
+    int i;
+    int len;
+    int qlen;
+    static int qid = 0;
+    char ps;
+    char fport[MAXFPORTLEN];
+    char *qdptr;
+    char *qhead = "\0\0\1\0\0\1\0\0\0\0\0\0";
+    char *qbody = "\7in-addr\4arpa\0\0\14\0\1";
+
+    disable (ps);
+
+    /* fill in the name server request and send it to the datagram device */
+
+    qdptr = buf;
+    qlen = QHEADLEN + QBODYLEN;
+    blkcopy (qdptr, qhead, QHEADLEN);   /* name server header; see RFCs */
+    qdptr += QHEADLEN;                  /* 882 & 883 for details        */
+    *(buf + IDINDEX) = (char) ++qid;
+    for (i = 3; i > -1; i--) {
+        sprintf (++qdptr, "%d", (u_short) ipaddr[i]);
+        *(qdptr - 1) = len = strlen (qdptr);
+        qlen += len + 1; 
+        qdptr += len;
+    }
+    blkcopy (qdptr, qbody, QBODYLEN);   /* static part of name server data; */
+                                        /* again, see RFCs for details      */
+
+    sprintf (fport, "%d.%d.%d.%d:%d", (u_short) Net.mynet[0],
+            (u_short) Net.mynet[1], (u_short) Net.mynet[2],
+             (u_short) Net.mynet[3], UNAMESER);
+    dg = open (NETWORK, fport, ANYLPORT);
+    control (dg, DG_SETMODE, DG_DMODE | DG_TMODE);
+    write (dg, buf, qlen);
+    do
+        read (dg, buf, buflen);
+    while (*(buf + IDINDEX) != (char) qid);
+    close (dg);
+
+    qdptr = buf + qlen;
+    if ((*(qdptr) & 0xC0) == 192)
+        qdptr += COMPOFFSET; 
+    else
+        qdptr += qlen - NONCOMPOFFSET;
+    
+    /* copy resolved name (if there is one) into the user's buffer; */
+    /* see RFCs for specifications of domain name format           */
+
+    if (count = (*(buf + ANCOUNT) > 0)) {
+        while (*qdptr) {
+            if (((*qdptr) & 0xC0) == 192)
+                qdptr = buf + (*(qdptr + 1) &0xFF);
+            else {
+                blkcopy (name, qdptr + 1, *qdptr);
+                name += *qdptr;
+                *name++ = '.';
+                qdptr += *qdptr + 1;
+            }
+        }
+        *(name-1) = '\0';
+    }
+    restore (ps);
+    return (count);
+}
+

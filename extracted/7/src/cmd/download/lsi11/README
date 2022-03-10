@@ -1,0 +1,12 @@
+			README
+			------
+
+This directory contains all LSI-11 specific downloader code
+including the code that executes on the VAX when downloading
+an 11 as well as the code that executes on the 11 for bootstrap,
+serial line downloading, and ethernet downloading.
+
+The Makefile included here is to allow the Makefile in the parent
+directory to remake and install things without knowing the structure
+of lower-level directories.
+

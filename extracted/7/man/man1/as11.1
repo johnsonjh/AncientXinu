@@ -1,0 +1,46 @@
+.TH AS11 1
+.SH NAME
+as11 \- \s-2PDP-11\s0 cross-assembler
+.SH SYNOPSIS
+.B as11
+[
+.B \-u
+] [
+.B \-o
+outfile ] [ file ... ]
+.SH DESCRIPTION
+.I As11
+assembles the specified files, using standard input if no file
+name is specified.
+If the optional
+.B \-u
+argument is specified, the assembler makes all undefined symbols in
+the current assembly ``undefined external''; otherwise the assembler
+complains about undefined symbols (\f3.globl\f1 can be used to declare
+undefined externals when not using \f2\-u\f1).
+.PP
+If the \f3\-o\f1 option is given,
+\f2as11\f1 writes its output to \f2outfile\f1.
+If the \f3\-o\f1 option is not included, \f2as11\f1 writes output
+to file \f2a.out\f1 in the current directory.
+Following convention,
+the mode of the output file is made executable if there were no unresolved
+external references (even though the output file is not directly
+executable on the cross development machine).
+.SH FILES
+.ta 1.5i
+/tmp/as\(**	temporary files
+.br
+a.out		default object file
+.SH DIAGNOSTICS
+\f2As11\f1 is built to accept assembler language output from
+compilers, not for humans.
+Diagnostics, which consist of single-letter messages,
+are cryptic at best.
+See Ritchie, ``\s-2UNIX\s0 Assembler Reference Manual'' for
+details.
+.SH "SEE ALSO"
+cc11(1),
+ld(1),
+nm(1),
+size11(1)

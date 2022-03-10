@@ -1,0 +1,111 @@
+.TH DOWNLOAD 1
+.SH NAME
+download \- load program into LSI\-11
+.SH SYNOPSIS
+.B download
+[ file ] ...
+[ option ] ...
+.SH DESCRIPTION
+.I Download
+loads an absolute binary program image (\s-2PDP\-11\s0 a.out format)
+into the memory of an \s-2LSI-11\s0 computer over an ethernet or
+an asynchronous line.
+After halting the \s-2LSI-11\s0 with a break,
+.I download
+either places a bootstrap in memory, and uses it to
+load the remainder of memory, or jumps to the resident portion of the 
+downloader.
+.PP
+Loading the object program takes time proportional to the size
+of the program itself.
+In two seconds, download will load about 56K bytes over the ethernet, or 1000
+bytes over a serial line.
+.PP
+.I Download
+will normally leave the \s-2LSI 11\s0 in ODT.
+The
+.I -a
+option requests
+.I download
+to auto-start the micro.
+The optional number \f2N\f1 following
+.I -a,
+forces a delay of approximately \f2N\f1 seconds before execution,
+allowing the user to reconnect the console port before output begins.
+.PP
+The serial-loader bootstrap program is loaded 100 words beyond the end of the
+user's object program.
+If there is insufficient memory for the bootstrap and stack,
+this program will fail.
+The ethernet downloader stores it's LSI-resident portion in real page 7,
+beyond normal object programs (virtual page 7 is used for memory-mapped I/O).
+.PP
+.I Download
+loads the user's program as specified in the command line.
+If no program name is given,
+.I a.out
+is used.
+.PP
+Options are:
+.TP
+.BI \-v
+Verbose.
+Print details of the communications with the \s-2LSI-11/2\s0.
+.TP
+.B \-s
+Silent.
+Print no information messages (default is to print some messages).
+.TP
+.BI \-a "[N]"
+Autostart.
+After loading, start the user's program running in the \s-2LSI-11\s0.
+Optionally delay
+.I N
+seconds.
+.TP
+.BI \-lx
+Use LSI number
+.I x
+as the LSI 11 for downloading.
+If this option is not specified, download selects the \s-2LSI-11\s0
+that the user has on reserve, or a free one if none is reserved.
+E.g., \-l9.
+.TP
+.BI \-d " f"
+Use file
+.I f
+as the downloader program (download will exec it, after parsing arguments).
+.TP
+.BI \-cL
+Use LSI in class L (as specified in the
+.I machines
+database).
+.TP
+.BI \-BX
+Use Baudrate
+.I X
+in communicating with the LSI console.
+.TP
+.BI \-h
+Hold the LSI, so multiple machines may be allocated to one user.
+.TP
+.BI \-e
+Reload the resident portion of the ethernet downloader (into a page beyond
+real page 7).
+.SH FILES
+.ta 1.6i
+/dev/LSI.i	LSI 11 device connections, as specified in machines database
+.br
+/tmp/xinu/LSI-*	Lock files for auto-select
+.br
+{Xinu-directory}/lib/machines	the database of available machines
+.br
+{Xinu-directory}/lib/sdl.boot.lsi	\s-2LSI 11\s0 part of serial bootstrap
+.br
+{Xinu-directory}/lib/sdl.lsi	serial downloader for \s-2LSI 11\s0
+.br
+{Xinu-directory}/lib/edl.lsi	ethernet downloader for \s-2LSI 11\s0
+.br
+{Xinu-directory}/lib/eload.lsi	\s-2LSI 11\s0 resident portion of ethernet downloader
+.br
+Note: files for other machines have ``lsi'' replaced by the machine type.

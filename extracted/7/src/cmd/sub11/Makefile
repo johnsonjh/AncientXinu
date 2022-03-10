@@ -1,0 +1,29 @@
+#
+#  Make the subroutine equivalents of extended instruction set
+#
+
+CFILES	=	subASH.c subASHC.c subMUL.c subDIV.c
+FILES	=	subASH subASHC subMUL subDIV
+CFLAGS	=	-O -s
+DESTDIR	=	/usr/Xinu/bin
+
+all:		$(FILES)
+
+install:	all
+		chmod 755 $(FILES)
+		cp $(FILES) $(DESTDIR)
+
+clean:
+		rm -rf *.o core a.out $(FILES)
+
+subASH:		subASH.c
+		$(CC) $(CFLAGS) -o subASH subASH.c
+
+subASHC:	subASHC.c
+		$(CC) $(CFLAGS) -o subASHC subASHC.c
+
+subMUL:		subMUL.c
+		$(CC) $(CFLAGS) -o subMUL subMUL.c
+
+subDIV:		subDIV.c
+		$(CC) $(CFLAGS) -o subDIV subDIV.c

@@ -1,0 +1,282 @@
+"clkinit.c", line 15: warning: junk unused in function clkinit
+"close.c", line 13:close defined( close.c(13) ), but never used
+"control.c", line 14:control defined( control.c(14) ), but never used
+"create.c", line 21:create multiply declared	create.c(21)  ::  create.c(79)
+"create.c", line 21:create value declared inconsistently	create.c(21)  ::  initialize.c(94)
+"create.c", line 21:create value used inconsistently	create.c(21)  ::  initialize.c(94)
+"create.c", line 21:create, arg. 1 used inconsistently	create.c(21)  ::  initialize.c(94)
+"create.c", line 21:create, arg. 6 used inconsistently	create.c(21)  ::  initialize.c(94)
+"create.c", line 34: warning: illegal combination of pointer and integer, op =
+"create.c", line 34: warning: illegal combination of pointer and integer, op ==
+"create.c", line 36:getstk value declared inconsistently	getstk.c(13)  ::  create.c(36)
+"create.c", line 36:getstk value used inconsistently	getstk.c(13)  ::  create.c(36)
+"create.c", line 36:getstk, arg. 1 used inconsistently	getstk.c(13)  ::  create.c(36)
+"create.c", line 79: redeclaration of newpid
+"create.c", line 79:create multiply declared	create.c(21)  ::  create.c(79)
+"dotrace.c", line 12:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  dotrace.c(12)
+"dotrace.c", line 18:kprintf: variable # of args.	kpollio.c(61)  ::  dotrace.c(18)
+"dotrace.c", line 9:dotrace defined( dotrace.c(9) ), but never used
+"dscopy.c", line 12:dscopy, arg. 1 used inconsistently	dscopy.c(12)  ::  dskstrt.c(31)
+"dscopy.c", line 12:dscopy, arg. 1 used inconsistently	dscopy.c(12)  ::  dsread.c(35)
+"dscopy.c", line 12:dscopy, arg. 2 used inconsistently	dscopy.c(12)  ::  dskstrt.c(31)
+"dscopy.c", line 12:dscopy, arg. 2 used inconsistently	dscopy.c(12)  ::  dskstrt.c(37)
+"dsinit.c", line 28: warning: illegal pointer combination
+"dsinit.c", line 29: warning: illegal combination of pointer and integer, op =
+"dsinit.c", line 32:screate value used inconsistently	screate.c(15)  ::  dsinit.c(32)
+"dsinit.c", line 33:screate value used inconsistently	screate.c(15)  ::  dsinit.c(33)
+"dsinit.c", line 34:screate value declared inconsistently	screate.c(15)  ::  dsinit.c(34)
+"dsinit.c", line 34:screate value used inconsistently	screate.c(15)  ::  dsinit.c(34)
+"dsinit.c", line 37:iosetvec, arg. 2 used inconsistently	iosetvec.c(15)  ::  dsinit.c(37)
+"dsinit.c", line 37:iosetvec, arg. 3 used inconsistently	iosetvec.c(15)  ::  dsinit.c(37)
+"dsinit.c", line 62:panic: variable # of args.	sluint.c(58)  ::  dsinit.c(62)
+"dsinter.c", line 12: redeclaration of dsinter
+"dsinter.c", line 40:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsinter.c(40)
+"dsinter.c", line 43:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsinter.c(43)
+"dskbcpy.c", line 13:dskbcpy defined( dskbcpy.c(13) ), but never used
+"dskenq.c", line 14:dskenq, arg. 2 used inconsistently	dskenq.c(14)  ::  dsread.c(30)
+"dskenq.c", line 14:dskenq, arg. 2 used inconsistently	dskenq.c(14)  ::  dsseek.c(31)
+"dskenq.c", line 14:dskenq, arg. 2 used inconsistently	dskenq.c(14)  ::  dswrite.c(29)
+"dskqopt.c", line 29:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(29)
+"dskqopt.c", line 36:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(36)
+"dskqopt.c", line 43:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(43)
+"dskqopt.c", line 44:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(44)
+"dskstrt.c", line 31: BUS_COM undefined
+"dskstrt.c", line 31: warning: BUS_COM may be used before set
+"dskstrt.c", line 31:dscopy, arg. 1 used inconsistently	dscopy.c(12)  ::  dskstrt.c(31)
+"dskstrt.c", line 31:dscopy, arg. 2 used inconsistently	dscopy.c(12)  ::  dskstrt.c(31)
+"dskstrt.c", line 37: BUS_BUF undefined
+"dskstrt.c", line 37: warning: BUS_BUF may be used before set
+"dskstrt.c", line 37:dscopy, arg. 2 used inconsistently	dscopy.c(12)  ::  dskstrt.c(37)
+"dsksync.c", line 37:suspend value declared inconsistently	suspend.c(13)  ::  dsksync.c(37)
+"dsksync.c", line 39:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsksync.c(39)
+"dsopen.c", line 14: warning: argument devptr unused in function dsopen
+"dsopen.c", line 15: warning: argument filenam unused in function dsopen
+"dsopen.c", line 16: warning: argument mode unused in function dsopen
+"dsopen.c", line 17:dsopen defined( dsopen.c(17) ), but never used
+"dsread.c", line 24: warning: illegal combination of pointer and integer, op ==
+"dsread.c", line 28: BUS_BUF undefined
+"dsread.c", line 28: warning: BUS_BUF may be used before set
+"dsread.c", line 28: warning: illegal combination of pointer and integer, op =
+"dsread.c", line 30:dskenq, arg. 2 used inconsistently	dskenq.c(14)  ::  dsread.c(30)
+"dsread.c", line 32:suspend value declared inconsistently	suspend.c(13)  ::  dsread.c(32)
+"dsread.c", line 35:dscopy, arg. 1 used inconsistently	dscopy.c(12)  ::  dsread.c(35)
+"dsread.c", line 36:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsread.c(36)
+"dsseek.c", line 22: warning: illegal combination of pointer and integer, op ==
+"dsseek.c", line 31:dskenq, arg. 2 used inconsistently	dskenq.c(14)  ::  dsseek.c(31)
+"dswrite.c", line 23: warning: illegal combination of pointer and integer, op ==
+"dswrite.c", line 29:dskenq, arg. 2 used inconsistently	dskenq.c(14)  ::  dswrite.c(29)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsinter.c(40)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsinter.c(43)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(29)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(36)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(43)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dskqopt.c(44)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsksync.c(39)
+"freebuf.c", line 14:freebuf, arg. 1 used inconsistently	freebuf.c(14)  ::  dsread.c(36)
+"freebuf.c", line 24:wait value declared inconsistently	wait.c(15)  ::  freebuf.c(24)
+"freebuf.c", line 28:signal value declared inconsistently	signal.c(15)  ::  freebuf.c(28)
+"freemem.c", line 14:freemem value declared inconsistently	freemem.c(14)  ::  kill.c(28)
+"freemem.c", line 14:freemem, arg. 1 used inconsistently	freemem.c(14)  ::  kill.c(28)
+"freemem.c", line 14:freemem, arg. 2 used inconsistently	freemem.c(14)  ::  kill.c(28)
+"freemem.c", line 22:end used( freemem.c(22) ), but not defined
+"freemem.c", line 31: warning: illegal pointer combination
+"getbuf.c", line 24:wait value declared inconsistently	wait.c(15)  ::  getbuf.c(24)
+"getbuf.c", line 27:signal value declared inconsistently	signal.c(15)  ::  getbuf.c(27)
+"getc.c", line 13:getc defined( getc.c(13) ), but never used
+"getmem.c", line 13:getmem value declared inconsistently	getmem.c(13)  ::  mkpool.c(25)
+"getmem.c", line 13:getmem value used inconsistently	getmem.c(13)  ::  mkpool.c(25)
+"getmem.c", line 13:getmem, arg. 1 used inconsistently	getmem.c(13)  ::  mkpool.c(25)
+"getpid.c", line 12:getpid value declared inconsistently	getpid.c(12)  ::  userret.c(15)
+"getpid.c", line 12:getpid value used inconsistently	getpid.c(12)  ::  userret.c(15)
+"getstk.c", line 13:getstk value declared inconsistently	getstk.c(13)  ::  create.c(36)
+"getstk.c", line 13:getstk value used inconsistently	getstk.c(13)  ::  create.c(36)
+"getstk.c", line 13:getstk, arg. 1 used inconsistently	getstk.c(13)  ::  create.c(36)
+"init.c", line 13:init multiply declared	init.c(13)  ::  init.c(13)
+"init.c", line 13:init multiply declared	init.c(13)  ::  init.c(13)
+"initialize.c", line 105: redeclaration of sysinit
+"initialize.c", line 105:nulluser multiply declared	initialize.c(76)  ::  initialize.c(105)
+"initialize.c", line 76:nulluser multiply declared	initialize.c(76)  ::  initialize.c(105)
+"initialize.c", line 82:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  initialize.c(82)
+"initialize.c", line 82:kprintf: variable # of args.	kpollio.c(61)  ::  initialize.c(82)
+"initialize.c", line 84:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  initialize.c(84)
+"initialize.c", line 86:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  initialize.c(86)
+"initialize.c", line 87:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  initialize.c(87)
+"initialize.c", line 94:create value declared inconsistently	create.c(21)  ::  initialize.c(94)
+"initialize.c", line 94:create value used inconsistently	create.c(21)  ::  initialize.c(94)
+"initialize.c", line 94:create, arg. 1 used inconsistently	create.c(21)  ::  initialize.c(94)
+"initialize.c", line 94:create, arg. 6 used inconsistently	create.c(21)  ::  initialize.c(94)
+"initialize.c", line 94:resume value declared inconsistently	resume.c(13)  ::  initialize.c(94)
+"ionull.c", line 11:ionull defined( ionull.c(11) ), but never used
+"iosetvec.c", line 15:iosetvec, arg. 2 used inconsistently	iosetvec.c(15)  ::  dsinit.c(37)
+"iosetvec.c", line 15:iosetvec, arg. 2 used inconsistently	iosetvec.c(15)  ::  ttyinit.c(36)
+"iosetvec.c", line 15:iosetvec, arg. 3 used inconsistently	iosetvec.c(15)  ::  dsinit.c(37)
+"iosetvec.c", line 15:iosetvec, arg. 3 used inconsistently	iosetvec.c(15)  ::  ttyinit.c(36)
+"iosetvec.c", line 42: warning: questionable conversion of function pointer
+"iosetvec.c", line 44:disptab used( iosetvec.c(44) ), but not defined
+"iosetvec.c", line 45: warning: questionable conversion of function pointer
+"kill.c", line 15:kill value declared inconsistently	kill.c(15)  ::  userret.c(15)
+"kill.c", line 28:freemem value declared inconsistently	freemem.c(14)  ::  kill.c(28)
+"kill.c", line 28:freemem, arg. 1 used inconsistently	freemem.c(14)  ::  kill.c(28)
+"kill.c", line 28:freemem, arg. 2 used inconsistently	freemem.c(14)  ::  kill.c(28)
+"kpollio.c", line 22:kgetc defined( kpollio.c(22) ), but never used
+"kpollio.c", line 24: warning: slowdown unused in function kgetc
+"kpollio.c", line 52: warning: function kputc has return(e); and return;
+"kpollio.c", line 61:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  dotrace.c(12)
+"kpollio.c", line 61:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  initialize.c(82)
+"kpollio.c", line 61:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  initialize.c(84)
+"kpollio.c", line 61:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  initialize.c(86)
+"kpollio.c", line 61:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  initialize.c(87)
+"kpollio.c", line 61:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  mdump.c(18)
+"kpollio.c", line 61:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  mdump.c(34)
+"kpollio.c", line 61:kprintf: variable # of args.	kpollio.c(61)  ::  dotrace.c(18)
+"kpollio.c", line 61:kprintf: variable # of args.	kpollio.c(61)  ::  initialize.c(82)
+"kpollio.c", line 61:kprintf: variable # of args.	kpollio.c(61)  ::  mdump.c(15)
+"kpollio.c", line 61:kprintf: variable # of args.	kpollio.c(61)  ::  mdump.c(18)
+"kpollio.c", line 61:kprintf: variable # of args.	kpollio.c(61)  ::  mdump.c(31)
+"kpollio.c", line 61:kprintf: variable # of args.	kpollio.c(61)  ::  mdump.c(34)
+"kpollio.c", line 61:kprintf: variable # of args.	kpollio.c(61)  ::  sluint.c(54)
+"mdump.c", line 11:mdump defined( mdump.c(11) ), but never used
+"mdump.c", line 15:kprintf: variable # of args.	kpollio.c(61)  ::  mdump.c(15)
+"mdump.c", line 16: warning: illegal pointer combination
+"mdump.c", line 18:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  mdump.c(18)
+"mdump.c", line 18:kprintf: variable # of args.	kpollio.c(61)  ::  mdump.c(18)
+"mdump.c", line 27:mdumph defined( mdump.c(27) ), but never used
+"mdump.c", line 31:kprintf: variable # of args.	kpollio.c(61)  ::  mdump.c(31)
+"mdump.c", line 32: warning: illegal pointer combination
+"mdump.c", line 34:kprintf, arg. 2 used inconsistently	kpollio.c(61)  ::  mdump.c(34)
+"mdump.c", line 34:kprintf: variable # of args.	kpollio.c(61)  ::  mdump.c(34)
+"mkpool.c", line 22:wait value declared inconsistently	wait.c(15)  ::  mkpool.c(22)
+"mkpool.c", line 25: warning: illegal combination of pointer and integer, op =
+"mkpool.c", line 25: warning: illegal combination of pointer and integer, op ==
+"mkpool.c", line 25:getmem value declared inconsistently	getmem.c(13)  ::  mkpool.c(25)
+"mkpool.c", line 25:getmem value used inconsistently	getmem.c(13)  ::  mkpool.c(25)
+"mkpool.c", line 25:getmem, arg. 1 used inconsistently	getmem.c(13)  ::  mkpool.c(25)
+"mkpool.c", line 34:signal value declared inconsistently	signal.c(15)  ::  mkpool.c(34)
+"mkpool.c", line 37:screate value declared inconsistently	screate.c(15)  ::  mkpool.c(37)
+"mkpool.c", line 37:screate value used inconsistently	screate.c(15)  ::  mkpool.c(37)
+"open.c", line 13:open defined( open.c(13) ), but never used
+"poolinit.c", line 20:poolinit defined( poolinit.c(20) ), but never used
+"poolinit.c", line 33:screate value declared inconsistently	screate.c(15)  ::  poolinit.c(33)
+"poolinit.c", line 33:screate value used inconsistently	screate.c(15)  ::  poolinit.c(33)
+"putc.c", line 14:putc defined( putc.c(14) ), but never used
+"read.c", line 14:read defined( read.c(14) ), but never used
+"receive.c", line 12:receive defined( receive.c(12) ), but never used
+"recvclr.c", line 12:recvclr defined( recvclr.c(12) ), but never used
+"resume.c", line 13:resume value declared inconsistently	resume.c(13)  ::  initialize.c(94)
+"scount.c", line 15:scount value declared inconsistently	scount.c(15)  ::  ttycntl.c(64)
+"scount.c", line 15:scount value declared inconsistently	scount.c(15)  ::  ttyiin.c(96)
+"scount.c", line 15:scount value declared inconsistently	scount.c(15)  ::  ttyoin.c(34)
+"scount.c", line 15:scount value declared inconsistently	scount.c(15)  ::  ttyread.c(75)
+"scount.c", line 15:scount value declared inconsistently	scount.c(15)  ::  ttywrite.c(70)
+"scount.c", line 15:scount value used inconsistently	scount.c(15)  ::  ttycntl.c(64)
+"scount.c", line 15:scount value used inconsistently	scount.c(15)  ::  ttyiin.c(32)
+"scount.c", line 15:scount value used inconsistently	scount.c(15)  ::  ttyiin.c(57)
+"scount.c", line 15:scount value used inconsistently	scount.c(15)  ::  ttyiin.c(66)
+"scount.c", line 15:scount value used inconsistently	scount.c(15)  ::  ttyiin.c(96)
+"scount.c", line 15:scount value used inconsistently	scount.c(15)  ::  ttyoin.c(34)
+"scount.c", line 15:scount value used inconsistently	scount.c(15)  ::  ttyread.c(33)
+"scount.c", line 15:scount value used inconsistently	scount.c(15)  ::  ttyread.c(75)
+"scount.c", line 15:scount value used inconsistently	scount.c(15)  ::  ttywrite.c(34)
+"scount.c", line 15:scount value used inconsistently	scount.c(15)  ::  ttywrite.c(70)
+"screate.c", line 15:screate multiply declared	screate.c(15)  ::  screate.c(37)
+"screate.c", line 15:screate value declared inconsistently	screate.c(15)  ::  dsinit.c(34)
+"screate.c", line 15:screate value declared inconsistently	screate.c(15)  ::  mkpool.c(37)
+"screate.c", line 15:screate value declared inconsistently	screate.c(15)  ::  poolinit.c(33)
+"screate.c", line 15:screate value declared inconsistently	screate.c(15)  ::  ttyinit.c(43)
+"screate.c", line 15:screate value used inconsistently	screate.c(15)  ::  dsinit.c(32)
+"screate.c", line 15:screate value used inconsistently	screate.c(15)  ::  dsinit.c(33)
+"screate.c", line 15:screate value used inconsistently	screate.c(15)  ::  dsinit.c(34)
+"screate.c", line 15:screate value used inconsistently	screate.c(15)  ::  mkpool.c(37)
+"screate.c", line 15:screate value used inconsistently	screate.c(15)  ::  poolinit.c(33)
+"screate.c", line 15:screate value used inconsistently	screate.c(15)  ::  ttyinit.c(42)
+"screate.c", line 15:screate value used inconsistently	screate.c(15)  ::  ttyinit.c(43)
+"screate.c", line 37: redeclaration of newsem
+"screate.c", line 37:screate multiply declared	screate.c(15)  ::  screate.c(37)
+"sdelete.c", line 15:sdelete defined( sdelete.c(15) ), but never used
+"seek.c", line 14:seek defined( seek.c(14) ), but never used
+"send.c", line 14:send defined( send.c(14) ), but never used
+"sendf.c", line 14:sendf defined( sendf.c(14) ), but never used
+"signal.c", line 15:signal value declared inconsistently	signal.c(15)  ::  freebuf.c(28)
+"signal.c", line 15:signal value declared inconsistently	signal.c(15)  ::  getbuf.c(27)
+"signal.c", line 15:signal value declared inconsistently	signal.c(15)  ::  mkpool.c(34)
+"signal.c", line 15:signal value declared inconsistently	signal.c(15)  ::  ttycntl.c(46)
+"signal.c", line 15:signal value declared inconsistently	signal.c(15)  ::  ttyiin.c(67)
+"signal.c", line 15:signal value declared inconsistently	signal.c(15)  ::  ttyoin.c(39)
+"signaln.c", line 16:signaln value declared inconsistently	signaln.c(16)  ::  ttyiin.c(93)
+"signaln.c", line 16:signaln value declared inconsistently	signaln.c(16)  ::  ttyoin.c(42)
+"sleep.c", line 14:sleep defined( sleep.c(14) ), but never used
+"sleep.c", line 27:sleep10 value declared inconsistently	sleep10.c(15)  ::  sleep.c(27)
+"sleep10.c", line 15:sleep10 value declared inconsistently	sleep10.c(15)  ::  sleep.c(27)
+"sluint.c", line 17: redeclaration of sluint
+"sluint.c", line 48:ttyiin value declared inconsistently	ttyiin.c(22)  ::  sluint.c(48)
+"sluint.c", line 54:kprintf: variable # of args.	kpollio.c(61)  ::  sluint.c(54)
+"sluint.c", line 58:panic: variable # of args.	sluint.c(58)  ::  dsinit.c(62)
+"sreset.c", line 16:sreset value declared inconsistently	sreset.c(16)  ::  ttyread.c(75)
+"sreset.c", line 16:sreset value declared inconsistently	sreset.c(16)  ::  ttywrite.c(70)
+"ssclock.c", line 16:stopclk defined( ssclock.c(16) ), but never used
+"ssclock.c", line 25:strtclk defined( ssclock.c(25) ), but never used
+"ssclock.c", line 46:wakeup value declared inconsistently	wakeup.c(14)  ::  ssclock.c(46)
+"suspend.c", line 13:suspend value declared inconsistently	suspend.c(13)  ::  dsksync.c(37)
+"suspend.c", line 13:suspend value declared inconsistently	suspend.c(13)  ::  dsread.c(32)
+"ttycntl.c", line 21: warning: argument addr unused in function ttycntl
+"ttycntl.c", line 43:wait value declared inconsistently	wait.c(15)  ::  ttycntl.c(43)
+"ttycntl.c", line 46:signal value declared inconsistently	signal.c(15)  ::  ttycntl.c(46)
+"ttycntl.c", line 64:scount value declared inconsistently	scount.c(15)  ::  ttycntl.c(64)
+"ttycntl.c", line 64:scount value used inconsistently	scount.c(15)  ::  ttycntl.c(64)
+"ttygetc.c", line 28:wait value declared inconsistently	wait.c(15)  ::  ttygetc.c(28)
+"ttyiin.c", line 117: redeclaration of erase1
+"ttyiin.c", line 119:ttyiin multiply declared	ttyiin.c(22)  ::  ttyiin.c(119)
+"ttyiin.c", line 158: redeclaration of echoch
+"ttyiin.c", line 161:ttyiin multiply declared	ttyiin.c(22)  ::  ttyiin.c(161)
+"ttyiin.c", line 181: redeclaration of eputc
+"ttyiin.c", line 183: warning: cptr unused in function ttyiin
+"ttyiin.c", line 184:ttyiin multiply declared	ttyiin.c(22)  ::  ttyiin.c(184)
+"ttyiin.c", line 22:ttyiin multiply declared	ttyiin.c(22)  ::  ttyiin.c(119)
+"ttyiin.c", line 22:ttyiin multiply declared	ttyiin.c(22)  ::  ttyiin.c(161)
+"ttyiin.c", line 22:ttyiin multiply declared	ttyiin.c(22)  ::  ttyiin.c(184)
+"ttyiin.c", line 22:ttyiin value declared inconsistently	ttyiin.c(22)  ::  sluint.c(48)
+"ttyiin.c", line 32:scount value used inconsistently	scount.c(15)  ::  ttyiin.c(32)
+"ttyiin.c", line 57:scount value used inconsistently	scount.c(15)  ::  ttyiin.c(57)
+"ttyiin.c", line 66:scount value used inconsistently	scount.c(15)  ::  ttyiin.c(66)
+"ttyiin.c", line 67:signal value declared inconsistently	signal.c(15)  ::  ttyiin.c(67)
+"ttyiin.c", line 93:signaln value declared inconsistently	signaln.c(16)  ::  ttyiin.c(93)
+"ttyiin.c", line 96:scount value declared inconsistently	scount.c(15)  ::  ttyiin.c(96)
+"ttyiin.c", line 96:scount value used inconsistently	scount.c(15)  ::  ttyiin.c(96)
+"ttyinit.c", line 36:iosetvec, arg. 2 used inconsistently	iosetvec.c(15)  ::  ttyinit.c(36)
+"ttyinit.c", line 36:iosetvec, arg. 3 used inconsistently	iosetvec.c(15)  ::  ttyinit.c(36)
+"ttyinit.c", line 40: warning: illegal combination of pointer and integer, op =
+"ttyinit.c", line 42:screate value used inconsistently	screate.c(15)  ::  ttyinit.c(42)
+"ttyinit.c", line 43:screate value declared inconsistently	screate.c(15)  ::  ttyinit.c(43)
+"ttyinit.c", line 43:screate value used inconsistently	screate.c(15)  ::  ttyinit.c(43)
+"ttyoin.c", line 34:scount value declared inconsistently	scount.c(15)  ::  ttyoin.c(34)
+"ttyoin.c", line 34:scount value used inconsistently	scount.c(15)  ::  ttyoin.c(34)
+"ttyoin.c", line 39:signal value declared inconsistently	signal.c(15)  ::  ttyoin.c(39)
+"ttyoin.c", line 42:signaln value declared inconsistently	signaln.c(16)  ::  ttyoin.c(42)
+"ttyputc.c", line 31: warning: cptr set but not used in function ttyputc
+"ttyputc.c", line 34:wait value declared inconsistently	wait.c(15)  ::  ttyputc.c(34)
+"ttyread.c", line 22:ttyread multiply declared	ttyread.c(22)  ::  ttyread.c(63)
+"ttyread.c", line 33:scount value used inconsistently	scount.c(15)  ::  ttyread.c(33)
+"ttyread.c", line 60: redeclaration of readcopy
+"ttyread.c", line 63:ttyread multiply declared	ttyread.c(22)  ::  ttyread.c(63)
+"ttyread.c", line 75:scount value declared inconsistently	scount.c(15)  ::  ttyread.c(75)
+"ttyread.c", line 75:scount value used inconsistently	scount.c(15)  ::  ttyread.c(75)
+"ttyread.c", line 75:sreset value declared inconsistently	sreset.c(16)  ::  ttyread.c(75)
+"ttywrite.c", line 22:ttywrite multiply declared	ttywrite.c(22)  ::  ttywrite.c(58)
+"ttywrite.c", line 31: warning: cptr set but not used in function ttywrite
+"ttywrite.c", line 34:scount value used inconsistently	scount.c(15)  ::  ttywrite.c(34)
+"ttywrite.c", line 55: redeclaration of writcopy
+"ttywrite.c", line 58:ttywrite multiply declared	ttywrite.c(22)  ::  ttywrite.c(58)
+"ttywrite.c", line 70:scount value declared inconsistently	scount.c(15)  ::  ttywrite.c(70)
+"ttywrite.c", line 70:scount value used inconsistently	scount.c(15)  ::  ttywrite.c(70)
+"ttywrite.c", line 70:sreset value declared inconsistently	sreset.c(16)  ::  ttywrite.c(70)
+"userret.c", line 15:getpid value declared inconsistently	getpid.c(12)  ::  userret.c(15)
+"userret.c", line 15:getpid value used inconsistently	getpid.c(12)  ::  userret.c(15)
+"userret.c", line 15:kill value declared inconsistently	kill.c(15)  ::  userret.c(15)
+"wait.c", line 15:wait value declared inconsistently	wait.c(15)  ::  freebuf.c(24)
+"wait.c", line 15:wait value declared inconsistently	wait.c(15)  ::  getbuf.c(24)
+"wait.c", line 15:wait value declared inconsistently	wait.c(15)  ::  mkpool.c(22)
+"wait.c", line 15:wait value declared inconsistently	wait.c(15)  ::  ttycntl.c(43)
+"wait.c", line 15:wait value declared inconsistently	wait.c(15)  ::  ttygetc.c(28)
+"wait.c", line 15:wait value declared inconsistently	wait.c(15)  ::  ttyputc.c(34)
+"wakeup.c", line 14:wakeup value declared inconsistently	wakeup.c(14)  ::  ssclock.c(46)
+"write.c", line 14:write defined( write.c(14) ), but never used

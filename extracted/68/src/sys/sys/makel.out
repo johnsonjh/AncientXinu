@@ -1,0 +1,18 @@
+ctags clkinit.c conf.c create.c 		 dotrace.c freemem.c			 getitem.c getmem.c getpid.c getstk.c	 ibclear.c ibfree.c ibget.c iblfree.c 	 ibnew.c ibput.c				 init.c initialize.c insert.c insertd.c	 ioerr.c ionull.c iosetvec.c kill.c	 kpollio.c				 lfclose.c lfgetc.c lfinit.c lfputc.c	 lfread.c lfsdfree.c lfseek.c lfsetup.c	 lfsflush.c lfsnewd.c lfwrite.c		 mark.c mdump.c newqueue.c		 mkpool.c poolinit.c freebuf.c getbuf.c	 pscfuncts.c			 	 queue.c ready.c receive.c		 recvclr.c resched.c resume.c scount.c	 screate.c sdelete.c send.c sendf.c	 signal.c signaln.c sleep.c sleep10.c	 sluinit.c 				 sreset.c ssclock.c suspend.c		 ttycntl.c ttygetc.c ttyiin.c ttyinit.c	 ttyoin.c ttyputc.c ttyread.c ttywrite.c	 userret.c wait.c wakeup.c xdone.c	 sluint.c				 read.c write.c init.c getc.c putc.c	 control.c close.c open.c seek.c 	 dfalloc.c dfckmd.c dfdsrch.c		 dscntl.c dscopy.c dsinit.c dsinter.c	 dskbcpy.c dskenq.c dskqopt.c dskstrt.c	 dsksync.c dsopen.c dsread.c dsseek.c	 dswrite.c dutil.c dudir.c dumkfs.c	../h/conf.h	 ../h/io.h	 ../h/kernel.h	 ../h/mem.h	 ../h/ports.h	 ../h/proc.h	 ../h/q.h	 ../h/sem.h	 ../h/sleep.h	 ../h/slu.h	 ../h/tty.h
+Duplicate function in files init.c and init.c: init (Warning only)
+Duplicate function in files ../h/kernel.h and pscfuncts.c: disable (Warning only)
+Duplicate function in files ../h/kernel.h and pscfuncts.c: restore (Warning only)
+Duplicate function in file ../h/kernel.h, line 89: enable
+Second entry ignored
+Duplicate function in file ../h/kernel.h, line 91: pause
+Second entry ignored
+Duplicate function in file ../h/kernel.h, line 93: halt
+Second entry ignored
+mv tags ,tags
+cat ,tags | sed 's/[?^$]//g'  |awk '{printf("%-15s %-15s %s %s %s %s %s	%s\n",  $1,$2,$3,$4,$5,$6,$7,$8)}' > ,,xref
+mv ,,xref ,xref
+/v1/burns/Xinu68/bin/ld68 -N  -U -T 1000 startup.o lowcore.o initialize.o conf.o  test.o libx.a /v1/burns/Xinu68/lib/libxc.a libx.a 
+ld:libx.a(__.SYMDEF): cannot move l.out to a.out
+*** Error code 4
+
+Stop.

@@ -1,0 +1,20 @@
+/* domain.h */
+
+/* Internet name server port number */
+
+#define UNAMESER 53
+
+/* Constants used in contacting name server */
+
+#define MAXFPORTLEN 19
+
+/* Constants used in computing size of name server query */
+
+#define QHEADLEN 12
+#define QBODYLEN 18
+#define COMPOFFSET 12
+#define NONCOMPOFFSET 6
+#define ANCOUNT 7
+#define IDINDEX 1
+
+typedef unsigned short u_short;

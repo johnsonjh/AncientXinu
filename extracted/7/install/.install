@@ -1,0 +1,4 @@
+#!/bin/csh
+set FNAME=`echo $1|sed 's/.RAW//'`
+echo Installing source file .$1
+sed 's/{Xinu-directory}/\/usr\/Xinu/g' < $1 > $FNAME

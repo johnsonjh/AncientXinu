@@ -1,0 +1,9 @@
+#!/bin/sh
+PATH=/bin:/usr/bin:/usr/ucb
+for i in $*
+do NAME=`head -1 $i | sed 's/^\/\* //;s/ .*//'`
+   BASE=`echo $i | sed 's/^.*\///'`
+   if test "x$NAME" != "x$BASE"
+   then echo "\"$i\", line 1: malformed header"
+   fi
+done

@@ -1,0 +1,41 @@
+# This is the database that contains information about the
+# microcomputers available for running Xinu.  The file describes
+# machine hardware, domain names, and classes (groups) of machines,
+# as well as the physical tty lines and downloader to use.  An
+# Internet address in dotted-decimal notation can be substituted for
+# the domain name if you're not using domain name software.
+#
+# Part 1: tty lines and machines to which they connect.  The
+#	  Ethernet downloader is usually edl.XXX, where XXX
+#	  gives the machine type.  Internet addresses in dotted
+#	  decimal notation can be substituted for domain names.
+#
+#tty	    domain name		cputype  downloader	uploader
+#
+LSI.1	xinu1.unknown		LSI11/2	 edl.lsi	eul.lsi
+LSI.2	xinu2.unknown	 	LSI11/2	 edl.lsi	eul.lsi
+LSI.3	xinu3.unknown	 	LSI11/2	 edl.lsi	eul.lsi
+LSI.4	xinu4.unknown	 	LSI11/2	 edl.lsi	eul.lsi
+LSI.5	xinu5.unknown	 	LSI11/2	 edl.lsi	eul.lsi
+LSI.6	xinu6.unknown	 	LSI11/2	 edl.lsi	eul.lsi
+LSI.7	xinu7.unknown	 	LSI11/2	 edl.lsi	eul.lsi
+LSI.8	xinu8.unknown	 	LSI11/2	 edl.lsi	eul.lsi
+#
+# Notice percent-sign separator on next line...
+%
+# Part 2: class names and tty to which they correspond.  Note that
+#	  it is possible to put a physical machine in multiple
+#	  classes, so in the example, machine 8 in class LSI is
+#	  the same as machine 1 in class SERVE11.
+#
+#class index	tty	timeout	arguments(optional)
+#
+LSI	1	LSI.1	10	" "
+LSI	2	LSI.2	10	" "
+LSI	3	LSI.3	10	" "
+LSI	4	LSI.4	10	" "
+LSI	5	LSI.5	10	" "
+LSI	6	LSI.6	10	" "
+LSI	7	LSI.7	10	" "
+LSI	8	LSI.8	10	" "
+SERVE11 1	LSI.8	60	"-a"

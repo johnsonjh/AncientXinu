@@ -1,0 +1,66 @@
+
+
+
+LUSERS(1)           Xinu Programmer's Manual            LUSERS(1)
+
+
+
+NAME
+     lusers - list users holding odt lock reservations
+
+SYNOPSIS
+     lusers
+
+DESCRIPTION
+     _L_u_s_e_r_s lists the users who hold reservations on tty lines.
+     Each line of output contains the machine name and number,
+     the user who holds it, and the idle time, rounded to the
+     nearest minute.  Reservations are made by _o_d_t(1), _d_o_w_n_-
+     _l_o_a_d(1), and _u_p_l_o_a_d(1).
+
+FILES
+     /tmp/LSI-*  Lock files.
+
+SEE ALSO
+     odtunlock(1), odt(1)
+
+BUGS
+     _L_u_s_e_r_s lists reservations and idle time based on lock file
+     times which may not be quite accurate.  Machines with more
+     than 10 minutes of idle time are listed even though the
+     reservation software considers the reservation to have
+     expired.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+

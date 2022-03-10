@@ -1,0 +1,198 @@
+
+
+
+LD11(1)             Xinu Programmer's Manual              LD11(1)
+
+
+
+NAME
+     ld11 - LSI 11 cross-loader for the VAX
+
+SYNOPSIS
+     ld11 [ option ] file ...
+
+DESCRIPTION
+     _L_d_1_1 combines several object programs into one, resolves
+     external references, and searches libraries.  In the sim-
+     plest case several object _f_i_l_e_s are given, and _l_d_1_1 combines
+     them, producing an object module which can be either exe-
+     cuted or become the input for a further _l_d_1_1 run.  (In the
+     latter case, the -r option must be given to preserve the
+     relocation bits.) By default, _l_d_1_1 leaves its output on file
+     a.out.
+
+     The argument routines are concatenated in the order speci-
+     fied.  The entry point of the output is the beginning of the
+     first routine unless altered by the -e option.
+
+     If any argument is a library, it is searched exactly once at
+     the point it is encountered in the argument list.  Only
+     those routines defining an unresolved external reference are
+     loaded.  If a routine from a library references another rou-
+     tine in the library, and the library has not been processed
+     by _r_a_n_l_i_b_1_1(1), the referenced routine must appear after the
+     referencing routine in the library.  Thus the order of pro-
+     grams within libraries may be important.  If the first
+     member of a library is named `__.SYMDEF', then it is under-
+     stood to be a dictionary for the library such as produced by
+     _r_a_n_l_i_b_1_1; the dictionary is searched iteratively to satisfy
+     as many references as possible.
+
+     The symbols `_etext', `_edata' and `_end' (`etext', `edata'
+     and `end' in C) are reserved, and if referred to, are set to
+     the first location above the program, the first location
+     above initialized data, and the first location above all
+     data respectively.  It is erroneous to define these symbols.
+
+     _L_d_1_1 understands several options.  Except for -l, they
+     should appear before the file names.
+
+     -s   `Strip' the output, that is, remove the symbol table
+          and relocation bits to save space (but impair the use-
+          fulness of the debugger).  This information can also be
+          removed by _s_t_r_i_p_1_1(_1).
+
+     -u   Take the following argument as a symbol and enter it as
+          undefined in the symbol table.  This is useful for
+          loading wholly from a library, since initially the sym-
+          bol table is empty and an unresolved reference is
+          needed to force the loading of the first routine.
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+
+
+
+
+LD11(1)             Xinu Programmer's Manual              LD11(1)
+
+
+
+     -l_x  This option is an abbreviation for the library name
+          `Xinu-directory/lib/lib_x.a', where _x is a string.  If
+          that does not exist, _l_d_1_1 tries `/usr/lib/lib_x.a'.  A
+          library is searched when its name is encountered, so
+          the placement of a -l option is significant.
+
+     -x   Do not preserve local symbols (i.e., symbols not
+          declared .globl) in the output symbol table; only enter
+          external symbols.  This option saves some space in the
+          output file.
+
+     -X   Save local symbols except for those whose names begin
+          with `L'.  This option is used by _c_c_1_1(_1) to discard
+          internally generated labels while retaining symbols
+          local to routines.
+
+     -r   Generate relocation bits in the output file so that it
+          can be the subject of another _l_d_1_1 run.  This flag also
+          prevents final definitions from being given to common
+          symbols, and suppresses the `undefined symbol' diagnos-
+          tics.  The idea is that several object files may be
+          combined into one large one using -r without losing
+          information.
+
+     -d   Force definition of common storage even if the -r flag
+          is present.
+
+     -n   Move the data areas up to the first possible 4K word
+          boundary following the end of the text.  Designed for
+          systems that share text, this option only wastes space
+          when used with Xinu -- it should not be specified
+          except for debugging.
+
+     -i   Important that it not be used on an LSI 11/02.  It
+          causes the text and data areas to be allocated from
+          separate address spaces (i.e. the data area relocation
+          begins at location 0).
+
+     -o   The _n_a_m_e argument after -o is used as the name of the
+          output file, instead of a.out.
+
+     -e   The following argument is taken to be the name of the
+          entry point of the loaded program; location 0 is the
+          default.
+
+     -O   Not to be used on an LSI1/02.  It makes the file an
+          overlay.
+
+     -D   The next argument is a decimal number that sets the
+          size of the data segment.
+
+
+
+
+
+Version 6b               Printed 1/12/87                        2
+
+
+
+
+
+
+LD11(1)             Xinu Programmer's Manual              LD11(1)
+
+
+
+FILES
+     Xinu-directory/lib/lib*.a libraries
+     a.out                     output file
+
+SEE ALSO
+     as11(1), ar(1), cc11(1), ranlib11(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version 6b               Printed 1/12/87                        3
+
+
+

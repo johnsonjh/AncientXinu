@@ -1,0 +1,140 @@
+Installation Details
+------------ -------
+
+This is file {Xinu-directory}/install/README.  It contains
+instructions for installing the Xinu software and recompiling
+it.  These instructions instructions must be followed:
+(a) after the distribution tape has been read in, or
+(b) after the Xinu directory has been moved.
+
+**************************************************************
+***                     4.2BSD Users                       ***
+*** NOTE: if you are still running 4.2bsd, you must remove ***
+*** all the 4.3 files and libraries before doing anything  ***
+*** else.  To do so, type the following:                   ***
+***                                                        ***
+***             cd {Xinu-directory}/install                ***
+***             ./Install 4.2                              ***
+**************************************************************
+
+Installation involves changing references to {Xinu-directory}
+in all source files and then recompiling them.
+
+Step 1:	Execute shell script "Install" in this directory
+	to climb around the tree and create final versions
+	of the source files.  Look at the file sample.output
+	to see what to expect.
+
+		cd {Xinu-directory}/install
+		./Install
+
+Step 2:	Change to the source directory and execute the script
+	that rebuilds binaries:
+
+		cd {Xinu-directory}/src
+		./Makeall > make.out &
+
+	If you have installed Xinu in other than /usr/Xinu,
+	recompilation takes about 30 minutes on a VAX 780
+	(Hence, we suggest that you run it in background).
+	Also be warned that there are numerous programs in
+	the cross-development software that produce warning
+	messages when recompiled.  Look at the the file
+	sample.output to see what to expect.
+
+	You do not need to be superuser; only directories
+	under {Xinu-directory} are affected. 
+
+Step 3:	Add {Xinu-directory}/bin to your "path" so you can
+	execute	commands that are found there:
+
+	C-shell users type:
+
+		set path=( $path {Xinu-directory}/bin )
+
+	Bourne shell users type:
+
+		PATH=$PATH:{Xinu-directory}/bin
+		export PATH
+
+	To make Xinu commands accessible after your next
+	login, you must change the path assignment in your
+	.profile or .cshrc files.
+
+
+Step 4:	Try the command "odt" in {Xinu-directory}/bin. It
+	connects your keyboard to an LSI 11 console input
+	and output from the LSI 11 to your terminal screen:
+
+		odt
+
+	To get the attention of the LSI, type backslash
+	followed by null (CONTROL @).  The LSI will stop
+	execution and print a prompt ("at" sign).  You
+	are now talking to the LSI's "ODT" mode (consult
+	the vendor's manual for additional information on
+	ODT).  To terminate the odt command, kill the
+	process with your normal interrupt character
+	(usually CONTROL-C or DELETE).
+
+Step 5: Change back to the Xinu installation directory and
+	download the test program:
+
+		cd {Xinu-directory}/install
+		download -a5 lsi.test
+		odt
+
+	It will print "hello world." and stop.  When all
+	processes complete, type CONTROL-c to kill the odt
+	command.
+
+
+Step 6:	Pick one of your directories and make sure the
+	cross-compiler works.
+
+		cd directory-of-your-choice
+		cp {Xinu-directory}/src/sys/sys/test.c .
+		cc11 -o test.out test.c
+		cmp test.out {Xinu-directory}/src/sys/sys/test.c
+
+	Be sure you have the cross-compiler working before you
+	change the operating system.
+
+
+Step 7:	You are ready to experiment with Xinu itself.  Follow the
+	instructions for configuring your network.  Change to the
+	Xinu source directory and modify file Configuration to
+	use your local network IP addresses.
+
+		cd {Xinu-directory}/src/sys/sys
+		...edit file "Configuration"...
+		make a.out
+		download -a4
+		odt
+
+	Note that because recompiling the Xinu sources may take
+	considerable time.  It is advisable to run make in the
+	background with output (and error messages) directed to
+	a file.  We usually direct output to file "make.out".
+
+	Make will recompile the Xinu sources, rebuild file
+	"xinu.o", and rebind library "libx.a".	However, it leaves
+	the new versions in source directory.  Make also compiles
+	file "test.c" and binds it with the new library to form file
+	"a.out".  When you are satisfied that the new version works,
+	run "make install" to copy the new kernel library into
+	{Xinu-directory}/lib where command cc11 accesses it.
+
+	Other arguments can be used with make.  For details see the
+	file "Makefile".  Two that particularly	useful ones are
+	"everything" that runs several scripts designed to test
+	source program formats, and "d" that runs the commands
+	"download -a4 ; odt" after remaking a.out.  Thus, you
+	normally run "make d" after a change to recompile, download,
+	and test the system.
+
+Suggestions
+-----------
+
+   Suggestions and reports of problems are welcomed.
+

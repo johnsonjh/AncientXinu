@@ -1,0 +1,13 @@
+	This is file README in {Xinu-directory}/src/serve11.
+
+The serve11 source direcotry contains the source code for a stand-alone
+RARP/Time/Name/File server that can be used to boot version 7 Xinu.
+Naturally, serve11 is a hacked version of Xinu itself with the servers
+added and enough commands removed to make space for them.  The source
+directory here duplicates many files found in the standard system source
+directory because we took a snapshot one day and worked from it -- you
+should assume that the latest versions of files are found in the Xinu
+system source directory and not here.
+
+When built, the PDP-11 a.out file for the standalone server is called
+serve11 and is installed in {Xinu-directory}/lib/serve11.

@@ -1,0 +1,125 @@
+Problem:
+
+Use Ethernet to speed downloading Xinu to LSI 11
+
+Synopsis:
+
+VAX 11/780 running 4.2bsd wants to download memory image into micro-
+computer at highest possible speed.  Uploading also desirable.
+
+Constraints:
+
+Would like to use conventional 4.2bsd network interface, possibly
+Darpa Internet protocols TFTP/UDP/IP (maybe ARP/RARP).  Raw Ethernet
+connection inconvenient.  Would like to avoid hardwiring IP addresses
+into code; certainly cannot hardware Ethernet addresses into code.
+Multiple concurrent downloads should be supported.  Can assume each
+download runs as separate user process.  Cannot assume micro has a disk.
+Must work without manual intervention even after micro is power cycled.
+
+Hardware:
+
+(1) LSI 11/2, 64Kbytes memory, console serial line, DEQNA, or
+(2) LSI 11/23, 128Kbytes memory, console serial line, DEQNA.
+
+Either configuration could have 4Kbytes EPROM.  DEQNA has dead-man timer
+and also on-board boot code for DECNET.  Boot code might be of some use
+but not obvious how it helps with Internet protocols.
+
+Notes:
+
+For hardware configuration 2. can assume that Xinu will use only
+first 64Kbytes of memory, so code stored in following bank will not
+be disturbed most of the time.
+
+Code for automatic selection of idle micro is available.
+
+---------------------------------
+
+Download (runs under UNIX):
+
+select free 11, LSI, using current strategy;
+send break to halt 11;
+get local UDP port id on VAX, UPORTv;
+get local IP address on VAX, IPADDRv;
+/* set up arguments to ELOAD procedure */
+store IPADDRv in registers r0, r1;
+consult table (file) to map LSI to micro's
+ Internet Address, IPADDRm;
+store IPADDRm in registers r2, r3;
+store UPORTv in register r4;
+turn on memory management and make page beyond
+ 64K real memory addressable;
+
+/* NOTE: if ELOAD is < 8K bytes we could map the REAL memory */
+/* from 56K-64K that is normally not available because of I/O*/
+/* Thus, the scheme could work on most machines because they */
+/* usually have 64K bytes of real memory even though only 56K*/
+/* are used.                                                 */
+
+set stack pointer, r6, to any reasonable initial value;
+start LSI at 64K+1;
+wait for ack on serial line;
+if (wait timed out) {
+	download ELOADER into locations starting
+	  at 64K+1 using old 2-phase technique;
+	start LSI at 64K+1;
+	wait for ack on serial line;
+	if (wait timed out) {
+		announce error; abort;
+	}
+}
+for each piece of memory image, P {
+	send UDP packet containing P and location of P;
+	wait for ack on serial line;
+	if (wait timed out or nack received) {
+		send again;
+		wait for ack on serial line;
+		if (wait timed out or nack received) {
+			announce error; abort
+		}
+	}
+}
+done;
+
+---------------------------
+/* The resident part of the Ethernet doanloader (i.e., the procedure     */
+/* that executes on the micro.  Arguments are downloader's IP address,   */
+/* the machine's own IP address, and the downloader's UDP port.          */
+/* IP addresses are 32-bit values, passed in register pairs (0,1) and    */
+/* (2,3).  The UDP port number can be passed in a single register, 4.    */
+
+ELOAD:
+
+extract arguments from registers and store them in memory;
+size memory and set stack pointer to highest value;
+/* this may be tricky because memory is mapped.  Maybe all that is needed*/
+/* is to make sure first 48 is really there and put SP at 48K.  Choosing */
+/* 48K as the maximum loadable image gives 1 page register to map ELOAD  */
+/* itself, 1 for I/O, and 6 for 1st 48K of real memory.  Another scheme  */
+/* is to map just ELOAD plus what it needs and leave 2 pages free to     */
+/* use to move data from a packet into the correct area.                 */
+
+initialize DEQNA device;
+broadcast ARP packet gratis; /* avoids need to respond to ARP requests */
+do forever {
+	wait for next Ethernet packet
+	if (packet is not UDP packet from downloader) {
+		ignore it; /* this test could be quite simplistic */
+	}
+	if (checksum is bad)
+		send nack;
+	else { /* good packet */
+		send ack;
+		if (packet is data) {
+			copy data to correct location;
+		} else if (packet is end-of-download) {
+			carry out autostart as indicated;
+		} else {
+			abort;
+		}
+	}
+}
+----------------------
+Cheers,
+Doug

@@ -1,0 +1,12 @@
+			README
+			------
+
+This directory contains all VAX specific downloader code
+including the code that executes on the UNIX machine VAX when
+downloading to a VAX as well as the code that executes on the
+VAX for bootstrap, serial line downloading, and ethernet
+downloading.
+
+The Makefile included here is to allow the Makefile in the parent
+directory to remake and install things without knowing the structure
+of lower-level directories.

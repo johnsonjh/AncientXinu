@@ -1,0 +1,3 @@
+Remote files: server on dev=4, server mutex=22
+  8. name=/dev/null           , pos=     0, mode=021, sem=23
+  9. name=/usr/Xinu/storage/output/rf, pos=   108, mode=002, sem=21

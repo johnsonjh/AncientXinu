@@ -1,0 +1,68 @@
+.TH UPLOAD 1
+.SH NAME
+upload \- copy \s-2LSI 11\s0 memory to \s-2VAX\s0
+.SH SYNOPSIS
+.B upload
+[ options ] ...
+[ [ min addr ] max addr ]
+.SH DESCRIPTION
+.I Upload
+copies the contents of an \s-2LSI 11\s0 memory onto a file on the \s-2VAX\s0.
+By default the image is placed in file core11.
+.PP
+Arguments
+\f2min addr\f1
+and
+\f2max addr\f1
+limit the image to specific addresses.
+.PP
+Options include the following:
+.TP
+.BI \-o
+Output file.
+Take the next argument as an output file name in place of \f2core11\f1.
+.TP
+.BI \-v
+Verbose. Print the details of communications between the \s-2LSI 11\s0 and
+the host.
+.TP
+.BI \-s
+Silent. Print no information messages.
+.TP
+.BI \-n
+Noload.  Assume the uploader code is already resident in the \s-2LSI 11\s0.
+.TP
+.BI \-lx
+\s-2LSI\s0 number.  Use \s-2LSI\s0 number
+.I x
+for uploading.
+If this option is not specified, \f2upload\f1 selects the \s-2LSI 11\s0 that
+the user has reserved.
+.TP
+.BI \-a
+a.out file.
+Take the next argument as the name of the object file in place of
+a.out.
+.TP
+.BI \-cL
+Use LSI in class
+.I L.
+.SH FILES
+.ta 1.7i
+/dev/\s-2LSI\s0.i	\s-2LSI 11\s0 device connections
+.br
+/tmp/xinu/\s-2LSI\s0-*	Lock files for auto-select
+.br
+{Xinu-directory}/lib/machines	database listing parameters for all machines
+.br
+{Xinu-directory}/lib/sul.boot.lsi	\s-2LSI 11\s0 part of serial bootstrap
+.br
+{Xinu-directory}/lib/sul.lsi	serial uploader for \s-2LSI 11\s0
+.br
+(Xinu-directory}/lib/eul.lsi	ethernet uplooader for \s-2LSI 11\s0
+.br
+Note: files for other machines have ``lsi'' replaced by the machine type.
+.SH BUGS
+\f2Upload\f1 reads the contents of some memory locations with ODT
+and then overwrites them with a bootstrap program; if aborted,
+it cannot be restarted because data has been lost.

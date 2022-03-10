@@ -1,0 +1,66 @@
+
+
+
+DISABLE(3)          Xinu Programmer's Manual           DISABLE(3)
+
+
+
+NAME
+     disable, enable, restore - change and restore processor
+     interrupt status
+
+SYNOPSIS
+     disable(ps);
+     enable(ps);
+     restore(ps);
+
+     char ps;
+
+DESCRIPTION
+     These routines change the processor interrupt status mode.
+     Normally, procedures use _d_i_s_a_b_l_e and _r_e_s_t_o_r_e to save the
+     interrupt status, mask interrupts off, and then restore the
+     saved status.  _E_n_a_b_l_e explicitly enables interrupts; it is
+     used only at system startup.
+
+SEE ALSO
+     cvt(1)
+
+BUGS
+     In this implementation, _d_i_s_a_b_l_e and _r_e_s_t_o_r_e are macros that
+     must have local variable _p_s as an argument, and must use
+     CVT(1) to convert the assembler code they produce to legal
+     assembler.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+

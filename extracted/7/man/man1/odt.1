@@ -1,0 +1,65 @@
+.TH ODT 1
+.SH NAME
+odt \- connect user's terminal to a micro console (odt) line
+.SH SYNOPSIS
+.B odt
+[ option ] ...
+.SH DESCRIPTION
+.I Odt
+connects a terminal on the VAX to a microcomputer tty line so the output
+of the micro appears on the terminal screen and characters typed at the
+keyboard are sent to the micro.
+\f2Odt\f1 sets the micro tty line to raw mode, and the VAX terminal to
+cbreak mode.
+The connection can be broken by killing the odt process (e.g., by
+typing the interrupt character (e.g., CONTROL-C).
+.PP
+When \f2odt\f1 receives a backslash from the terminal,
+it switches to raw mode to read
+one character, after which it switches back to cbreak mode.
+The backslash escape allows the user to send characters like CONTROL-C
+to the micro even though they are normally interpreted as signals.
+As a special case, an escaped null character (octal 0) causes \f2odt\f1
+to force the micro line into a break condition for 1 second.
+This is useful for trapping an \s-2LSI 11\s0 into ODT mode.
+.PP
+Options are:
+.TP
+.BI \-lx
+Connect to machine number
+.I x.
+If this option is not specified, download selects the \s-2LSI-11\s0
+that the user has on reserve, or a free one if none is reserved.
+E.g., \-l9.
+.TP
+.BI \-cL
+Use LSI in class L (as specified in the
+.I machines
+database).
+.TP
+.BI \-BX
+Use Baudrate
+.I X
+in communicating with the LSI console.
+.TP
+.BI \-h
+Hold the LSI, so multiple machines may be allocated to one user.
+.TP
+.BI \-T[x]
+Release LSI after 
+.I x
+minutes of idle time.  If no value for
+.I x
+is listed, the LSI will be held indefinitely.
+The default timeout value is set in the
+.I machines
+database.
+.TP
+.BI \-f
+Turn off X-ON X-OFF flow control.  Flow control is on by default.
+.SH FILES
+.ta 1i
+/dev/LSI.i	default \s-2LSI 11\s0 connection (as specified by
+.I Xinu-directory/lib/machines)
+.br
+/tmp/xinu/LSI-*	Lock files

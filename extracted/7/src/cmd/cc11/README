@@ -1,0 +1,27 @@
+The files in this directory are, with few exceptions,
+identical to those in the (non-portable) pdp11 c compiler directory.
+
+The exceptions are:
+	c0.h		changed to include #ifdef vax
+
+	c10.c, c12.c	minor fixes of archaic C usage
+
+	cvopt		changed to output equivalent, but
+			more similar to vax, assembly language
+
+	Makefile	changed to include the pipeline
+			cvopt <table.s | sed -f sedscript >table.i
+			which converts 11 assembler-dependent
+			constructs to vax assembler constructs
+
+The vax C compiler does a lot of complaining when it compiles
+these files, due to non-fatal archaic C usage that I was too
+lazy to clean up.
+
+The whole directory should work as is on the 11, except
+that"sedscript" should be a no-op.
+
+Changes:
+"asm" pseudo-function added 9/27/81 by Matt Bishop at Purdue
+
+Stream buffering added to fix 4.3 bug 8/23/86 by Ozalp Babaoglu at Cornell

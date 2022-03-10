@@ -1,0 +1,24 @@
+The routines in this directory supply sufficient support to load
+a program without using the operating system itself.  Either
+lowcore.o or nullcore.o fill the interrupt vector locations.
+lowcore.s is easily modified for specific vectors because the
+vectors are enumerated 1 per line.  Nullcore should be used
+if you want all zeros.
+
+Startup.s contains the startup code: the entry point is "start"
+It sizes up memory, sets the stack pointer pointing to the highest
+word, and calls the main program.  argc will be 1 and agrv will
+0; they really shouldn't be used.
+
+The load sequence is:
+
+	ld11 -e start nullcore.o startup.o  USERPROG.o libsa.a
+
+The library contains a goodie: unbuffered printf for console at
+location 0177560, or fprintf for a serial line unit at an arbitrary
+address (address is 1st agument).
+
+Initially, interrupts are disabled when the user program is entered.
+To toggle them from C, call "enable" and "diable".
+
+See DOWNLOAD(1) for how to shove the a.out image into the LSI 11.

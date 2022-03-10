@@ -1,0 +1,6 @@
+PATH=/bin:/usr/bin:/usr/ucb
+ls *.o | sed 's/.o$//;/^xinu$/d' > .dos
+ls *.c *.s | sed 's/.[sc]$//' > .doc
+diff .dos .doc
+/bin/rm .do*
+

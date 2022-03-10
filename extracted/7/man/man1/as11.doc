@@ -1,0 +1,66 @@
+
+
+
+AS11(1)             Xinu Programmer's Manual              AS11(1)
+
+
+
+NAME
+     as11 - PDP-11 cross-assembler
+
+SYNOPSIS
+     as11 [ -u ] [ -o outfile ] [ file ... ]
+
+DESCRIPTION
+     _A_s_1_1 assembles the specified files, using standard input if
+     no file name is specified.  If the optional -u argument is
+     specified, the assembler makes all undefined symbols in the
+     current assembly ``undefined external''; otherwise the
+     assembler complains about undefined symbols (.globl can be
+     used to declare undefined externals when not using -_u).
+
+     If the -o option is given, _a_s_1_1 writes its output to _o_u_t_-
+     _f_i_l_e.  If the -o option is not included, _a_s_1_1 writes output
+     to file _a._o_u_t in the current directory.  Following conven-
+     tion, the mode of the output file is made executable if
+     there were no unresolved external references (even though
+     the output file is not directly executable on the cross
+     development machine).
+
+FILES
+     /tmp/as*       temporary files
+     a.out          default object file
+
+DIAGNOSTICS
+     _A_s_1_1 is built to accept assembler language output from com-
+     pilers, not for humans.  Diagnostics, which consist of
+     single-letter messages, are cryptic at best.  See Ritchie,
+     ``UNIX Assembler Reference Manual'' for details.
+
+SEE ALSO
+     cc11(1), ld(1), nm(1), size11(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+

@@ -1,0 +1,30 @@
+	This file is {Xinu-directory}/src/sys/sys/README
+
+This directory contains the source programs for Xinu itself.  To rebuild
+Xinu, edit file "Configuration" to reflect the hardware on your LSI 11,
+and run make.  Typically, "make d" is used to make new Xinu object files,
+link them into a library (libx.a), compile source program "test.c",
+download the result, and invoke odt to see the output.  When you are
+satisfied that it works, run "make everything" to produce miscellaneous
+files like ",lint" and ",sizes" (a sample output from "make everything"
+has been left in file make.out so you can see what to expect).
+
+Finally, to make the new version public, run "make install" which actually
+copies "xinu.o" and "libx.a" into {Xinu-directory}/lib where they are
+accessed by cc11.
+
+ Note1:	The make file has been carefully constructed so it references
+	xinu.o and libx.a in THIS directory when it compiles and links
+	the test program.  You must be careful when modifying it because
+	cc11 normally references xinu.o and libx.a in the lib directory.
+
+ Note2:	The auto-select feature of download/upload/odt assumes all LSI-11s
+	have the same configuration.  No provision has been made in this
+	release of the software for heterogenous LSI 11s.
+
+ Note3: The DEQNA driver routines in this directory implement automatic
+	timeout and retry to solve the imfamous DEQNA hardware bugs.  If
+	your site has traded in its DEQNA boards for the new release, you
+	may want to use the driver from the book, which can be found in
+	directory "OLD".  You cannot mix routines from the two drivers --
+	take all of them from one or the other.

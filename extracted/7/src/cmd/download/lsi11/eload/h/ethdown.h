@@ -1,0 +1,26 @@
+/* ethdown.h -- definitions for LSI ethernet downloader */
+
+#define PAR0_ADDR	0772340		/* page address reg 0 */
+#define PAR7_ADDR	0772356		/* page address reg 7 */
+#define PDR0_ADDR	0772300		/* page descrip reg 0 */
+#define PDR7_ADDR	0772316		/* page descrip reg 7 */
+#define SR0_ADDR	0777572		/* mmu status reg 0   */
+#define	SR3_ADDR	0772516		/* mmu status reg 3   */
+#define PAR0_VAL	  01600		/* virt 0 -> phys 7   */
+#define PAR7_VAL	0777600		/* virt 7 -> I/O      */
+#define PDR_VAL		 077406		/* page len=8K, R/W   */
+#define ENABLE_MMU	      1		/* write to sr0       */
+#define DISABLE_MMU	      0		/* write to sr0       */
+
+#define MAPMEM		      1		/* Map mem for eload  */
+#define NOMAP		      0		/* Don't map memory   */
+#define DLUDP		   2001		/* UPD port for dwnld */
+
+/* reg definitions used by setreg */
+#define SP		6		/* stack pointer      */
+#define PC		7		/* program counter    */
+#define PSW		(-1)		/* processor status   */
+#define ELOAD		"/usr/Xinu/lib/eload.lsi"
+#define	ETH_OK		1		/* ethernet download success */
+#define	ETH_FAILED	-1		/* ethernet download failed */
+#define	ETH_MAXADDR	0160000		/* highest addr directly mapped	*/

@@ -1,0 +1,66 @@
+
+
+
+SUBEIS(1)           Xinu Programmer's Manual            SUBEIS(1)
+
+
+
+NAME
+     subEIS - substitute code for LSI 11 extended instructions
+
+SYNOPSIS
+     subASH
+     subASHC
+     subMUL
+     subDIV
+
+DESCRIPTION
+     These programs read an LSI 11 assembly language program from
+     the standard input, replace opcodes from the  Extended
+     Instruction Set (EIS) with a call to a library subroutine
+     that simulates them, and write the new listing on the stan-
+     dard output.  They are used mainly as filters for compiling
+     LSI 11/02 programs for machines without the EIS chip.
+
+     Each program checks for a different instruction; _s_u_b_M_U_L
+     checks for (and replaces) _m_u_l instructions, _s_u_b_D_I_V checks
+     for (and replaces) _d_i_v instructions, _s_u_b_A_S_H checks for (and
+     replaces) _a_s_h instructions, and _s_u_b_A_S_H_C checks for (and
+     replaces) _a_s_h_c instructions.  The resulting assembly
+     language program must be loaded with the library _l_i_b_e_i_s._a ,
+     which contains the routines called.
+
+SEE ALSO
+     cc11(1), EIS(2)
+
+DIAGNOSTICS
+     The condition codes are correctly set by the above calling
+     sequence.
+
+BUGS
+     Setting the condition codes accounts for most of the work
+     these routines perform.  Unfortunately, they are so slow
+     that most programs, including Xinu are unusable on an 11/2
+     without the EIS hardware.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+

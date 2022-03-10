@@ -1,0 +1,33 @@
+DIR=/usr/Xinu
+FORDIR=$DIR/book/formatted
+LIBDIR=$DIR/src/lib/libxc
+case $1 in
+	c) for i in *.c
+	   do expand < $i | sed 's/\\/&&&&/g;s/^\./\\\\\&./' > $FORDIR/$i
+	   done
+	   ;;
+	s) /bin/rm -rf $FORDIR/*.s
+	   for i in *.s
+	   do expand < $i | sed 's/\\/&&&&/g;s/^\./\\\\\&./' > $FORDIR/$i
+	   done
+	   cp $FORDIR/lowcore.ed $FORDIR/lowcore.s
+	   ;;
+	h) cd ../h
+	   for i in *.h
+	   do expand < $i | sed 's/\\/&&&&/g;s/^\./\\\\\&./' > $FORDIR/$i
+	   done
+	   ;;
+	sh) cd shell
+	   for i in *.h *.c
+	   do expand < $i | sed 's/\\/&&&&/g;s/^\./\\\\\&./' > $FORDIR/$i
+	   done
+	   ;;
+	l) for i in printf.c doprnt.c fprintf.c sprintf.c
+	   do expand < $LIBDIR/$i | sed 's/\\/&&&&/g' >$FORDIR/$i
+	   done
+	   ;;
+	C) expand Configuration | sed 's/\\/&&&&/g' >$FORDIR/Configuration
+	   ;;
+	*) echo error in use of doform...
+esac
+

@@ -1,0 +1,68 @@
+>S218001000303900000FFE207C0004000008390000006000061A 
+00Y> 
+>S2180010146700FFF611390060000453806600FFEA13FC002464 
+01Y> 
+>S218001028006000004EF900200C820000040000000500000051 
+02Y> 
+>S804000000FB 
+03Y> 
+>00004EF900200C820000040000000500000051 
+What? 
+> 
+>e 00000ffe 
+000FFE: FEE8? 0114 
+001000: 3039? q 
+>g 00001000 
+>e 00000ffc 
+000FFC: 0003? 0003 
+000FFE: 0114? q 
+>e 00000ffe 
+000FFE: 0114? fee8 
+001000: 3039? q 
+>g 0003feec Sending packet to address 0x1000, of length 0x400
+Sending packet to address 0x1400, of length 0x400
+Sending packet to address 0x1800, of length 0x400
+Sending packet to address 0x1c00, of length 0x400
+Sending packet to address 0x2000, of length 0x400
+Sending packet to address 0x2400, of length 0x400
+Sending packet to address 0x2800, of length 0x400
+Sending packet to address 0x2c00, of length 0x400
+Sending packet to address 0x3000, of length 0x400
+Sending packet to address 0x3400, of length 0x400
+Sending packet to address 0x3800, of length 0x400
+Sending packet to address 0x3c00, of length 0x400
+Sending packet to address 0x4000, of length 0x400
+Sending packet to address 0x4400, of length 0x400
+Sending packet to address 0x4800, of length 0x400
+Sending packet to address 0x4c00, of length 0x400
+Sending packet to address 0x5000, of length 0x400
+Sending packet to address 0x5400, of length 0x400
+Sending packet to address 0x5800, of length 0x400
+Sending packet to address 0x5c00, of length 0x400
+Sending packet to address 0x6000, of length 0x400
+Sending packet to address 0x6400, of length 0x400
+Sending packet to address 0x6800, of length 0x400
+Sending packet to address 0x6c00, of length 0x400
+Sending packet to address 0x7000, of length 0x400
+Sending packet to address 0x7400, of length 0x400
+Sending packet to address 0x7800, of length 0x400
+Sending packet to address 0x7c00, of length 0x400
+Sending packet to address 0x8000, of length 0x400
+Sending packet to address 0x8400, of length 0x400
+Sending packet to address 0x8800, of length 0x400
+Sending packet to address 0x8c00, of length 0x400
+Sending packet to address 0x9000, of length 0x400
+Sending packet to address 0x9400, of length 0x400
+Sending packet to address 0x9800, of length 0x400
+Sending packet to address 0x9c00, of length 0x400
+Sending packet to address 0xa000, of length 0x400
+Sending packet to address 0xa400, of length 0x400
+Sending packet to address 0xa800, of length 0x400
+Sending packet to address 0xac00, of length 0x110
+Sending packet to address 0xad10, of length 0x0
+
+(Done loading user program)
+
+(Done)
+
+(Exiting)

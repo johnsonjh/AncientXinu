@@ -1,0 +1,4 @@
+Note: these files describe routines that are used from the VAX to directly
+access a tu58 tape drive.  A bootable image can be written onto the tape
+or it can just be used as an extra disk storage unit for the VAX.  In any
+case, this code runs on the VAX, not on an LSI 11.

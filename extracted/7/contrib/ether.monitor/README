@@ -1,0 +1,14 @@
+				README
+				------
+
+This software was built by:
+
+		Chi-jiu Lin
+		Guangzhou Institute of Electronic Technology
+		Academic Sinica
+		P.O. Box 176, Guangzhou
+		People's Republic of China
+
+It allows one to monitor packets on an Ethernet, filtering
+out packets by protocol type, destination address, or source
+address.

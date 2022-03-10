@@ -1,0 +1,201 @@
+.TH CC11 1
+.SH NAME
+cc11 \- cross compiler for the \s-2LSI\-11\s0
+.SH SYNOPSIS
+.B cc11
+[ option ] ... file ...
+.SH DESCRIPTION
+.I Cc11
+is a general-purpose script that invokes the
+C preprocessor, C cross-compiler,
+cross-assembler, and cross-loader
+to produce code for an \s-2LSI 11\s0.
+\f2Cc11\f1 is easier to use than invoking the processors
+individually because it passes the necessary arguments
+like library directories and keeps track of intermediate
+files automatically.
+By default, \f2cc11\f1 leaves the result in a file named `a.out'
+that is ready for downloading into the \s-2LSI 11\s0 memory.
+.B N.B.:
+.I cc11
+produces object code in the \s-2PDP\-11 UNIX\s0 format; as expected,
+it is incompatible with the \s-2VAX UNIX\s0 object code format.
+.PP
+By default, \f2cc11\f1 preprocesses, cross-compiles, cross-assembles,
+and cross-loads a program; arguments can limit
+which steps it performs and change
+such things as the order in which libraries are searched.
+.PP
+Arguments whose names end with `.c' are taken to be
+C source programs; they are compiled, and
+each object program is left on the file
+whose name is that of the source with `.o' substituted
+for `.c'.
+.PP
+In the same way,
+arguments whose names end with `.s' are taken to be assembly source language
+and are assembled, producing a `.o' file.
+.PP
+Arguments whose names end with `.o' are combined with
+`.o' files produced from `.c' and `.s' arguments by the loader
+to produce an `a.out' file.
+.PP
+Arguments whose names end with `.a' are taken to be libraries
+of `.o' programs, and are searched by the loader in the order
+specified.
+.PP
+Other arguments to \f2cc11\f1 control the process as follows:
+.TP 8
+.B \-c
+Suppress the loading phase of the compilation, and force
+\f2cc11\f1 to stop after producing `.o' files.
+.TP
+.BI \-o " output"
+Name the final output file
+.IR output .
+.TP 8
+.B \-v
+Verbose output narrating
+each step of the compile. This is useful if you want
+to see what's going on.
+.TP
+.SM
+.BI \-D name=def
+.br
+.ns
+.TP
+.SM
+.BI \-D \*Sname
+Define the
+.I name
+to the preprocessor,
+as if by
+`#define'.
+If no definition is given, the name is defined as "1".
+.TP                                                             
+.SM                                                             
+.B \-E                                                          
+Run only the macro preprocessor                                 
+on the named C programs, and send the result to the   
+standard output.                                            
+.TP
+.SM
+.BI \-I \*Sdir
+`#include' files
+whose names do not begin with `/' are always
+sought first in the directory
+of the
+.I file
+argument,
+then in directories named in
+.B \-I
+options,
+then in directories on a standard list.
+.TP                                                     
+.SM
+.B \-L
+If loading, include the standalone startup routine in preparation
+for downloading without Xinu.
+The default load sequence includes Xinu startup routines.
+.TP
+.SM
+.B \-O
+Invoke an
+object-code improver as part of the C cross-compilation.
+.TP
+.SM
+.B \-P
+Run only the macro preprocessor
+on the named C programs, and send the result to corresponding
+files suffixed `.i'.
+.TP
+.SM
+.B \-S
+Compile the named C programs into assembly language, and leave the
+assembler-language output on corresponding files suffixed `.s',
+without assembling or loading the result.
+.TP
+.SM
+.BI \-U \*Sname
+Remove any initial definition of
+.IR name .
+.PP
+Other arguments
+are taken
+to be either loader option arguments, or C-compatible
+object programs, typically produced by an earlier
+.I cc11
+run,
+or perhaps libraries of C-compatible routines.
+These programs, together with the results of any
+compilations specified, are loaded (in the order
+given) to produce a file that may be downloaded to the
+\s-2LSI\-11\s0 for execution.
+Unless changed with the \f2\-o\f1 option, \f2cc11\f1 leaves
+the result of the load in file `a.out'.
+.SH EXAMPLES
+To compile a C program and load it with the Xinu libraries, producing
+an image in `a.out' that is ready for downloading:
+.sp
+.ce
+cc11 program.c
+.sp
+To compile C code in file f1.c and leave the object code in file f1.o:
+.sp
+.ce
+cc11 \-c f1.c
+.sp
+To assemble code in file f2.s and leave the object code in file f2.o:
+.sp
+.ce
+cc11 \-c f2.s
+.sp
+To compile C code in file f3.c and combine it with previously compiled
+code in file f1.o:
+.sp
+.ce
+cc11 f3.c f1.o
+.sp
+To load three previously compiled files f1.o, f2.o, and f3.o:
+.sp
+.ce
+cc11 f1.o f2.o f3.o
+.sp
+To compile and load the C code in file f4.c leaving the output in `outfile'
+instead of `a.out':
+.sp
+.ce
+cc11 \-o outfile  f4.c
+.sp
+.ta 1.75i
+.SH FILES
+file.c	input C file
+.br
+file.s	input or output assembler language file
+.br
+file.o	input or output object file
+.br
+a.out	loaded output
+.br
+/tmp/ctm?	temporary compiler files
+.br
+Xinu-directory/lib/cpp11	preprocessor
+.br
+Xinu-directory/lib/c0.11	first pass
+.br
+Xinu-directory/lib/c1.11	second pass
+.br
+Xinu-directory/lib/c2.11	optional optimizer
+.br
+Xinu-directory/include	`#include' files
+.SH DIAGNOSTICS
+The diagnostics produced by C itself are intended to be
+self-explanatory.
+Occasional messages may be produced by the assembler
+or loader.
+.SH BUGS
+.I Cc11
+does not support arguments \f2-g\f1, \f2-w\f1, \f2-p\f1,
+\f2-R\f1, \f2-C\f1, \f2-B\f1, or \f2-t\f1 that the VAX C compiler handles.
+.SH SEE ALSO
+as11(1), ld11(1), ranlib11(1), download(1), ar(1)

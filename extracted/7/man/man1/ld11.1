@@ -1,0 +1,175 @@
+.TH LD11 1 
+.SH NAME
+ld11 \- LSI 11 cross-loader for the VAX
+.SH SYNOPSIS
+.B ld11
+[ option ] file ...
+.SH DESCRIPTION
+.I Ld11
+combines several
+object programs into one, resolves external
+references, and searches libraries.
+In the simplest case several object
+.I files
+are given, and
+.I ld11
+combines them, producing
+an object module which can be either executed or
+become the input for a further
+.I ld11
+run.
+(In the latter case, the
+.B \-r
+option must be given
+to preserve the relocation bits.)
+By default, \f2ld11\f1 leaves its output on file
+.BR a.out .
+.PP
+The argument routines are concatenated in the order
+specified.  The entry point of the output is the
+beginning of the first routine unless altered by the
+.B \-e
+option.
+.PP
+If any argument is a library, it is searched exactly once
+at the point it is encountered in the argument list.
+Only those routines defining an unresolved external
+reference are loaded.
+If a routine from a library
+references another routine in the library,
+and the library has not been processed by
+.IR ranlib11 (1),
+the referenced routine must appear after the
+referencing routine in the library.
+Thus the order of programs within libraries
+may be important.
+If the first member of a library is named
+`__.SYMDEF',
+then it is understood to be a dictionary for the
+library
+such
+as produced by
+.IR ranlib11 ;
+the dictionary is searched
+iteratively to satisfy as many references as possible.
+.PP
+The symbols `\_etext', `\_edata' and `\_end'
+(`etext', `edata' and `end' in C)
+are reserved, and if referred to,
+are set to the first location above the program,
+the first location above initialized data,
+and the first location above all data respectively.
+It is erroneous to define these symbols.
+.PP
+.I Ld11
+understands several options.
+Except for
+.BR \-l ,
+they should appear before the file names.
+.TP 
+.B  \-s
+`Strip' the output, that is, remove the symbol table
+and relocation bits to save space (but impair the
+usefulness of the debugger).
+This information can also be removed by
+.IR  strip11(1).
+.TP 
+.B  \-u
+Take the following argument as a symbol and enter
+it as undefined in the symbol table.  This is useful
+for loading wholly from a library, since initially the symbol
+table is empty and an unresolved reference is needed
+to force the loading of the first routine.
+.TP 
+.BI \-l x
+This
+option is an abbreviation for the library name
+.RI `Xinu-directory/lib/lib x .a',
+where
+.I x
+is a string.
+If that does not exist,
+.I ld11
+tries
+.RI `/usr/lib/lib x .a'.
+A library is searched when its name is encountered,
+so the placement of a
+.B  \-l
+option is significant.
+.TP 
+.B  \-x
+Do not preserve local symbols
+(i.e., symbols not declared .globl)
+in the output symbol table; only enter
+external symbols.
+This option saves some space in the output file.
+.TP 
+.B  \-X
+Save local symbols
+except for those whose names begin with `L'.
+This option is used by
+.IR cc11(1)
+to discard internally generated labels while
+retaining symbols local to routines.
+.TP 
+.B  \-r
+Generate relocation bits in the output file
+so that it can be the subject of another
+.I ld11
+run.
+This flag also prevents final definitions from being
+given to common symbols,
+and suppresses the `undefined symbol' diagnostics.
+The idea is that several object files may be combined into
+one large one using
+.B \-r
+without losing information.
+.TP 
+.B  \-d
+Force definition of common storage
+even if the
+.B \-r
+flag is present.
+.TP 
+.B  \-n
+Move the data areas up to the first
+possible 4K word boundary following the
+end of the text.
+Designed for systems that share text, this option
+only wastes space when used with Xinu -- it should not be specified
+except for debugging.
+.TP 
+.B  \-i
+Important that it not be used on an \s-2LSI 11/02\s0.
+It causes the text and data areas to be allocated from
+separate address spaces (i.e. the data area relocation
+begins at location 0).
+.TP 
+.B  \-o
+The
+.I name
+argument after
+.B \-o
+is used as the name of the
+output file, instead of
+.BR a.out .
+.TP
+.B \-e
+The following argument is taken to be the
+name of the entry point of the loaded
+program; location 0 is the default.
+.TP
+.B \-O
+Not to be used on an \s-2LSI1/02\s0.
+It makes the file an overlay.
+.TP
+.B \-D
+The next argument is a decimal number that sets
+the size of the data segment.
+.SH FILES
+.ta \w'Xinu-directory/lib*.axxx\ \ 'u
+Xinu-directory/lib/lib*.a	libraries
+.br
+a.out	output file
+.SH "SEE ALSO"
+as11(1), ar(1), cc11(1), ranlib11(1)

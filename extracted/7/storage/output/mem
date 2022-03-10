@@ -1,0 +1,5 @@
+Memory: 57343 bytes real memory, 36082 text, 4738 data, 5944 bss
+ initially: 10579 avail
+ presently:  1052 avail,  2684 stack,  6843 heap
+ free list:
+   block at 150070, length  1052 (02034)

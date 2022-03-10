@@ -1,0 +1,66 @@
+
+
+
+UPLOAD(1)           Xinu Programmer's Manual            UPLOAD(1)
+
+
+
+NAME
+     upload - copy LSI 11 memory to VAX
+
+SYNOPSIS
+     upload [ options ] ...  [ [ min addr ] max addr ]
+
+DESCRIPTION
+     _U_p_l_o_a_d copies the contents of an LSI 11 memory onto a file
+     on the VAX.  By default the image is placed in file core11.
+
+     Arguments _m_i_n _a_d_d_r and _m_a_x _a_d_d_r limit the image to specific
+     addresses.
+
+     Options include the following:
+
+     -o   Output file.  Take the next argument as an output file
+          name in place of _c_o_r_e_1_1.
+
+     -v   Verbose. Print the details of communications between
+          the LSI 11 and the host.
+
+     -s   Silent. Print no information messages.
+
+     -n   Noload.  Assume the uploader code is already resident
+          in the LSI 11.
+
+     -lx  LSI number.  Use LSI number _x for uploading.  If this
+          option is not specified, _u_p_l_o_a_d selects the LSI 11 that
+          the user has reserved.
+
+     -a   a.out file.  Take the next argument as the name of the
+          object file in place of a.out.
+
+     -cL  Use LSI in class _L.
+
+FILES
+     /dev/LSI.i       LSI 11 device connections
+     /tmp/xinu/LSI-*  Lock files for auto-select
+     {Xinu-directory}/lib/machinesdatabase listing parameters for
+     all machines
+     {Xinu-directory}/lib/sul.boot.lsiLSI 11 part of serial
+     bootstrap
+     {Xinu-directory}/lib/sul.lsiserial uploader for LSI 11
+     (Xinu-directory}/lib/eul.lsiethernet uplooader for LSI 11
+     Note: files for other machines have ``lsi'' replaced by the
+     machine type.
+
+BUGS
+     _U_p_l_o_a_d reads the contents of some memory locations with ODT
+     and then overwrites them with a bootstrap program; if
+     aborted, it cannot be restarted because data has been lost.
+
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+

@@ -1,0 +1,106 @@
+From sbz Mon May 12 14:30:58 1986
+Received: from guenevere.Purdue.EDU (purdue-guenevere) by merlin.Purdue.EDU; Mon, 12 May 86 14:30:56 EST
+Date: Mon, 12 May 86 14:30:48 EST
+From: "S B Zapata-Sauceda" <sbz>
+Message-Id: <8605121930.AA12442@guenevere.Purdue.EDU>
+Received: by guenevere.Purdue.EDU; Mon, 12 May 86 14:30:48 EST
+To: dec, xx@test
+Subject: domain name resolver (small test programs)
+Status: R
+
+#include <conf.h>
+#include <kernel.h>
+#include <network.h>
+
+/*
+ *      Test file for domain name resolver (normal queries).
+ *
+ */
+main ()
+{
+   IPaddr address;
+   char name[60];
+   int ans, i;
+
+   while (1) {
+   scanf("%s",name);
+   ans = getInetAddr(name, address);
+   if (ans < 0)
+       kprintf ("error ***%d\n", ans);
+   else {
+       kprintf ("%d\n\n", ans); 
+       for (i = 0; i < 4; i++)
+            kprintf("address (%d) = %u\n",i, ans = 0x00FF & address[i]); }
+   }
+}
+
+From sbz Mon May 12 14:34:05 1986
+Received: from guenevere.Purdue.EDU (purdue-guenevere) by merlin.Purdue.EDU; Mon, 12 May 86 14:34:03 EST
+Date: Mon, 12 May 86 14:33:55 EST
+From: "S B Zapata-Sauceda" <sbz>
+Message-Id: <8605121933.AA12490@guenevere.Purdue.EDU>
+Received: by guenevere.Purdue.EDU; Mon, 12 May 86 14:33:55 EST
+To: dec
+Subject: domain name resolver (small test prog. 1)
+Status: R
+
+#include <conf.h>
+#include <kernel.h>
+#include <network.h>
+
+/*
+ *      Test file for domain name resolver (normal queries).
+ *
+ */
+main ()
+{
+   IPaddr address;
+   char name[60];
+   int ans, i;
+
+   while (1) {
+   scanf("%s",name);
+   ans = getInetAddr(name, address);
+   if (ans < 0)
+       kprintf ("error ***%d\n", ans);
+   else {
+       kprintf ("%d\n\n", ans); 
+       for (i = 0; i < 4; i++)
+            kprintf("address (%d) = %u\n",i, ans = 0x00FF & address[i]); }
+   }
+}
+
+From sbz Mon May 12 14:34:29 1986
+Received: from guenevere.Purdue.EDU (purdue-guenevere) by merlin.Purdue.EDU; Mon, 12 May 86 14:34:27 EST
+Date: Mon, 12 May 86 14:34:20 EST
+From: "S B Zapata-Sauceda" <sbz>
+Message-Id: <8605121934.AA12502@guenevere.Purdue.EDU>
+Received: by guenevere.Purdue.EDU; Mon, 12 May 86 14:34:20 EST
+To: dec
+Subject: domain name resolver (small test prog 2)
+Status: R
+
+#include <conf.h>
+#include <kernel.h>
+#include <network.h>
+
+/*
+ *   test file, domain name resolver (inverse queries).
+ *
+ */
+
+main ()
+{
+   IPaddr address;
+   char name[60];
+   int ans; unsigned i;
+
+   address[0] = 192; address[1] = 5;
+   address[2] = 58; address[3] =2;
+   ans = getInetName (address, name);
+   if (ans < 0)
+       kprintf ("error ***%d\n", ans);
+   else 
+            kprintf("name = %s\n",name); 
+}
+

@@ -1,0 +1,144 @@
+
+# mcc -  Motorola C compiler driver file
+
+DIR=/v1/burns/Xinu68
+PATH=/bin:/usr/bin:/usr/m/bin
+TEMP=/tmp/$$ 
+AS=/usr/m/bin/mas 
+LD=/usr/m/bin/mld 
+CCOMP=/usr/m/lib/ccom
+C2=/usr/m/lib/c2
+LCRT="$DIR/lib/crt0.o" 
+LEXIT="$DIR/lib/exit.o"
+LIBS=" $DIR/lib/libxc.a " 
+DEFS="-Uvax -Updp11 -Dmc68000"
+INC="-I$DIR/include -I$DIR/src/sys/h"
+O=				# includes and (un)defines  encountered
+OTWO='grep -v [la]s[lr].*&0,' 
+S=c			 	# output assembly code flag
+LFLAG=yes			# load flag 
+RETCODE=0 			# return code
+SDB=				# sdb flag - 
+PROF=no
+BFLAG= 
+bparm=" -b 4096 "
+ECHO=echo
+
+trap "rm -f $TEMP.i $TEMP.s $TEMP.p.s; exit 1" 1 2 3 15
+trap "rm -f $TEMP.i $TEMP.s $TEMP.p.s; exit $RETCODE" 0
+for A
+do	case $A in
+	*.c)	B=`basename $A .c`
+		$ECHO "$B.c"
+		case $S in
+		-S)	
+			if /lib/cpp  $DEFS $O -I/usr/m/include $A $TEMP.i &&
+			   $CCOMP $SDB <$TEMP.i | $OTWO >$B.s; then
+				: OK
+			else
+				RETCODE=$?
+			fi ;;
+		*)	
+			if /lib/cpp $DEFS $O -I/usr/m/include $A $TEMP.i &&
+			   $CCOMP $SDB <$TEMP.i | $OTWO >$TEMP.s &&
+			    $AS $TEMP.s -o $B.o; then
+				ll="$ll $B.o"
+			else
+				LFLAG=no RETCODE=$?
+			fi
+		esac ;;
+
+	-S)	
+		LFLAG=no S=-S  ;;
+
+	-X)	
+		CCOMP=/usr/m/support/oldmcc/comp ;;
+	-Y)	
+		CCOMP=/usr/m/support/mcc/comp
+		AS=/usr/spool/uucppublic/hpk/mas/mas
+		LD=/usr/spool/uucppublic/hpk/mld/mld
+		;;
+	-Z)	
+		CCOMP="smx -a /usr/m/support/mmcc/comp"
+		AS=/usr/spool/uucppublic/hpk/mas/mas
+		LD=/usr/spool/uucppublic/hpk/mld/mld
+		;;
+	-32)	
+		CCOMP=/usr/m/support/mcc32/comp
+		AS=/usr/spool/uucppublic/hpk/mas/mas
+		LD=/usr/spool/uucppublic/hpk/mld/mld
+		;;
+
+	-M)	
+		LFLAG=no S=-M ;;
+
+	-O)	
+		case $SDB in
+			-g) ;;
+			*) OTWO="$C2";;
+	    	esac ;;
+
+	-Q)	
+		case $SDB in
+			-g) ;;
+			*) OTWO="/usr/m/support/c2/c2";;
+	    	esac ;;
+
+	-[IDU]*)	
+		O="$O $A" ;;
+
+	-b)	
+		BFLAG=yes ;;
+
+	-c)	
+		LFLAG=no ;;
+
+	-)	
+		ECHO=: ;;
+
+	*.s)	
+		B=`basename $A .s`
+		case $S in
+
+		*)	
+			if echo "$B.s:" &&
+			   $AS $A -o $B.o; then
+				ll="$ll $B.o"
+			else
+				LFLAG=no RETCODE=$?
+			fi
+		esac ;;
+
+	-g)	
+		SDB=-g OTWO='grep -v [la]s[lr].*&0,'  ;;
+
+	-alone)
+		LEXIT=
+		LCRT=  ;;
+
+	*)	
+		case $BFLAG in
+		yes)	bparm=" -b $A"
+			BFLAG=
+			;;
+		*) 
+			case $A in
+			-l*) ll="$ll /usr/m/lib/lib`expr $A : '..\(.*\)'`.a" ;;
+			*)	ll="$ll $A" 
+			esac
+		esac
+	esac
+done
+case $LFLAG in
+	no)	:
+		;;
+	*)
+		case $PROF in
+			yes)	$LD $LCRT $ll $bparm $LIBS -r -o $TEMP.p.s
+				fixprof $TEMP.p.s
+				ll="$ll _endprof.o"
+				;;
+		esac
+		$LD $LCRT $ll $LEXIT $bparm $LIBS
+		RETCODE=$?
+esac

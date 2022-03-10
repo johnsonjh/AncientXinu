@@ -1,0 +1,73 @@
+.TH NM11 1 
+.SH NAME
+nm11 \- print name list for object file produced by cc11
+.SH SYNOPSIS
+.B nm11
+[
+.B \-agnopru
+]
+[ file ... ]
+.SH DESCRIPTION
+.I Nm11
+prints the name list (symbol table) of each object
+.I file
+in the argument list.
+If no
+.I file
+is given, the symbols in
+`a.out'
+are listed.
+.PP
+Each symbol name is preceded by its value (blanks if undefined)
+and one of the letters
+.SM
+.B U
+(undefined),
+.SM
+.B A
+(absolute),
+.SM
+.B  T
+(text segment symbol),
+.SM
+.B D
+(data segment symbol),
+.SM
+.B B
+(bss segment symbol),
+.SM
+.B C
+(common symbol), or
+.SM
+.B f
+file name.
+If the symbol is local (non-external) the type letter is in
+lower case.
+The output is sorted alphabetically.
+.PP
+Options are:
+.TP
+.B \-a
+Include all symbols in candidates for printing; normally
+symbols destined for UNIX's
+.IR sdb (1)
+are excluded.
+.TP
+.B  \-g
+Print only global (external) symbols.
+.TP
+.B \-n
+Sort numerically rather than alphabetically.
+.TP
+.B  \-o
+Prepend file or archive element name to each
+output line rather than only once.
+.TP
+.B  \-p
+Don't sort; print in symbol-table order.
+.TP
+.B  \-r
+Sort in reverse order.
+.TP
+.B  \-u
+Print only undefined symbols.

@@ -1,0 +1,26 @@
+#
+#   Make the C preprocessor
+#
+
+CFLAGS  = -O -n -s
+DESTDIR = {Xinu-directory}/lib
+
+all:		cpp11
+
+clean:
+		rm -f cpp11  *.o
+
+install:	cpp11
+		chmod 755 cpp11
+		cp cpp11 $(DESTDIR)/cpp11
+
+cmp:		cpp11
+		cmp cpp11 $(DESTDIR)/cpp11
+
+cpp11:		cpp11.o cpy.o
+		cc $(CFLAGS) cpp11.o cpy.o -o cpp11
+
+cpp11.o:	cpp11.c
+		cc $(CFLAGS) -c -Dunix=1 -Dvax=1 cpp11.c
+
+cpy.o:		cpy.y yylex.c

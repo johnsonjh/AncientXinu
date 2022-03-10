@@ -1,0 +1,212 @@
+#include "stypes.h"
+
+#ifdef PASS1
+#	define name(x) x,
+#else
+#	define name(x)
+#endif
+
+struct symbol symtab[] = {
+	{ name(".")		TTEXT,	0,	000000 },
+	{ name("..")		TABS,	0,	000000 },
+
+/* register */
+
+	{ name("r0")		TREG,	0, 	000000 },
+	{ name("r1")		TREG,	0, 	000001 },
+	{ name("r2")		TREG,	0, 	000002 },
+	{ name("r3")		TREG,	0, 	000003 },
+	{ name("r4")		TREG,	0, 	000004 },
+	{ name("r5")		TREG,	0, 	000005 },
+	{ name("sp")		TREG,	0, 	000006 },
+	{ name("pc")		TREG,	0, 	000007 },
+
+#ifdef eae
+/* eae & switches */
+
+	{ name("csw")		TABS,	0,	0177570 },
+	{ name("div")		TABS,	0,	0177300 },
+	{ name("ac")		TABS,	0,	0177302 },
+	{ name("mq")		TABS,	0,	0177304 },
+	{ name("mul")		TABS,	0,	0177306 },
+	{ name("sc")		TABS,	0,	0177310 },
+	{ name("sr")		TABS,	0,	0177311 },
+	{ name("nor")		TABS,	0,	0177312 },
+	{ name("lsh")		TABS,	0,	0177314 },
+	{ name("ash")		TABS,	0,	0177316 },
+
+#endif
+
+/* double operand */
+
+	{ name("mov")		TDBLOP,	0,	0010000 },
+	{ name("movb")		TDBLOP,	0,	0110000 },
+	{ name("cmp")		TDBLOP,	0,	0020000 },
+	{ name("cmpb")		TDBLOP,	0,	0120000 },
+	{ name("bit")		TDBLOP,	0,	0030000 },
+	{ name("bitb")		TDBLOP,	0,	0130000 },
+	{ name("bic")		TDBLOP,	0,	0040000 },
+	{ name("bicb")		TDBLOP,	0,	0140000 },
+	{ name("bis")		TDBLOP,	0,	0050000 },
+	{ name("bisb")		TDBLOP,	0,	0150000 },
+	{ name("add")		TDBLOP,	0,	0060000 },
+	{ name("sub")		TDBLOP,	0,	0160000 },
+
+/* branch */
+
+	{ name("br")		TBR,	0,	0000400 },
+	{ name("bne")		TBR,	0,	0001000 },
+	{ name("beq")		TBR,	0,	0001400 },
+	{ name("bge")		TBR,	0,	0002000 },
+	{ name("blt")		TBR,	0,	0002400 },
+	{ name("bgt")		TBR,	0,	0003000 },
+	{ name("ble")		TBR,	0,	0003400 },
+	{ name("bpl")		TBR,	0,	0100000 },
+	{ name("bmi")		TBR,	0,	0100400 },
+	{ name("bhi")		TBR,	0,	0101000 },
+	{ name("blos")		TBR,	0,	0101400 },
+	{ name("bvc")		TBR,	0,	0102000 },
+	{ name("bvs")		TBR,	0,	0102400 },
+	{ name("bhis")		TBR,	0,	0103000 },
+	{ name("bec")		TBR,	0,	0103000 },
+	{ name("bcc")		TBR,	0,	0103000 },
+	{ name("blo")		TBR,	0,	0103400 },
+	{ name("bcs")		TBR,	0,	0103400 },
+	{ name("bes")		TBR,	0,	0103400 },
+
+/* jump/branch type */
+
+	{ name("jbr")		TJBR,	0,	0000400 },
+	{ name("jne")		TJCOND,	0,	0001000 },
+	{ name("jeq")		TJCOND,	0,	0001400 },
+	{ name("jge")		TJCOND,	0,	0002000 },
+	{ name("jlt")		TJCOND,	0,	0002400 },
+	{ name("jgt")		TJCOND,	0,	0003000 },
+	{ name("jle")		TJCOND,	0,	0003400 },
+	{ name("jpl")		TJCOND,	0,	0100000 },
+	{ name("jmi")		TJCOND,	0,	0100400 },
+	{ name("jhi")		TJCOND,	0,	0101000 },
+	{ name("jlos")		TJCOND,	0,	0101400 },
+	{ name("jvc")		TJCOND,	0,	0102000 },
+	{ name("jvs")		TJCOND,	0,	0102400 },
+	{ name("jhis")		TJCOND,	0,	0103000 },
+	{ name("jec")		TJCOND,	0,	0103000 },
+	{ name("jcc")		TJCOND,	0,	0103000 },
+	{ name("jlo")		TJCOND,	0,	0103400 },
+	{ name("jcs")		TJCOND,	0,	0103400 },
+	{ name("jes")		TJCOND,	0,	0103400 },
+
+/* single operand */
+
+	{ name("clr")		TSINGLE,0,	0005000 },
+	{ name("clrb")		TSINGLE,0,	0105000 },
+	{ name("com")		TSINGLE,0,	0005100 },
+	{ name("comb")		TSINGLE,0,	0105100 },
+	{ name("inc")		TSINGLE,0,	0005200 },
+	{ name("incb")		TSINGLE,0,	0105200 },
+	{ name("dec")		TSINGLE,0,	0005300 },
+	{ name("decb")		TSINGLE,0,	0105300 },
+	{ name("neg")		TSINGLE,0,	0005400 },
+	{ name("negb")		TSINGLE,0,	0105400 },
+	{ name("adc")		TSINGLE,0,	0005500 },
+	{ name("adcb")		TSINGLE,0,	0105500 },
+	{ name("sbc")		TSINGLE,0,	0005600 },
+	{ name("sbcb")		TSINGLE,0,	0105600 },
+	{ name("tst")		TSINGLE,0,	0005700 },
+	{ name("tstb")		TSINGLE,0,	0105700 },
+	{ name("ror")		TSINGLE,0,	0006000 },
+	{ name("rorb")		TSINGLE,0,	0106000 },
+	{ name("rol")		TSINGLE,0,	0006100 },
+	{ name("rolb")		TSINGLE,0,	0106100 },
+	{ name("asr")		TSINGLE,0,	0006200 },
+	{ name("asrb")		TSINGLE,0,	0106200 },
+	{ name("asl")		TSINGLE,0,	0006300 },
+	{ name("aslb")		TSINGLE,0,	0106300 },
+	{ name("jmp")		TSINGLE,0,	0000100 },
+	{ name("swab")		TSINGLE,0,	0000300 },
+
+/* jsr */
+
+	{ name("jsr")		TJSR,	0,	0004000 },
+
+/* rts */
+
+	{ name("rts")		TRTS,	0,	000200 },
+
+/* simple operand */
+
+	{ name("sys")		TSYS,	0,	0104400 },
+
+/* flag-setting */
+
+	{ name("clc")		TABS,	0,	0000241 },
+	{ name("clv")		TABS,	0,	0000242 },
+	{ name("clz")		TABS,	0,	0000244 },
+	{ name("cln")		TABS,	0,	0000250 },
+	{ name("sec")		TABS,	0,	0000261 },
+	{ name("sev")		TABS,	0,	0000262 },
+	{ name("sez")		TABS,	0,	0000264 },
+	{ name("sen")		TABS,	0,	0000270 },
+
+/* floating point ops */
+
+	{ name("cfcc")		TABS,	0,	0170000 },
+	{ name("setf")		TABS,	0,	0170001 },
+	{ name("setd")		TABS,	0,	0170011 },
+	{ name("seti")		TABS,	0,	0170002 },
+	{ name("setl")		TABS,	0,	0170012 },
+	{ name("clrf")		TSINGLE,0,	0170400 },
+	{ name("negf")		TSINGLE,0,	0170700 },
+	{ name("absf")		TSINGLE,0,	0170600 },
+	{ name("tstf")		TSINGLE,0,	0170500 },
+	{ name("movf")		TMOVF,	0,	0172400 },
+	{ name("movif")		TFLREG,	0,	0177000 },
+	{ name("movfi")		TFLDST,	0,	0175400 },
+	{ name("movof")		TFLREG,	0,	0177400 },
+	{ name("movfo")		TFLDST,	0,	0176000 },
+	{ name("addf")		TFLREG,	0,	0172000 },
+	{ name("subf")		TFLREG,	0,	0173000 },
+	{ name("mulf")		TFLREG,	0,	0171000 },
+	{ name("divf")		TFLREG,	0,	0174400 },
+	{ name("cmpf")		TFLREG,	0,	0173400 },
+	{ name("modf")		TFLREG,	0,	0171400 },
+	{ name("movie")		TFLREG,	0,	0176400 },
+	{ name("movei")		TFLDST,	0,	0175000 },
+	{ name("ldfps")		TSINGLE,0,	0170100 },
+	{ name("stfps")		TSINGLE,0,	0170200 },
+	{ name("fr0")		TREG,	0,	000000 },
+	{ name("fr1")		TREG,	0,	000001 },
+	{ name("fr2")		TREG,	0,	000002 },
+	{ name("fr3")		TREG,	0,	000003 },
+	{ name("fr4")		TREG,	0,	000004 },
+	{ name("fr5")		TREG,	0,	000005 },
+
+/* 11/45 operations */
+
+	{ name("als")		TMUL,	0,	072000 },
+	{ name("alsc")		TMUL,	0,	073000 },
+	{ name("mpy")		TMUL,	0,	070000 },
+#ifndef eae
+	{ name("mul")		TMUL,	0,	070000 },
+	{ name("div")		TMUL,	0,	071000 },
+	{ name("ash")		TMUL,	0,	072000 },
+	{ name("ashc")		TMUL,	0,	073000 },
+#endif
+	{ name("dvd")		TMUL,	0,	071000 },
+	{ name("xor")		TJSR,	0,	074000 },
+	{ name("sxt")		TSINGLE,0,	006700 },
+	{ name("mark")		TSYS,	0,	006400 },
+	{ name("sob")		TSOB,	0,	077000 },
+
+/* specials */
+
+	{ name(".byte")		TCBYTE,	0,	000000 },
+	{ name(".even")		TCEVEN,	0,	000000 },
+	{ name(".if")		TCIF,	0,	000000 },
+	{ name(".endif")	TCENDIF,0,	000000 },
+	{ name(".globl")	TCGLOBL,0,	000000 },
+	{ name(".text")		TCTEXT,	0,	000000 },
+	{ name(".data")		TCDATA,	0,	000000 },
+	{ name(".bss")		TCBSS,	0,	000000 },
+	{ name(".comm")		TCCOMM,	0,	000000 },
+};

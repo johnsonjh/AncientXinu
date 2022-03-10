@@ -1,0 +1,41 @@
+.TH LORDER11 1
+.SH NAME
+lorder11 \- find ordering relation for an \s-2LSI 11\s0 object library
+.SH SYNOPSIS
+.B lorder11
+file ...
+.SH DESCRIPTION
+Argument
+.I file
+is the input consisting of
+one or more object files or library archives (see
+.IR ar (1)).
+The standard output
+is a list of pairs of object file names,
+meaning that the first file of the pair refers to
+external identifiers defined in the second.
+The output may be processed by \s-2UNIX\s0 \f2tsort\f1
+to find an ordering of a library suitable for one-pass access by
+.IR  ld11 (1).
+.PP
+This brash one-liner intends to build a new library
+from existing `.o' files.
+.IP
+ar cr library \`\|lorder11 *.o | tsort\`
+.PP
+The need for lorder11 is eliminated by
+.IR ranlib11 (1),
+which converts an ordered archive into a randomly
+accessed library.
+.SH FILES
+*symref, *symdef
+.br
+nm11(1), sed(1), sort(1), join(1)
+.SH "SEE ALSO"
+tsort(1),
+ld11(1),
+ar(1),
+ranlib11(1)
+.SH BUGS
+The names of object files, in and out of libraries, must end with `.o';
+nonsense results otherwise.

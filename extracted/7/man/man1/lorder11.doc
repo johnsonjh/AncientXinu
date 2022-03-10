@@ -1,0 +1,66 @@
+
+
+
+LORDER11(1)         Xinu Programmer's Manual          LORDER11(1)
+
+
+
+NAME
+     lorder11 - find ordering relation for an LSI 11 object
+     library
+
+SYNOPSIS
+     lorder11 file ...
+
+DESCRIPTION
+     Argument _f_i_l_e is the input consisting of one or more object
+     files or library archives (see _a_r(1)).  The standard output
+     is a list of pairs of object file names, meaning that the
+     first file of the pair refers to external identifiers
+     defined in the second.  The output may be processed by UNIX
+     _t_s_o_r_t to find an ordering of a library suitable for one-pass
+     access by _l_d_1_1(1).
+
+     This brash one-liner intends to build a new library from
+     existing `.o' files.
+
+          ar cr library `lorder11 *.o | tsort`
+
+     The need for lorder11 is eliminated by _r_a_n_l_i_b_1_1(1), which
+     converts an ordered archive into a randomly accessed
+     library.
+
+FILES
+     *symref, *symdef
+     nm11(1), sed(1), sort(1), join(1)
+
+SEE ALSO
+     tsort(1), ld11(1), ar(1), ranlib11(1)
+
+BUGS
+     The names of object files, in and out of libraries, must end
+     with `.o'; nonsense results otherwise.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+

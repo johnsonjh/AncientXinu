@@ -1,0 +1,82 @@
+/* getInetName.c - getInetName  */
+
+#include <conf.h>
+#include <kernel.h>
+#include <proc.h>
+#include <network.h>
+#include <nserver.h>
+
+
+/*------------------------------------------------------------------------------
+ 
+ *  GetInetName  --  domain name resolver for inverse queries
+ *                 (i.e. given an Internet address returns the name of the host)
+ 
+ *------------------------------------------------------------------------------
+ */
+SYSCALL getInetName(ipaddr, name)
+IPaddr ipaddr;
+char *name;
+{
+	int dev, i, j;   
+        char * target, *size, *buff, c;
+	struct iq * iqptr; 
+
+	/* open the NETWORK pseudodevice to contact the name server */
+
+	if ((dev = open(NETWORK, N_SERVERADDR, ANYLPORT)) == SYSERR ||
+             control(dev, DG_SETMODE, DG_DMODE /* |DG_TMODE */) == SYSERR)
+		return(SYSERR);
+
+
+	if ((buff = getmem(PACKETLGTH)) == SYSERR)
+		return(SYSERR);
+	iqptr = (struct ip *) buff;
+	blkcopy(buff, MSG_HEADER, HEADER_LGTH); /* message header             */
+	target = (buff + HEADER_LGTH); 
+        for (i = 3; i >= 0; i--) {          /* insert name in datagram        */
+		sprintf(name, "%d", (unsigned) ipaddr[i]); 
+		*target++ = j = strlen(name);
+		blkcopy(target, name, j);
+		target += j;
+		}  
+        blkcopy(target, QTN_HEADER, QTNHEADER_LGTH); /* header of query      */
+	target += QTNHEADER_LGTH;
+
+
+        /* send query to domain name server */
+
+        control (dev, DG_CLEAR, 0);
+	write(dev, buff, target - iqptr);
+
+
+	/* receive response of query  */
+
+	if ((j = read(dev, buff, PACKETLGTH)) != TIMEOUT) 
+		if ((iqptr->rcode|00) || (iqptr->ancount <= 0))
+			j = SYSERR;
+		else {   
+		        while (*target != '\0')   /* ship head of R.R. */
+				if (0x00C0 & *target)
+					*++target = '\0';
+				else target += *target + 1;
+			target += RR_LGTH + 1;             	
+			j = OK;
+			*name = '\0';
+			while (*target != '\0')
+				if (*target > 191)  /* compressed name */
+					target = buff + net2hs(0xFF3F & *target);
+				else {
+					strncat(name, target + 1, *target);
+					strcat(name, ".");
+					target += *target + 1;
+					};
+			name[strlen(name) - 1] = '\0';	
+			}
+
+
+	freemem(buff, PACKETLGTH);
+        close(dev);
+        return(j);
+}
+

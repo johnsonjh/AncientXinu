@@ -1,0 +1,9 @@
+Commands are:
+  bpool           echo            netstat         sleep           
+  cat             exit            ps              snap            
+  close           help            reboot          time            
+  cp              kill            rf              unmount         
+  create          logout          rls             uptime          
+  date            mem             rm              who             
+  devs            mount           routes          ?               
+  dg              mv              ruptime         

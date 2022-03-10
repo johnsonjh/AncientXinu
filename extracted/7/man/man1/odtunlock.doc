@@ -1,0 +1,66 @@
+
+
+
+ODTUNLOCK(1)        Xinu Programmer's Manual         ODTUNLOCK(1)
+
+
+
+NAME
+     odtunlock - release lock on a tty line
+
+SYNOPSIS
+     odtunlock [ -cclass ] [ -lx ]
+
+DESCRIPTION
+     _O_d_t_u_n_l_o_c_k releases the caller's currently reserved microcom-
+     puter, making it available for others to use.  Mutual exclu-
+     sion locks are created automatically by _o_d_t and _d_o_w_n_l_o_a_d,
+     and are reported by _l_u_s_e_r_s.  Reservations may expire after
+     some idle time even if _o_d_t_u_n_l_o_c_k is not used (see default
+     timeout values set in Xinu-directory/lib/machines).
+
+     Without arguments, _o_d_t_u_n_l_o_c_k removes the reservation on the
+     tty line most recently accessed by the caller.  Argument -c
+     can be used to specify a _c_l_a_s_s, in which case _o_d_t_u_n_l_o_c_k
+     removes the user's most recently held reservation in that
+     class.  Argument -lx forces _o_d_t_u_n_l_o_c_k to cancel the reserva-
+     tion on line number _x within the selected class.
+
+     Xinu's tty reservation system is a friendly, cooperative
+     mutual-exclusion mechanism.  All software that accesses tty
+     lines for communicating with back-end microcomputers is
+     expected to adhere to the reservation system to prevent mul-
+     tiple users from trying to access the same machine simul-
+     taneously.
+
+FILES
+     /dev/CLASS.i  tty lines for a particular class.
+     /tmp/xinu/ulock._u_s_e_rrecords current line allocated by _u_s_e_r
+     /tmp/xinu/_c_n_a_m_e._iLock file for line _i in class _c_n_a_m_e.
+     {Xinu-directory}/lib/machinesdatabase listing parameters for
+     all machines
+
+SEE ALSO
+     lusers(1), odt(1), download(1), upload(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+

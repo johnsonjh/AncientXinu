@@ -1,0 +1,160 @@
+#
+#  Make the LSI-specific downloader
+#
+
+HDIR    = ../h
+CFLAGS  = -O -I$(HDIR)
+XINUDIR	= {Xinu-directory}
+DOWNDIR	= $(XINUDIR)/src/cmd/download
+DEVLIB	= $(DOWNDIR)/lib/libd.a
+DESTDIR	= $(XINUDIR)/bin
+LIBDIR	= $(XINUDIR)/lib
+CROSSAS	= $(XINUDIR)/bin/as11
+INC	= $(XINUDIR)/include/sys.s
+
+
+all:		edl sdl eul sul sdl.boot sul.boot
+
+install:	all
+		chmod 755 edl sdl sul eul
+		chmod 644 sdl.boot sul.boot
+		cp edl $(LIBDIR)/edl.lsi
+		cp sdl $(LIBDIR)/sdl.lsi
+		cp eul $(LIBDIR)/eul.lsi
+		cp sul $(LIBDIR)/sul.lsi
+		cp sdl.boot  $(LIBDIR)/sdl.boot.lsi
+		cp sul.boot  $(LIBDIR)/sul.boot.lsi
+
+clean:
+		rm -rf *.o core a.out .,* ,* eul sul edl sdl sdl.boot sul.boot
+
+edl.o:		edl.c
+		cc $(CFLAGS) -c edl.c
+
+sdl.o:		sdl.c
+		cc $(CFLAGS) -c sdl.c
+
+sul.o:		sul.c
+		cc $(CFLAGS) -c sul.c
+
+eul.o:		eul.c
+		cc $(CFLAGS) -c eul.c
+
+edl:		edl.o $(DEVLIB)
+		cc -o edl edl.o $(DEVLIB)
+
+sdl:		sdl.o $(DEVLIB)
+		cc -o sdl sdl.o $(DEVLIB)
+
+eul:		eul.o $(DEVLIB)
+		cc -o eul eul.o $(DEVLIB)
+
+sul:		sul.o $(DEVLIB)
+		cc -o sul sul.o $(DEVLIB)
+
+$(DEVLIB):
+		(cd $(DOWNDIR) ; make libd.a)
+
+sdl.boot:	sdl.boot.s
+		$(CROSSAS) -u -o sdl.boot $(INC) sdl.boot.s
+
+sul.boot:	sul.boot.s
+		$(CROSSAS) -u -o sul.boot $(INC) sul.boot.s
+
+../eload/src/.version:
+		../eload/src/av.sh
+
+../eload/src/.entry:
+		(cd ../eload/src; make .entry)
+
+depend:
+		grep '^#include' *.c ../h/*.h			\
+		| sed	-e 's/</"..\/h\//;s/>/"/'		\
+			-e 's/:[^"]*"\([^"]*\)".*/: \1/'	\
+		| sed	's/\.c/.o/' >makedep
+		echo '/^# DO NOT DELETE	THIS LINE/+2,$$d' >eddep
+		echo '$$r makedep' >>eddep
+		echo 'w' >>eddep
+		cp Makefile .,oldmake
+		cp Makefile ,Makefile
+		ed - ,Makefile < eddep
+		/bin/rm eddep makedep
+		echo '#	DEPENDENCIES MUST END AT END OF	FILE' >>,Makefile
+		echo '#	IF YOU PUT STUFF HERE IT WILL GO AWAY'>>,Makefile
+		echo '#	see make depend	above'>>,Makefile
+		/bin/mv ,Makefile Makefile
+
+# DO NOT DELETE	THIS LINE
+# DEPENDENCIES MUST END	AT END OF FILE
+edl.o: /usr/include/errno.h
+edl.o: /usr/include/setjmp.h
+edl.o: /usr/include/signal.h
+edl.o: /usr/include/sgtty.h
+edl.o: /usr/include/stdio.h
+edl.o: /usr/include/sys/file.h
+edl.o: /usr/include/sys/types.h
+edl.o: /usr/include/ctype.h
+edl.o: /usr/include/netinet/in.h
+edl.o: /usr/include/sys/socket.h
+edl.o: /usr/include/netdb.h
+edl.o: ../h/a.out.h
+edl.o: ../h/getdev.h
+edl.o: ../h/download.h
+edl.o: ../h/dlpack.h
+edl.o: ../h/lsidl.h
+edl.o: ../h/ethdown.h
+edl.o: ../eload/src/.version
+edl.o: ../eload/src/.entry
+eul.o: /usr/include/stdio.h
+eul.o: /usr/include/sgtty.h
+eul.o: /usr/include/signal.h
+eul.o: /usr/include/errno.h
+eul.o: /usr/include/setjmp.h
+eul.o: /usr/include/errno.h
+eul.o: /usr/include/sys/types.h
+eul.o: /usr/include/sys/file.h
+eul.o: /usr/include/ctype.h
+eul.o: /usr/include/netinet/in.h
+eul.o: /usr/include/sys/socket.h
+eul.o: /usr/include/netdb.h
+eul.o: ../h/core11.h
+eul.o: ../h/a.out.h
+eul.o: ../h/baud.h
+eul.o: ../h/getdev.h
+eul.o: ../h/ethdown.h
+eul.o: ../h/lsiul.h
+eul.o: ../h/dlpack.h
+eul.o: ../h/upload.h
+eul.o: ../eload/src/.version
+eul.o: ../eload/src/.entry
+sdl.o: /usr/include/errno.h
+sdl.o: /usr/include/setjmp.h
+sdl.o: /usr/include/signal.h
+sdl.o: /usr/include/sgtty.h
+sdl.o: /usr/include/stdio.h
+sdl.o: /usr/include/sys/file.h
+sdl.o: /usr/include/sys/types.h
+sdl.o: ../h/a.out.h
+sdl.o: ../h/getdev.h
+sdl.o: ../h/download.h
+sdl.o: ../h/lsidl.h
+sul.o: /usr/include/stdio.h
+sul.o: /usr/include/sgtty.h
+sul.o: /usr/include/signal.h
+sul.o: /usr/include/errno.h
+sul.o: /usr/include/setjmp.h
+sul.o: /usr/include/errno.h
+sul.o: /usr/include/sys/types.h
+sul.o: /usr/include/sys/file.h
+sul.o: /usr/include/ctype.h
+sul.o: ../h/core11.h
+sul.o: ../h/a.out.h
+sul.o: ../h/baud.h
+sul.o: ../h/getdev.h
+sul.o: ../h/ethdown.h
+sul.o: ../h/lsiul.h
+sul.o: ../h/dlpack.h
+sul.o: ../h/upload.h
+#	DEPENDENCIES MUST END AT END OF	FILE
+#	IF YOU PUT STUFF HERE IT WILL GO AWAY
+#	see make depend	above

@@ -1,0 +1,132 @@
+
+
+
+PM(1)               Xinu Programmer's Manual                PM(1)
+
+
+
+NAME
+     pm - Xinu post mortem debugger
+
+SYNOPSIS
+     pm [ -p ] [ -s ] [ -t ] [ _t_x_t_f_i_l [ _c_o_r_f_i_l ] ]
+
+DESCRIPTION
+     _P_m performs a post mortem given a core image from an LSI 11
+     running Xinu.  It takes as input the memory image (in LSI 11
+     a.out format) that was _d_o_w_n_l_o_a_ded, and the core image (in
+     LSI 11 core format) that was _u_p_l_o_a_ded, and prints the fol-
+     lowing information:
+
+          Differences between the text portions (program instruc-
+          tion areas) of the file before downloading and after
+          uploading.  Except for interrupt vectors which are ini-
+          tialized at run-time, differences indicate that
+          instructions were accidentally overwritten.  Interrupt
+          vectors lie below location 1000 (octal).
+
+          C traceback of the executing process, based on Xinu's
+          _c_u_r_r_p_i_d.
+
+          C traceback of all other processes.
+
+          The status of all semaphores.  If a semaphore is in use
+          and the count indicates that there are processes wait-
+          ing, the list of waiting processes is printed along
+          with an actual count.  Backward links are checked for
+          consistency.
+
+          The status of tty devices, including the buffer head
+          and tail pointers along with buffer contents.
+
+     By default, _p_m takes the downloaded image from file _a._o_u_t,
+     the uploaded image from file _c_o_r_e_1_1, and produces all of the
+     above output.  _P_m always prints information about the
+     current process.  If the following flags are present, _p_m
+     prints only the information requested.
+
+     -p   dump the process table.
+
+     -s   dump the semaphore table.
+
+     -t   dump the tty tables.
+
+     Optional arguments _t_x_t_f_i_l and _c_o_r_f_i_l can be specified to
+     change the files used as the downloaded and uploaded image.
+
+SEE ALSO
+     download(1), upload(1)
+
+
+
+
+Version 6b               Printed 1/12/87                        1
+
+
+
+
+
+
+PM(1)               Xinu Programmer's Manual                PM(1)
+
+
+
+BUGS
+     _P_m may fault when given garbage files (e.g., a badly damaged
+     core file) because it references symbols in the core image
+     based on values obtained from the a.out file without check-
+     ing their validity.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version 6b               Printed 1/12/87                        2
+
+
+

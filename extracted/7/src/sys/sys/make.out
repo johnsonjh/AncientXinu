@@ -1,0 +1,501 @@
+./config
+/bin/rm /usr/Xinu/include/conf.h
+/bin/ln ../h/conf.h /usr/Xinu/include/conf.h
+/usr/Xinu/bin/cc11 -O -c -I../h	access.c
+access.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	adump.c
+adump.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	arp_in.c
+arp_in.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	arpfind.c
+arpfind.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	arpinit.c
+arpinit.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	blkcopy.c
+blkcopy.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	blkequ.c
+blkequ.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	bpdump.c
+bpdump.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	chprio.c
+chprio.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ckmode.c
+ckmode.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	cksum.s
+cksum.s:
+/usr/Xinu/bin/cc11 -O -c -I../h	clkinit.c
+clkinit.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	clkint.s
+clkint.s:
+/usr/Xinu/bin/cc11 -O -c -I../h	close.c
+close.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	control.c
+control.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	create.c
+create.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	csv.s
+csv.s:
+/usr/Xinu/bin/cc11 -O -c -I../h	ctxsw.s
+ctxsw.s:
+/usr/Xinu/bin/cc11 -O -c -I../h	devdump.c
+devdump.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dfalloc.c
+dfalloc.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dfdsrch.c
+dfdsrch.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dgalloc.c
+dgalloc.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dgclose.c
+dgclose.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dgcntl.c
+dgcntl.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dgdump.c
+dgdump.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dginit.c
+dginit.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dgmcntl.c
+dgmcntl.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dgmopen.c
+dgmopen.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dgparse.c
+dgparse.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dgread.c
+dgread.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dgwrite.c
+dgwrite.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dot2ip.c
+dot2ip.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dscntl.c
+dscntl.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dsinit.c
+dsinit.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dsinter.c
+dsinter.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dskbcpy.c
+dskbcpy.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dskenq.c
+dskenq.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dskqopt.c
+dskqopt.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dskstrt.c
+dskstrt.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dsksync.c
+dsksync.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dsopen.c
+dsopen.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dsread.c
+dsread.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dsseek.c
+dsseek.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dswrite.c
+dswrite.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dudir.c
+dudir.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	dumkfs.c
+dumkfs.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ethinit.c
+ethinit.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ethinter.c
+ethinter.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ethread.c
+ethread.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ethstrt.c
+ethstrt.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ethrstrt.c
+ethrstrt.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ethwrite.c
+ethwrite.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ethwstrt.c
+ethwstrt.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	freebuf.c
+freebuf.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	freemem.c
+freemem.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	getaddr.c
+getaddr.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	getbuf.c
+getbuf.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	getc.c
+getc.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	getitem.c
+getitem.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	getmem.c
+getmem.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	getname.c
+getname.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	getnet.c
+getnet.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	getpath.c
+getpath.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	getpid.c
+getpid.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	getprio.c
+getprio.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	getstk.c
+getstk.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	gettime.c
+gettime.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	getutim.c
+getutim.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ibclear.c
+ibclear.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ibfree.c
+ibfree.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ibget.c
+ibget.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	iblfree.c
+iblfree.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ibnew.c
+ibnew.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ibput.c
+ibput.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	icmp_in.c
+icmp_in.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	init.c
+init.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	insert.c
+insert.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	insertd.c
+insertd.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ioerr.c
+ioerr.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ioinit.c
+ioinit.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ioint.s
+ioint.s:
+/usr/Xinu/bin/cc11 -O -c -I../h	ionull.c
+ionull.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ip2name.c
+ip2name.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ip_in.c
+ip_in.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ipsend.c
+ipsend.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	kill.c
+kill.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	kprintf.c
+kprintf.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	lfclose.c
+lfclose.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	lfgetc.c
+lfgetc.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	lfinit.c
+lfinit.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	lfputc.c
+lfputc.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	lfread.c
+lfread.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	lfsdfree.c
+lfsdfree.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	lfseek.c
+lfseek.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	lfsetup.c
+lfsetup.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	lfsflush.c
+lfsflush.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	lfsnewd.c
+lfsnewd.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	lfwrite.c
+lfwrite.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	mark.c
+mark.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	mdump.c
+mdump.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	mkarp.c
+mkarp.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	mkpool.c
+mkpool.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	mount.c
+mount.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	naminit.c
+naminit.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	nammap.c
+nammap.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	namopen.c
+namopen.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	namrepl.c
+namrepl.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ndump.c
+ndump.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	netdump.c
+netdump.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	netin.c
+netin.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	netinit.c
+netinit.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	netnum.c
+netnum.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	netout.c
+netout.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	netutil.s
+netutil.s:
+/usr/Xinu/bin/cc11 -O -c -I../h	newqueue.c
+newqueue.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	nqalloc.c
+nqalloc.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	open.c
+open.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	panic.s
+panic.s:
+/usr/Xinu/bin/cc11 -O -c -I../h	pcount.c
+pcount.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	pcreate.c
+pcreate.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	pdelete.c
+pdelete.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	pinit.c
+pinit.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	poolinit.c
+poolinit.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	prdump.c
+prdump.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	preceive.c
+preceive.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	preset.c
+preset.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	psend.c
+psend.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ptclear.c
+ptclear.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	putc.c
+putc.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	qdump.c
+qdump.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	queue.c
+queue.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rarp_in.c
+rarp_in.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	read.c
+read.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ready.c
+ready.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	receive.c
+receive.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	recvclr.c
+recvclr.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	recvtim.c
+recvtim.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	remove.c
+remove.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rename.c
+rename.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	resched.c
+resched.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	resume.c
+resume.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfalloc.c
+rfalloc.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfclose.c
+rfclose.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfcntl.c
+rfcntl.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfdump.c
+rfdump.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfgetc.c
+rfgetc.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfinit.c
+rfinit.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfio.c
+rfio.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfmkpac.c
+rfmkpac.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfopen.c
+rfopen.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfputc.c
+rfputc.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfread.c
+rfread.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfseek.c
+rfseek.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfsend.c
+rfsend.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rfwrite.c
+rfwrite.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	route.c
+route.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rwho.c
+rwho.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rwhod.c
+rwhod.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	rwhoind.c
+rwhoind.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	scount.c
+scount.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	screate.c
+screate.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	sdelete.c
+sdelete.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	seek.c
+seek.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	send.c
+send.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	sendf.c
+sendf.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	setclkr.s
+setclkr.s:
+/usr/Xinu/bin/cc11 -O -c -I../h	setdev.c
+setdev.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	setnok.c
+setnok.c:
+(cd shell; make install)
+/usr/Xinu/bin/cc11 -O -c -I../../h	addarg.c
+addarg.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	ascdate.c
+ascdate.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	login.c
+login.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	lexan.c
+lexan.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	shell.c
+shell.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_bpool.c
+x_bpool.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_cat.c
+x_cat.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_close.c
+x_close.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_cp.c
+x_cp.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_create.c
+x_create.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_date.c
+x_date.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_devs.c
+x_devs.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_dg.c
+x_dg.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_echo.c
+x_echo.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_exit.c
+x_exit.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_help.c
+x_help.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_kill.c
+x_kill.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_mem.c
+x_mem.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_mount.c
+x_mount.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_mv.c
+x_mv.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_net.c
+x_net.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_ps.c
+x_ps.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_reboot.c
+x_reboot.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_rf.c
+x_rf.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_rm.c
+x_rm.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_rls.c
+x_rls.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_routes.c
+x_routes.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_sleep.c
+x_sleep.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_snap.c
+x_snap.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_unmou.c
+x_unmou.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_uptime.c
+x_uptime.c:
+/usr/Xinu/bin/cc11 -O -c -I../../h	x_who.c
+x_who.c:
+rm -rf libS.a
+/bin/ar cr libS.a x_bpool.o x_cat.o x_close.o x_cp.o	 x_create.o x_date.o x_devs.o x_dg.o	 x_echo.o x_exit.o x_help.o x_kill.o	 x_mem.o x_mount.o x_mv.o x_net.o	 x_ps.o x_reboot.o x_rf.o x_rm.o x_rls.o	 x_routes.o x_sleep.o x_snap.o		 x_unmou.o x_uptime.o x_who.o
+/usr/Xinu/bin/ranlib11 libS.a
+/usr/Xinu/bin/ld11 -r -o sh.o  addarg.o ascdate.o login.o	 lexan.o shell.o libS.a
+cp sh.o ..
+/usr/Xinu/bin/cc11 -O -c -I../h	signal.c
+signal.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	signaln.c
+signaln.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	sizmem.s
+sizmem.s:
+/usr/Xinu/bin/cc11 -O -c -I../h	sleep.c
+sleep.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	sleep10.c
+sleep10.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	sndrarp.c
+sndrarp.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	sreset.c
+sreset.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ssclock.c
+ssclock.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	suspend.c
+suspend.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	tdump.c
+tdump.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	test.c
+test.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ttycntl.c
+ttycntl.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ttygetc.c
+ttygetc.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ttyiin.c
+ttyiin.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ttyinit.c
+ttyinit.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ttyoin.c
+ttyoin.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ttyopen.c
+ttyopen.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ttyputc.c
+ttyputc.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ttyread.c
+ttyread.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	ttywrite.c
+ttywrite.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	udpecho.c
+udpecho.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	udpnxtp.c
+udpnxtp.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	udpsend.c
+udpsend.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	unmount.c
+unmount.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	unsleep.c
+unsleep.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	userret.c
+userret.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	wait.c
+wait.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	wakeup.c
+wakeup.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	write.c
+write.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	xdone.c
+xdone.c:
+/bin/rm -f  libx.a
+/bin/ar cr libx.a	access.o adump.o arp_in.o arpfind.o	 arpinit.o				 blkcopy.o blkequ.o bpdump.o		 chprio.o ckmode.o cksum.o clkinit.o	 clkint.o close.o control.o create.o	 csv.o ctxsw.o				 devdump.o dfalloc.o dfdsrch.o dgalloc.o	 dgclose.o dgcntl.o dgdump.o dginit.o	 dgmcntl.o dgmopen.o dgparse.o dgread.o	 dgwrite.o dot2ip.o dscntl.o dsinit.o	 dsinter.o dskbcpy.o dskenq.o dskqopt.o	 dskstrt.o dsksync.o dsopen.o dsread.o	 dsseek.o dswrite.o dudir.o dumkfs.o	 ethinit.o ethinter.o ethread.o ethstrt.o ethrstrt.o ethwrite.o ethwstrt.o	 freebuf.o freemem.o			 getaddr.o getbuf.o getc.o getitem.o	 getmem.o getname.o getnet.o getpath.o	 getpid.o getprio.o getstk.o gettime.o	 getutim.o				 ibclear.o ibfree.o ibget.o iblfree.o	 ibnew.o ibput.o icmp_in.o init.o	 insert.o insertd.o ioerr.o ioinit.o	 ioint.o ionull.o ip2name.o ip_in.o	 ipsend.o				 kill.o kprintf.o			 lfclose.o lfgetc.o lfinit.o lfputc.o	 lfread.o lfsdfree.o lfseek.o lfsetup.o	 lfsflush.o lfsnewd.o lfwrite.o		 mark.o mdump.o mkarp.o mkpool.o mount.o	 naminit.o nammap.o namopen.o namrepl.o	 ndump.o netdump.o netin.o netinit.o	 netnum.o netout.o netutil.o newqueue.o	 nqalloc.o				 open.o					 panic.o pcount.o pcreate.o pdelete.o	 pinit.o poolinit.o prdump.o preceive.o	 preset.o psend.o ptclear.o putc.o	 qdump.o queue.o				 rarp_in.o read.o ready.o receive.o	 recvclr.o recvtim.o remove.o rename.o	 resched.o resume.o rfalloc.o rfclose.o	 rfcntl.o rfdump.o rfgetc.o rfinit.o	 rfio.o rfmkpac.o rfopen.o rfputc.o	 rfread.o rfseek.o rfsend.o rfwrite.o	 route.o rwho.o rwhod.o rwhoind.o	 scount.o screate.o sdelete.o seek.o	 send.o sendf.o setclkr.o setdev.o	 setnok.o sh.o signal.o signaln.o	 sizmem.o sleep.o sleep10.o sndrarp.o	 sreset.o ssclock.o suspend.o		 tdump.o test.o ttycntl.o ttygetc.o	 ttyiin.o ttyinit.o ttyoin.o ttyopen.o	 ttyputc.o ttyread.o ttywrite.o		 udpecho.o udpnxtp.o udpsend.o unmount.o	 unsleep.o userret.o			 wait.o wakeup.o write.o			 xdone.o
+/usr/Xinu/bin/ranlib11 libx.a
+/usr/Xinu/bin/cc11 -O -c -I../h	lowcore.s
+lowcore.s:
+/usr/Xinu/bin/cc11 -O -c -I../h	startup.s
+startup.s:
+/usr/Xinu/bin/cc11 -O -c -I../h	initialize.c
+initialize.c:
+/usr/Xinu/bin/cc11 -O -c -I../h	conf.c
+conf.c:
+/usr/Xinu/bin/ld11 -r lowcore.o startup.o initialize.o conf.o -o xinu.o
+cp libx.a /usr/Xinu/lib/libx.a
+/usr/Xinu/bin/ranlib11 /usr/Xinu/lib/libx.a
+cp xinu.o /usr/Xinu/lib
+/usr/Xinu/bin/ld11 -S -e start xinu.o test.o libx.a /usr/Xinu/lib/libxc.a libx.a
+./Mknlist ,nm
+ctags access.c adump.c arp_in.c arpfind.c	 arpinit.c				 blkcopy.c blkequ.c bpdump.c		 chprio.c ckmode.c clkinit.c close.c	 conf.c control.c create.c		 devdump.c dfalloc.c dfdsrch.c dgalloc.c	 dgclose.c dgcntl.c dgdump.c dginit.c	 dgmcntl.c dgmopen.c dgparse.c dgread.c	 dgwrite.c dot2ip.c dscntl.c dsinit.c	 dsinter.c dskbcpy.c dskenq.c dskqopt.c	 dskstrt.c dsksync.c dsopen.c dsread.c	 dsseek.c dswrite.c dudir.c dumkfs.c	 ethinit.c ethinter.c ethread.c ethstrt.c ethrstrt.c ethwrite.c ethwstrt.c	 freebuf.c freemem.c			 getaddr.c getbuf.c getc.c getitem.c	 getmem.c getname.c getnet.c getpath.c	 getpid.c getprio.c getstk.c gettime.c	 getutim.c				 ibclear.c ibfree.c ibget.c iblfree.c	 ibnew.c ibput.c icmp_in.c init.c	 initialize.c insert.c insertd.c ioerr.c	 ioinit.c ionull.c ip2name.c ip_in.c	 ipsend.c				 kill.c kprintf.c			 lfclose.c lfgetc.c lfinit.c lfputc.c	 lfread.c lfsdfree.c lfseek.c lfsetup.c	 lfsflush.c lfsnewd.c lfwrite.c		 mark.c mdump.c mkarp.c mkpool.c mount.c	 naminit.c nammap.c namopen.c namrepl.c	 ndump.c netdump.c netin.c netinit.c	 netnum.c netout.c newqueue.c nqalloc.c	 open.c					 pcount.c pcreate.c pdelete.c pinit.c	 poolinit.c prdump.c preceive.c preset.c	 psend.c ptclear.c putc.c		 qdump.c queue.c				 rarp_in.c read.c ready.c receive.c	 recvclr.c recvtim.c remove.c rename.c	 resched.c resume.c rfalloc.c rfclose.c	 rfcntl.c rfdump.c rfgetc.c rfinit.c	 rfio.c rfmkpac.c rfopen.c rfputc.c	 rfread.c rfseek.c rfsend.c rfwrite.c	 route.c rwho.c rwhod.c rwhoind.c	 scount.c screate.c sdelete.c seek.c	 send.c sendf.c setdev.c setnok.c	 signal.c signaln.c sleep.c sleep10.c	 sndrarp.c sreset.c ssclock.c suspend.c	 tdump.c test.c ttycntl.c ttygetc.c	 ttyiin.c ttyinit.c ttyoin.c ttyopen.c	 ttyputc.c ttyread.c ttywrite.c		 udpecho.c udpnxtp.c udpsend.c unmount.c	 unsleep.c userret.c			 wait.c wakeup.c write.c			 xdone.c	../h/a.out.h ../h/arp.h ../h/bufpool.h	 ../h/cmd.h ../h/conf.h ../h/core11.h	 ../h/ctype.h ../h/date.h ../h/deqna.h	 ../h/dgram.h ../h/dir.h ../h/disk.h	 ../h/domain.h ../h/dtc.h ../h/ether.h	 ../h/file.h ../h/fserver.h ../h/hosts.h	 ../h/iblock.h ../h/icmp.h ../h/io.h	 ../h/ip.h ../h/kernel.h ../h/lfile.h	 ../h/mark.h ../h/mem.h ../h/name.h	 ../h/net.h ../h/network.h ../h/ports.h	 ../h/proc.h ../h/q.h ../h/rfile.h	 ../h/rwho.h ../h/sem.h ../h/shell.h	 ../h/sleep.h ../h/slu.h ../h/tty.h	 ../h/udp.h ../h/unix-rwho.h ../h/xebec.h
+/bin/mv tags ,tags
+./Doxref
+./Checkup
+Checking up...
+Checking for missing/extra .o files...
+172d171
+< sh
+Checking .c headers...
+Checking .s headers...
+Checking .h headers...
+Checkup done...
+/usr/Xinu/bin/size11 *.o a.out > ,sizes
+./Dosizes
+lint -n -I../h access.c adump.c arp_in.c arpfind.c	 arpinit.c				 blkcopy.c blkequ.c bpdump.c		 chprio.c ckmode.c clkinit.c close.c	 conf.c control.c create.c		 devdump.c dfalloc.c dfdsrch.c dgalloc.c	 dgclose.c dgcntl.c dgdump.c dginit.c	 dgmcntl.c dgmopen.c dgparse.c dgread.c	 dgwrite.c dot2ip.c dscntl.c dsinit.c	 dsinter.c dskbcpy.c dskenq.c dskqopt.c	 dskstrt.c dsksync.c dsopen.c dsread.c	 dsseek.c dswrite.c dudir.c dumkfs.c	 ethinit.c ethinter.c ethread.c ethstrt.c ethrstrt.c ethwrite.c ethwstrt.c	 freebuf.c freemem.c			 getaddr.c getbuf.c getc.c getitem.c	 getmem.c getname.c getnet.c getpath.c	 getpid.c getprio.c getstk.c gettime.c	 getutim.c				 ibclear.c ibfree.c ibget.c iblfree.c	 ibnew.c ibput.c icmp_in.c init.c	 initialize.c insert.c insertd.c ioerr.c	 ioinit.c ionull.c ip2name.c ip_in.c	 ipsend.c				 kill.c kprintf.c			 lfclose.c lfgetc.c lfinit.c lfputc.c	 lfread.c lfsdfree.c lfseek.c lfsetup.c	 lfsflush.c lfsnewd.c lfwrite.c		 mark.c mdump.c mkarp.c mkpool.c mount.c	 naminit.c nammap.c namopen.c namrepl.c	 ndump.c netdump.c netin.c netinit.c	 netnum.c netout.c newqueue.c nqalloc.c	 open.c					 pcount.c pcreate.c pdelete.c pinit.c	 poolinit.c prdump.c preceive.c preset.c	 psend.c ptclear.c putc.c		 qdump.c queue.c				 rarp_in.c read.c ready.c receive.c	 recvclr.c recvtim.c remove.c rename.c	 resched.c resume.c rfalloc.c rfclose.c	 rfcntl.c rfdump.c rfgetc.c rfinit.c	 rfio.c rfmkpac.c rfopen.c rfputc.c	 rfread.c rfseek.c rfsend.c rfwrite.c	 route.c rwho.c rwhod.c rwhoind.c	 scount.c screate.c sdelete.c seek.c	 send.c sendf.c setdev.c setnok.c	 signal.c signaln.c sleep.c sleep10.c	 sndrarp.c sreset.c ssclock.c suspend.c	 tdump.c test.c ttycntl.c ttygetc.c	 ttyiin.c ttyinit.c ttyoin.c ttyopen.c	 ttyputc.c ttyread.c ttywrite.c		 udpecho.c udpnxtp.c udpsend.c unmount.c	 unsleep.c userret.c			 wait.c wakeup.c write.c			 xdone.c | ./Flint > ,lint

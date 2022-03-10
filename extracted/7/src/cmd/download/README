@@ -1,0 +1,37 @@
+			    README
+
+This directory contains source and a Makefile for the umbrella downloader
+and uploader commands.  The umbrella commands, like "download" and "upload"
+examine the machine database to determine which of several possible micros
+the user will be assigned, allocates the micro, and then invokes a machine-
+specific downloader/uploader command, depending on what is specified in the
+machine database.  An example database is contained in file machines.example;
+the copy actually used resides in {Xinu-directory}/lib/machines.
+
+The subdirectories are structured as follows:
+
+	cmd	contains the source for umbrella commands.  These are
+		the commands that users invoke from the shell level to
+		download or upload a microcomputer.
+	h	contains include files used by the umbrella commands and
+		elsewhere.  There are links to files in this directory
+		from several lower level h directories.
+	lib	contains the source for all the database search
+		routines and device reservation routines.  Files in
+		this directory are compiled to produce libd.a, which is
+		referenced in Makefiles for both umbrella commands and
+		device-specific routines.
+	lsi11	contains the source for serial-line and Ethernet-based
+		Vax-to-LSI 11 downloaders.  Both the LSI-resident code
+		as well as code that runs under UNIX on the host (vax)
+		is included.
+	vax	contains the source for serial and Ethernet VAX-to-VAX
+		downloaders (usually used for VAX-to-microvax, but can
+		be used to download almost any Vax through the console
+		port, including machines like 8600s.
+
+The makefile here calls make on the cmd, Lsi11, and Vax subdirectories.
+If you add downloading code for other target micros, add a new subdirectory
+under this one with all the downloading source code related to that machine
+(including source for boot loaders that executes on the micro as well as
+source for the downloader itself).

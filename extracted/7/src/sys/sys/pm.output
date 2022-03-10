@@ -1,0 +1,206 @@
+Postmortum for Xinu version 7.6 (01/11/87)
+Clock was stopped on Jan 11 1987 22:46:59
+Interrupt vectors changed:
+		Program		Core
+0000060:	0002240/0347	0030556/0340
+0000064:	0002240/0347	0030544/0340
+0000100:	0002240/0347	0026772/0340
+0000400:	0002240/0347	0030544/0341
+process # 3 ( snap ) was running
+	at priority 20 stack is currently 36 words long
+	stack range: 152050 to 153032
+ps	04	
+pc	076026	_x_snap+0320
+sp	0152722	
+r5	0153002	
+r4	00	
+r3	00	
+r2	00	
+r1	00	
+r0	00	
+traceback:
+
+_x_snap()
+
+process # 0 ( prnull ):	state=ready
+	at priority 0 stack is 46 words long
+	stack range: 157320 to 157776
+ps	0340	
+pc	07220	_resched+0334
+sp	0157642	
+r5	0157654	
+r4	0117700	
+r3	0120540	
+r2	014760	_mkarp+0254
+r1	0640	
+r0	010	
+traceback:
+
+_resched()
+_ready(010, 01)
+_send(010, 01)
+_ethinte()
+_nulluse()
+
+process # 1 ( mount ):	state=free
+
+process # 2 ( cat ):	state=free
+
+process # 4 ( UDPecho ):	state=waiting on semaphore 12
+	at priority 30 stack is 58 words long
+	stack range: 153034 to 153626
+ps	0340	
+pc	07220	_resched+0334
+sp	0153442	
+r5	0153454	
+r4	0120220	
+r3	0120624	
+r2	00	
+r1	0724	
+r0	011	
+traceback:
+
+_resched()
+_wait(014)
+_preceiv(022)
+_dgread(0107104, 0132242, 01130)
+_read(04, 0132242, 01130)
+_udpecho()
+
+process # 5 ( rwhod ):	state=sleeping
+	at priority 20 stack is 40 words long
+	stack range: 153630 to 154302
+ps	0340	
+pc	07220	_resched+0334
+sp	0154162	
+r5	0154174	
+r4	0120304	
+r3	0120624	
+r2	0135654	
+r1	0724	
+r0	011	
+traceback:
+
+_resched()
+_sleep10(03410)
+_sleep(0264)
+_rwhod()
+
+process # 6 ( rwho-in ):	state=waiting on semaphore 14
+	at priority 20 stack is 64 words long
+	stack range: 154304 to 154756
+ps	0340	
+pc	07220	_resched+0334
+sp	0154556	
+r5	0154570	
+r4	0120370	
+r3	0117700	
+r2	01	
+r1	00	
+r0	00	
+traceback:
+
+_resched()
+_wait(016)
+_preceiv(023)
+_dgread(0107040, 0127366, 01130)
+_read(03, 0127366, 01130)
+_rwhoind()
+
+process # 7 ( netout ):	state=waiting on semaphore 5
+	at priority 99 stack is 52 words long
+	stack range: 154760 to 155576
+ps	0340	
+pc	07220	_resched+0334
+sp	0155426	
+r5	0155440	
+r4	0120454	
+r3	0120624	
+r2	00	
+r1	0724	
+r0	011	
+traceback:
+
+_resched()
+_wait(05)
+_preceiv(017)
+_netout(011, 017)
+
+process # 8 ( netin ):	state=timing recv.
+	at priority 100 stack is 47 words long
+	stack range: 155600 to 156336
+ps	0340	
+pc	07220	_resched+0334
+sp	0156200	
+r5	0156212	
+r4	0120540	
+r3	0120134	
+r2	00	
+r1	0234	
+r0	03	
+traceback:
+
+_resched()
+_recvtim(0454)
+_ethread(0106730, 0135602, 02176)
+_read(01, 0135602, 02176)
+_netin(011)
+
+process # 9 ( main ):	state=receiving
+	at priority 20 stack is 48 words long
+	stack range: 156340 to 157322
+ps	0340	
+pc	07220	_resched+0334
+sp	0157162	
+r5	0157174	
+r4	0120624	
+r3	0120134	
+r2	00	
+r1	0234	
+r0	03	
+traceback:
+
+_resched()
+_receive()
+_shell(00)
+_main(00)
+
+Semaphores:
+
+semaphore # 5 : count is -1
+	queued proc(s) are: 7 
+	1 proc actually on queue
+semaphore # 6 : count is 3
+semaphore # 7 : count is 1
+semaphore # 8 : count is 0
+semaphore # 9 : count is 3
+semaphore # 10 : count is 0
+semaphore # 11 : count is 3
+semaphore # 12 : count is -1
+	queued proc(s) are: 4 
+	1 proc actually on queue
+semaphore # 13 : count is 3
+semaphore # 14 : count is -1
+	queued proc(s) are: 6 
+	1 proc actually on queue
+semaphore # 15 : count is 3
+semaphore # 16 : count is 4
+semaphore # 17 : count is 1
+semaphore # 18 : count is 1
+semaphore # 19 : count is 1
+semaphore # 20 : count is 1
+semaphore # 21 : count is 1
+semaphore # 22 : count is 0
+semaphore # 23 : count is 0
+semaphore # 24 : count is 1
+semaphore # 25 : count is 0
+semaphore # 26 : count is 64
+semaphore # 27 : count is 0
+semaphore # 28 : count is 1
+semaphore # 29 : count is 1
+
+Tty device 0 CSR at 0177560
+INPUT -- tail at 58 head at 58 sem # 27 value 0
+
+OUTPUT -- tail at 15 head at 15 sem # 26 value 64
+

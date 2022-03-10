@@ -1,0 +1,269 @@
+Mtest	test.c	/^main()$/
+_mkinit	mark.c	/^_mkinit()$/
+_ptclear	ptclear.c	/^_ptclear(ptptr, newstate, dispose)$/
+access	access.c	/^SYSCALL	access(name, mode)$/
+adump	adump.c	/^adump()$/
+arp_in	arp_in.c	/^arp_in(packet, device)$/
+arpfind	arpfind.c	/^arpfind(faddr)$/
+arpinit	arpinit.c	/^arpinit()$/
+blkcopy	blkcopy.c	/^blkcopy(to, from, nbytes)$/
+blkequ	blkequ.c	/^blkequ(first, second, nbytes)$/
+bpdump	bpdump.c	/^bpdump()$/
+chprio	chprio.c	/^SYSCALL chprio(pid,newprio)$/
+ckmode	ckmode.c	/^ckmode(mode)$/
+clkinit	clkinit.c	/^clkinit()$/
+close	close.c	/^SYSCALL	close(descrp)$/
+control	control.c	/^SYSCALL	control(descrp, func, addr, addr2)$/
+create	create.c	/^SYSCALL create(procaddr,ssize,priority,name,nargs,/
+dequeue	queue.c	/^int	dequeue(item)$/
+devdump	devdump.c	/^devdump()$/
+dfalloc	dfalloc.c	/^dfalloc()		\/* assume exclusion for dir. provided b/
+dfdsrch	dfdsrch.c	/^struct	fdes	*dfdsrch(dsptr, filenam, mbits)$/
+dgalloc	dgalloc.c	/^dgalloc()$/
+dgclose	dgclose.c	/^dgclose(devptr)$/
+dgcntl	dgcntl.c	/^dgcntl(devptr, func, arg)$/
+dgdump	dgdump.c	/^dgdump()$/
+dginit	dginit.c	/^dginit(devptr)$/
+dgmcntl	dgmcntl.c	/^dgmcntl(devptr, func, addr)$/
+dgmopen	dgmopen.c	/^dgmopen(devptr, forport, locport)$/
+dgparse	dgparse.c	/^dgparse(dgptr, fspec)$/
+dgread	dgread.c	/^dgread(devptr, buff, len)$/
+dgwrite	dgwrite.c	/^dgwrite(devptr, buff, len)$/
+disable	../h/kernel.h	/^#define	disable(ps)	asm("mfps ~ps");asm("mtps $034/
+dn_cat	../h/domain.h	/^#define	dn_cat(t,f)	{*t++ =(char)strlen(f);strcpy(/
+dot2ip	dot2ip.c	/^dot2ip(ip, nad1, nad2, nad3, nad4)$/
+dqlen	../h/deqna.h	/^#define	dqlen(x) (-(((x)+1)>>1))	\/* buffer len: ma/
+dscntl	dscntl.c	/^dscntl(devptr, func)$/
+dsdirec	../h/disk.h	/^#define	dsdirec(ddev)	((struct dir *)devtab[ddev]./
+dsinit	dsinit.c	/^dsinit(devptr)$/
+dsinter	dsinter.c	/^INTPROC	dsinter(dsptr)$/
+dskbcpy	dskbcpy.c	/^dskbcpy(oldbuf)$/
+dskenq	dskenq.c	/^dskenq(drptr, dsptr)$/
+dskqopt	dskqopt.c	/^dskqopt(p, q, drptr)$/
+dskstrt	dskstrt.c	/^dskstrt(dsptr)$/
+dsksync	dsksync.c	/^dsksync(devptr)$/
+dsopen	dsopen.c	/^dsopen(devptr, filenam, mode)$/
+dsread	dsread.c	/^dsread(devptr, buff, block)$/
+dsseek	dsseek.c	/^dsseek(devptr, block)$/
+dssync	../h/disk.h	/^#define	dssync(ddev)	control((ddev),DSKSYNC);$/
+dswrite	dswrite.c	/^dswrite(devptr, buff, block)$/
+dudir	dudir.c	/^dudir(diskdev)$/
+dumkdl	dumkfs.c	/^dumkdl(diskdev, firstfb, lastfb, verbose)$/
+dumkfs	dumkfs.c	/^dumkfs(diskdev, niblks, nblocks, diskid, verbose)$/
+dumkil	dumkfs.c	/^dumkil(diskdev, niblks, verbose)$/
+echoch	ttyiin.c	/^LOCAL echoch(ch, iptr, cptr)$/
+enable	../h/kernel.h	/^#define	enable()	asm("mtps $000")\/* enable interru/
+enqueue	queue.c	/^int	enqueue(item, tail)$/
+eputc	ttyiin.c	/^LOCAL eputc(ch,iptr,cptr)$/
+erase1	ttyiin.c	/^LOCAL erase1(iptr,cptr)$/
+ethinit	ethinit.c	/^ethinit(devptr)$/
+ethinter	ethinter.c	/^INTPROC	ethinter(etptr)$/
+ethread	ethread.c	/^ethread(devptr, buff, len)$/
+ethrstrt	ethrstrt.c	/^ethrstrt(etptr, buf, len)$/
+ethstrt	ethstrt.c	/^ethstrt(etptr, setup)$/
+ethwrite	ethwrite.c	/^ethwrite(devptr, buff, len)$/
+ethwstrt	ethwstrt.c	/^ethwstrt(etptr, buf, len, setup)$/
+fgetc	../h/io.h	/^#define	fgetc(unit)	getc((unit))$/
+firstid	../h/q.h	/^#define firstid(list)	(q[(list)].qnext)$/
+firstkey	../h/q.h	/^#define	firstkey(list)	(q[q[(list)].qnext].qkey)$/
+fopen	../h/name.h	/^#define	fopen(n,m)	open(NAMESPACE, n, m)$/
+fputc	../h/io.h	/^#define	fputc(unit,ch)	putc((unit),(ch))$/
+freebuf	freebuf.c	/^SYSCALL	freebuf(buf)$/
+freemem	freemem.c	/^SYSCALL	freemem(block, size)$/
+freestk	../h/mem.h	/^#define freestk(p,len)	freemem((unsigned)(p)			\\$/
+getaddr	getaddr.c	/^SYSCALL	getaddr(address)$/
+getbuf	getbuf.c	/^SYSCALL	*getbuf(poolid)$/
+getc	getc.c	/^SYSCALL	getc(descrp)$/
+getchar	../h/io.h	/^#define	getchar()	getc(CONSOLE)$/
+getfirst	getitem.c	/^int	getfirst(head)$/
+getlast	getitem.c	/^int	getlast(tail)$/
+getmem	getmem.c	/^SYSCALL	*getmem(nbytes)$/
+getname	getname.c	/^SYSCALL	getname(nam)$/
+getnet	getnet.c	/^SYSCALL	getnet(address)$/
+getpath	getpath.c	/^getpath(faddr)$/
+getpid	getpid.c	/^SYSCALL getpid()$/
+getprio	getprio.c	/^SYSCALL getprio(pid)$/
+getstk	getstk.c	/^SYSCALL	*getstk(nbytes)$/
+gettime	gettime.c	/^SYSCALL	gettime(timvar)$/
+getutim	getutim.c	/^SYSCALL	getutim(timvar)$/
+halt	../h/kernel.h	/^#define	halt()		asm("halt")	\/* machine halt	instru/
+ibclear	ibclear.c	/^ibclear(ibptr, ibbyte)$/
+ibdisp	../h/iblock.h	/^#define	ibdisp(ib)	(((ib)&07)*sizeof(struct iblk))/
+ibfree	ibfree.c	/^ibfree(diskdev, inum)$/
+ibget	ibget.c	/^ibget(diskdev, inum, loc)$/
+iblfree	iblfree.c	/^iblfree(diskdev, iblist)$/
+ibnew	ibnew.c	/^ibnew(diskdev, writedir)$/
+ibput	ibput.c	/^ibput(diskdev, inum, loc)$/
+ibtodb	../h/iblock.h	/^#define	ibtodb(ib)	(((ib)>>3)+IBAREA)\/* iblock to /
+icmp_in	icmp_in.c	/^icmp_in(packet, icmpp, lim)$/
+init	init.c	/^init(descrp)$/
+insert	insert.c	/^int	insert(proc, head, key)$/
+insertd	insertd.c	/^insertd(pid, head, key)$/
+ioerr	ioerr.c	/^ioerr()$/
+ioinit	ioinit.c	/^ioinit(descrp)$/
+ionull	ionull.c	/^ionull()$/
+iosetvec	ioinit.c	/^iosetvec(descrp, incode, outcode)$/
+ip2name	ip2name.c	/^SYSCALL	ip2name(ip, nam)$/
+ip_in	ip_in.c	/^ip_in(packet, icmpp, lim)$/
+ipsend	ipsend.c	/^ipsend(faddr, packet, datalen)$/
+isalnum	../h/ctype.h	/^#define isalnum(c)	((_ctype_+1)[c]&(_U|_L|_N))$/
+isalpha	../h/ctype.h	/^#define	isalpha(c)	((_ctype_+1)[c]&(_U|_L))$/
+isascii	../h/ctype.h	/^#define isascii(c)	((unsigned)(c)<=0177)$/
+isbaddev	../h/io.h	/^#define	isbaddev(f)	( (f)<0 || (f)>=NDEVS )$/
+isbadpid	../h/proc.h	/^#define	isbadpid(x)	(x<=0 || x>=NPROC)$/
+isbadport	../h/ports.h	/^#define	isbadport(portid)	( (portid)<0 || (portid)/
+isbadq	qdump.c	/^#define	isbadq(i)	( (i)<0 || (i)>=NQENT )$/
+isbadsem	../h/sem.h	/^#define	isbadsem(s)	(s<0 || s>=NSEM)$/
+iscntrl	../h/ctype.h	/^#define iscntrl(c)	((_ctype_+1)[c]&_C)$/
+isdigit	../h/ctype.h	/^#define	isdigit(c)	((_ctype_+1)[c]&_N)$/
+isempty	../h/q.h	/^#define	isempty(list)	(q[(list)].qnext >= NPROC)$/
+isleap	../h/date.h	/^#define	isleap(x)	((x)%4==0)	\/* leap year? (1970-1/
+islower	../h/ctype.h	/^#define	islower(c)	((_ctype_+1)[c]&_L)$/
+isodd	../h/kernel.h	/^#define	isodd(x)	(01&(int)(x))$/
+isprint	../h/ctype.h	/^#define isprint(c)	((_ctype_+1)[c]&(_P|_U|_L|_N|_S/
+isprshort	../h/ctype.h	/^#define isprshort(c)	((_ctype_+1)[c]&(_P|_U|_L|_N)/
+ispunct	../h/ctype.h	/^#define ispunct(c)	((_ctype_+1)[c]&_P)$/
+isspace	../h/ctype.h	/^#define	isspace(c)	((_ctype_+1)[c]&_S)$/
+isupper	../h/ctype.h	/^#define	isupper(c)	((_ctype_+1)[c]&_U)$/
+isxdigit	../h/ctype.h	/^#define	isxdigit(c)	((_ctype_+1)[c]&(_N|_X))$/
+kill	kill.c	/^SYSCALL kill(pid)$/
+kprintf	kprintf.c	/^kprintf(fmt, args)		\/* Derived by Bob Brown, Purdu/
+kputc	kprintf.c	/^LOCAL	kputc(device ,c)$/
+lastkey	../h/q.h	/^#define lastkey(tail)	(q[q[(tail)].qprev].qkey)$/
+lfclose	lfclose.c	/^lfclose(devptr)$/
+lfgetc	lfgetc.c	/^lfgetc(devptr)$/
+lfinit	lfinit.c	/^lfinit(devptr)$/
+lfputc	lfputc.c	/^lfputc(devptr, ch)$/
+lfread	lfread.c	/^lfread(devptr, buff, count)$/
+lfsdfree	lfsdfree.c	/^lfsdfree(diskdev, dba)$/
+lfseek	lfseek.c	/^lfseek(devptr, offset)$/
+lfsetup	lfsetup.c	/^lfsetup(diskdev, flptr)$/
+lfsflush	lfsflush.c	/^lfsflush(flptr)$/
+lfsnewd	lfsnewd.c	/^lfsnewd(diskdev, flptr)$/
+lfwrite	lfwrite.c	/^lfwrite(devptr, buff, count)$/
+ltim2ut	../h/date.h	/^#define	ltim2ut(x)	((x)+TIMEZONE*SECPERHR)$/
+mark	mark.c	/^SYSCALL	mark(loc)$/
+marked	../h/mark.h	/^#define	marked(L)		!unmarked(L)$/
+mdump	mdump.c	/^mdump()$/
+min	../h/kernel.h	/^#define	min(a,b)	( (a) < (b) ? (a) : (b) )$/
+mkarp	mkarp.c	/^struct	epacket	*mkarp(typ, op, spaddr, tpaddr)$/
+mkpool	mkpool.c	/^SYSCALL	mkpool(bufsiz, numbufs)$/
+mount	mount.c	/^SYSCALL	mount(prefix, dev, replace)$/
+naminit	naminit.c	/^naminit()$/
+nammap	nammap.c	/^SYSCALL	nammap(name, newname)$/
+namopen	namopen.c	/^namopen(devptr, filenam, mode)$/
+namrepl	namrepl.c	/^SYSCALL	namrepl(name, newname)$/
+ndump	ndump.c	/^ndump()$/
+net2xt	../h/date.h	/^#define	net2xt(x)	((x)-2208988800L)  \/* convert ne/
+netdump	netdump.c	/^netdump()$/
+netin	netin.c	/^PROCESS	netin(userpid)$/
+netinit	netinit.c	/^netinit()$/
+netnum	netnum.c	/^netnum(netpart, address)$/
+netout	netout.c	/^PROCESS	netout(userpid, icmpp)$/
+newpid	create.c	/^LOCAL	newpid()$/
+newqueue	newqueue.c	/^int	newqueue()$/
+newsem	screate.c	/^LOCAL	newsem()$/
+nonempty	../h/q.h	/^#define	nonempty(list)	(q[(list)].qnext < NPROC)$/
+nqalloc	nqalloc.c	/^nqalloc()$/
+nulluser	initialize.c	/^nulluser()				\/* babysit CPU when no one home *\/$/
+open	open.c	/^SYSCALL	open(descrp, nam, mode)$/
+pause	../h/kernel.h	/^#define	pause()		asm("wait")	\/* machine "wait for /
+pcount	pcount.c	/^SYSCALL	pcount(portid)$/
+pcreate	pcreate.c	/^SYSCALL	pcreate(count)$/
+pdelete	pdelete.c	/^SYSCALL	pdelete(portid, dispose)$/
+pinit	pinit.c	/^SYSCALL	pinit(maxmsgs)$/
+poolinit	poolinit.c	/^poolinit()$/
+prdump	prdump.c	/^prdump()$/
+prdumpa	prdump.c	/^prdumpa()$/
+prdumph	prdump.c	/^prdumph()$/
+preceive	preceive.c	/^SYSCALL	preceive(portid)$/
+preset	preset.c	/^SYSCALL	preset(portid, dispose)$/
+psend	psend.c	/^SYSCALL	psend(portid, msg)$/
+putc	putc.c	/^SYSCALL	putc(descrp, ch)$/
+putchar	../h/io.h	/^#define	putchar(ch)	putc(CONSOLE,(ch))$/
+pxdump	prdump.c	/^static pxdump(all)$/
+qdump	qdump.c	/^qdump()$/
+qdumpa	qdump.c	/^qdumpa()$/
+qdumph	qdump.c	/^qdumph()$/
+qxdump	qdump.c	/^static qxdump(all)$/
+rarp_in	rarp_in.c	/^rarp_in(packet, device)$/
+read	read.c	/^SYSCALL	read(descrp, buff, count)$/
+ready	ready.c	/^int	ready (pid, resch)$/
+receive	receive.c	/^SYSCALL	receive()$/
+recvclr	recvclr.c	/^SYSCALL	recvclr()$/
+recvtim	recvtim.c	/^SYSCALL	recvtim(maxwait)$/
+remove	remove.c	/^SYSCALL	remove(name, key)$/
+rename	rename.c	/^SYSCALL	rename(old, new)$/
+resched	resched.c	/^int	resched()$/
+restore	../h/kernel.h	/^#define	restore(ps)	asm("mtps ~ps")	\/* restore int/
+resume	resume.c	/^SYSCALL resume(pid)$/
+rfalloc	rfalloc.c	/^rfalloc()$/
+rfclose	rfclose.c	/^rfclose(devptr)$/
+rfcntl	rfcntl.c	/^rfcntl(devptr, func, addr, addr2)$/
+rfdump	rfdump.c	/^rfdump()$/
+rfgetc	rfgetc.c	/^rfgetc(devptr)$/
+rfinit	rfinit.c	/^rfinit(devptr)$/
+rfio	rfio.c	/^rfio(devptr, rop, buff, len)$/
+rfmkpac	rfmkpac.c	/^rfmkpac(rop, rname, rpos, buff, len)$/
+rfopen	rfopen.c	/^rfopen(devptr, name, mode)$/
+rfputc	rfputc.c	/^rfputc(devptr, ch)$/
+rfread	rfread.c	/^rfread(devptr, buff, len)$/
+rfseek	rfseek.c	/^rfseek(devptr, offset)$/
+rfsend	rfsend.c	/^rfsend(fptr, reqlen, rplylen)$/
+rfwrite	rfwrite.c	/^rfwrite(devptr, buff, len)$/
+roundew	../h/mem.h	/^#define	roundew(x)	(int *)( (3 + (int)(x)) & (~3) /
+route	route.c	/^route(faddr, packet, totlen)$/
+rststate	kprintf.c	/^LOCAL	rststate()$/
+rwho	rwho.c	/^rwho()$/
+rwhod	rwhod.c	/^PROCESS	rwhod()$/
+rwhoind	rwhoind.c	/^PROCESS	rwhoind()$/
+savestate	kprintf.c	/^LOCAL	savestate(device)$/
+scount	scount.c	/^SYSCALL scount(sem)$/
+screate	screate.c	/^SYSCALL screate(count)$/
+sdelete	sdelete.c	/^SYSCALL sdelete(sem)$/
+seek	seek.c	/^SYSCALL	seek(descrp, pos)$/
+send	send.c	/^SYSCALL	send(pid, msg)$/
+sendf	sendf.c	/^SYSCALL	sendf(pid, msg)$/
+setdev	setdev.c	/^SYSCALL	setdev(pid, dev1, dev2)$/
+setnok	setnok.c	/^SYSCALL	setnok(nok, pid)$/
+signal	signal.c	/^SYSCALL signal(sem)$/
+signaln	signaln.c	/^SYSCALL signaln(sem,count)$/
+sleep	sleep.c	/^SYSCALL	sleep(n)$/
+sleep10	sleep10.c	/^SYSCALL	sleep10(n)$/
+sndrarp	sndrarp.c	/^sndrarp()$/
+sreset	sreset.c	/^SYSCALL sreset(sem,count)$/
+stopclk	ssclock.c	/^stopclk()$/
+strtclk	ssclock.c	/^strtclk()$/
+suspend	suspend.c	/^SYSCALL	suspend(pid)$/
+sysinit	initialize.c	/^LOCAL	sysinit()$/
+tdump	tdump.c	/^tdump()$/
+tdump1	tdump.c	/^tdump1(tnum)$/
+tdumph	tdump.c	/^tdumph()$/
+toascii	../h/ctype.h	/^#define toascii(c)	((c)&0177)$/
+tolower	../h/ctype.h	/^#define tolower(c)	((c)-'A'+'a')$/
+toupper	../h/ctype.h	/^#define toupper(c)	((c)-'a'+'A')$/
+tqdump	tdump.c	/^static tqdump(start, len, maxlen, buff)$/
+truncew	../h/mem.h	/^#define	truncew(x)	(int *)( ((int)(x)) & (~3) )$/
+ttycntl	ttycntl.c	/^ttycntl(devptr, func)$/
+ttygetc	ttygetc.c	/^ttygetc(devptr)$/
+ttyiin	ttyiin.c	/^INTPROC	ttyiin(iptr)$/
+ttyinit	ttyinit.c	/^ttyinit(devptr)$/
+ttyoin	ttyoin.c	/^INTPROC	ttyoin(iptr)$/
+ttyopen	ttyopen.c	/^ttyopen(devptr, nam, mode)$/
+ttyputc	ttyputc.c	/^ttyputc(devptr, ch )$/
+ttyread	ttyread.c	/^ttyread(devptr, buff, count)$/
+ttywrite	ttywrite.c	/^ttywrite(devptr, buff, count)$/
+udpecho	udpecho.c	/^PROCESS	udpecho()$/
+udpnxtp	udpnxtp.c	/^udpnxtp()$/
+udpsend	udpsend.c	/^udpsend(faddr, fport, lport, packet, datalen)$/
+unmarked	../h/mark.h	/^#define	unmarked(L)		(L[0]<0 || L[0]>=nmarks || ma/
+unmount	unmount.c	/^SYSCALL	unmount(prefix)$/
+unsleep	unsleep.c	/^SYSCALL	unsleep(pid)$/
+userret	userret.c	/^userret()$/
+ut2ltim	../h/date.h	/^#define	ut2ltim(x)	((x)-TIMEZONE*SECPERHR)$/
+wait	wait.c	/^SYSCALL	wait(sem)$/
+wakeup	wakeup.c	/^INTPROC	wakeup()$/
+writcopy	ttywrite.c	/^LOCAL writcopy(buff, ttyp, count)$/
+write	write.c	/^SYSCALL	write(descrp, buff, count)$/
+xdone	xdone.c	/^xdone()$/
+xt2net	../h/date.h	/^#define	xt2net(x)	((x)+2208988800L)  \/* convert xi/

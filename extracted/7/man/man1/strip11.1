@@ -1,0 +1,25 @@
+.TH STRIP11 1
+.SH NAME
+strip11 \- remove symbols and relocation bits from 11 object file
+.SH SYNOPSIS
+.B strip11
+name ...
+.SH DESCRIPTION
+.I Strip11
+removes the symbol
+table and relocation bits ordinarily attached to the output
+of the assembler and loader.
+This is useful to save space after a program has been
+debugged.
+.PP
+The effect of
+.I strip11
+is the same as use of the
+.B \-s
+option
+of
+.IR ld11 .
+.SH FILES
+/tmp/stm?	temporary file
+.SH "SEE ALSO"
+ld11(1)

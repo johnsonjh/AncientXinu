@@ -1,0 +1,12 @@
+xinu          up         3:13   1 users,    load  0.00,  0.00,  0.00
+cypress1      up         8:23   2 users,    load  0.10,  0.09,  0.08
+gareth        down       1:00
+gawain        up    1 + 10:09   3 users,    load  0.13,  0.00,  0.00
+merlin        up    9 +  0:58  10 users,    load  0.37,  0.78,  0.94
+lucas         up   20 + 15:27   1 users,    load  0.00,  0.08,  0.00
+bedivere      up    7 + 19:20   8 users,    load  0.26,  0.12,  0.01
+blays         up    4 +  7:24   5 users,    load  4.12,  4.85,  5.26
+mordred       up   16 + 11:10  29 users,    load  2.17,  2.30,  1.92
+arthur        up    4 +  6:08  28 users,    load  1.32,  1.41,  1.42
+gwen          up   12 + 11:11  10 users,    load  1.73,  1.58,  1.59
+lancelot      up   14 +  5:23   4 users,    load  1.54,  1.32,  1.28
