@@ -10,7 +10,7 @@
 
 > Xinu first ran on the LSI-11 platform. _A Motorola 68000 port was done by Derrick Burns in **1984**._ ... A second Motorola 68000 (Sun-3) port [was released] circa **1988** by Shawn Ostermann and Steve Chapin ...
 
-- This repository contains recovered historical code from **198**1-**1987**.
+- This repository contains recovered historical code from **1981**-**1987**.
 
 ## Description
 
